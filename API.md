@@ -1,8 +1,7 @@
 # Task view
 
 ## GET /getTasks?completed=[boolean]
-Query String param of ?complete=[true/false]
-Returns an array of available menu items.
+Returns an array of tasks. If true- returns only complete items, if false, returns all tasks. 
 
 #### RESPONSE if true
 ```
