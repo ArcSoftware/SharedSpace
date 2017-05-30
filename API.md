@@ -1,7 +1,7 @@
 # Task view
 
 ## GET /getTasks?completed=[boolean]
-Returns an array of tasks. If true- returns only complete items, if false, returns all tasks. 
+Returns an array of tasks. If true- returns only complete items, if false, returns all tasks.
 
 #### RESPONSE if true
 ```
@@ -35,7 +35,7 @@ Marking a task as complete and giving points to the user.
     user: <String>
 }
 ```
-## GET /getUser?=[user]
+## GET /getUser?=[user] (if user == 'all', return all users and their points)
 Query String param of user.
 Returns points the user has.
 
