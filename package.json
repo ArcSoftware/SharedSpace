@@ -1,0 +1,28 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArcSoftware/SharedSpace/.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArcSoftware/SharedSpace/issues"
+  },
+  "homepage": "https://github.com/ArcSoftware/SharedSpace",
+  "dependencies": {
+    "@types/node": "^6.0.72",
+    "ava": "^0.19.1",
+    "foundation-sites": "^6.3.1",
+    "gulp": "^3.9.1",
+    "gulp-browser": "^3.0.4",
+    "gulp-sass": "^3.1.0"
+  }
+}
