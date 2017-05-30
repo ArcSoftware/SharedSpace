@@ -35,14 +35,14 @@ Marking a task as complete and giving points to the user.
     user: <String>
 }
 ```
-## GET /getUser?=[user] (if user == 'all', return all users and their points)
+## GET /getUser?userName=[userName] (if userName == 'all', return all users and their points)
 Query String param of user.
 Returns points the user has.
 
 ```
 [
   {
-    user: <String>,
+    userName: <String>,
     points: <number>
   },
 ]
