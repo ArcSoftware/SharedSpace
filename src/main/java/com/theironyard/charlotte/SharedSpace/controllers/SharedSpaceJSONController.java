@@ -33,17 +33,42 @@ public class SharedSpaceJSONController {
         }
     }
 
-    @RequestMapping(path = "/addTask", method = RequestMethod.GET)
-    public void addTask(@RequestBody String user, String task, int points) {
-        User newUser = new User();
-        newUser.setUsername(user);
-        Task newTask = new Task(task, false, newUser, points);
+    @RequestMapping(path = "/addTask", method = RequestMethod.POST)
+    public void addTask(@RequestBody String task, Integer points) {
+        User testUser = new User("test", 0);
+        System.out.println(task + "the task, the points = " + points);
+        Task newTask = new Task("test this crap", false, "test", 100);
+
         tasks.save(newTask);
     }
 
+    @RequestMapping(path = "/addTestUser", method = RequestMethod.POST)
+    public void addTask() {
+        User testUser = new User("test", 0);
+        Task newTask = new Task("test this crap", false, "testUser", 100);
+        tasks.save(newTask);
+        System.out.println("Adding new test task " + newTask);
+    }
+
     @RequestMapping(path = "/markComplete", method = RequestMethod.POST)
-    public void completeTask(@RequestBody String user, int taskID) {
-        User currentUser = users.findOne(;
+    public void completeTask(@RequestBody String userName, Integer taskID) {
+        User currentUser = users.findByuserName(userName);
         Task currentTask = tasks.findOne(taskID);
+        currentTask.setComplete(true);
+        currentTask.setUserName(currentUser.getUserName());
+        tasks.save(currentTask);
+    }
+
+    @RequestMapping(path = "/userName", method = RequestMethod.GET)
+    public ArrayList<User> userNamePoints(String userName) {
+        if (userName != "all") {
+            ArrayList<User> singleUser = new ArrayList<>();
+            User currentUser = users.findByuserName(userName);
+            singleUser.add(currentUser);
+            return singleUser;
+        } else {
+            return (ArrayList<User>) users.findAll();
+        }
+
     }
 }

@@ -16,7 +16,7 @@ public class Task {
     boolean complete;
 
     @ManyToOne
-    User username;
+    String userName;
 
     @Column
     int points;
@@ -24,10 +24,10 @@ public class Task {
     public Task() {
     }
 
-    public Task(String taskName, boolean complete, User username, int points) {
+    public Task(String taskName, boolean complete, String userName, int points) {
         this.taskName = taskName;
         this.complete = complete;
-        this.username = username;
+        this.userName = userName;
         this.points = points;
     }
 
@@ -55,12 +55,12 @@ public class Task {
         this.complete = complete;
     }
 
-    public User getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(User username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public int getPoints() {

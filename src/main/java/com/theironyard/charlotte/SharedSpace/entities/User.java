@@ -5,21 +5,23 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
-   @Id
+
+    @Id
     @GeneratedValue
     int id;
 
-   @Column(unique = true)
-    String username;
+   @Column
+    String userName;
 
     @Column
     int points;
 
+
     public User() {
     }
 
-    public User(String username, int points) {
-        this.username = username;
+    public User(String userName, int points) {
+        this.userName = userName;
         this.points = points;
     }
 
@@ -31,12 +33,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public int getPoints() {
