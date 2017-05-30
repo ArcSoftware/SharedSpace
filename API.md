@@ -1,6 +1,6 @@
 # Task view
 
-## GET /getTasks?completed=<boolean>
+## GET /getTasks?completed=[boolean]
 Query String param of ?complete=[true/false]
 Returns an array of available menu items.
 
@@ -36,7 +36,7 @@ Marking a task as complete and giving points to the user.
     user: <String>
 }
 ```
-## GET /getUser?=<user>
+## GET /getUser?=[user]
 Query String param of user.
 Returns points the user has.
 
