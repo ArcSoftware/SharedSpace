@@ -27,11 +27,10 @@ Returns an array of available menu items.
     points: <number>
   },
 ]
-
+```
 ## POST /markComplete
 Marking a task as complete and giving points to the user.
 ```
-REQUEST
 {
     taskID: <number>
     user: <String>
