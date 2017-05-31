@@ -34,30 +34,38 @@ for (let i = 0; i < components.length; i++) {
     app.component(components[i].name, components[i].array);
 }
 
+// https://scotch.io/tutorials/angular-routing-using-ui-router
+
 app.config( function ($stateProvider, $urlRouterProvider) {
 
 // default path should be to /signin because
 // users cannot view tasks unless they are signed in
-    $urlRouterProvider.otherwise('/signin');
-    
-    $stateProvider.state({
-        name: "signin",
-        url: '/signin',
-        component: "signin"
-    });
 
-    $stateProvider.state({
-        name: 'tasks',
-        url: '/tasks',
-        component: 'task',
-    });
-})
+// $urlRouterProvider.otherwise('/signin');
+    
+    $stateProvider
+        .state('signin', {
+            // name: "signin",
+            url: '/signin',
+            component: "signin"
+            // templateUrl: 'templates/signin.html'
+        })
+
+        .state('tasks', {
+            // name: 'tasks',
+            url: '/tasks',
+            component: 'allTasks',
+            // templateUrl: 'templates/allTasks.html'
+        });
+});
 },{"./components/signin":2,"./components/task":3,"./controllers/SignInController":4,"./controllers/TaskController":5,"./services/SignInService":6,"./services/TaskService":7}],2:[function(require,module,exports){
 module.exports={
-    name:"signin",
+    name: "signin",
     array: {
-        temlateUrl:"../../../src/main/resources/templates/signin.html",
-        controller:"SignInController",
+
+        templateUrl: "/src/main/resources/templates/signin.html",
+        controller: "SignInController",
+
         // bindings:{
         //     which: "<",
         // }
@@ -67,12 +75,8 @@ module.exports={
 module.exports = {
     name: "allTasks",
     array: {
-        templateUrl: "../../../src/main/resources/templates/allTasks.html",
+        templateUrl: "/src/main/resources/templates/allTasks.html",
         controller: "TaskController",
-        bindings: {
-            // $ctrl.which
-            which: "<",
-        }
     }
 }; 
 },{}],4:[function(require,module,exports){
