@@ -4,11 +4,9 @@ import com.theironyard.charlotte.SharedSpace.entities.Task;
 import com.theironyard.charlotte.SharedSpace.entities.User;
 import com.theironyard.charlotte.SharedSpace.repositories.TaskRepo;
 import com.theironyard.charlotte.SharedSpace.repositories.UserRepo;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 /**
@@ -24,19 +22,22 @@ public class SharedSpaceJSONController {
         this.users = users;
     }
 
+    @CrossOrigin
     @RequestMapping(path = "/getTasks", method = RequestMethod.GET)
     public ArrayList<Task> getTasks(boolean complete) {
         return (ArrayList<Task>) tasks.findByComplete(complete);
     }
 
+    @CrossOrigin
     @RequestMapping(path = "/addTask", method = RequestMethod.POST)
-    public void addTask(@RequestBody String task, Integer points) {
+    public void addTask(@RequestBody String task, HttpSession session, Integer points) {
         User testUser = new User("test", 0);
         System.out.println(task + "the task, the points = " + points);
         Task newTask = new Task(task, false, points, null);
         tasks.save(newTask);
     }
 
+    @CrossOrigin
     @RequestMapping(path = "/addTestUser", method = RequestMethod.POST)
     public void addTask() {
         User testUser = new User("test", 0);
@@ -49,6 +50,7 @@ public class SharedSpaceJSONController {
         tasks.save(newTask);
     }
 
+    @CrossOrigin
     @RequestMapping(path = "/markComplete", method = RequestMethod.POST)
     public void completeTask(@RequestBody String userName, Integer taskID) {
         User currentUser = users.findByuserName(userName);
@@ -58,6 +60,7 @@ public class SharedSpaceJSONController {
         tasks.save(currentTask);
     }
 
+    @CrossOrigin
     @RequestMapping(path = "/userName", method = RequestMethod.GET)
     public ArrayList<User> userNamePoints(String userName) {
         if (userName != "all") {
@@ -69,5 +72,29 @@ public class SharedSpaceJSONController {
             return (ArrayList<User>) users.findAll();
         }
 
+    }
+
+//    @CrossOrigin(origins = "http://localhost:9000")
+//    @RequestMapping(path = "/userName", method = RequestMethod.GET)
+//    public User userName(String userName, HttpSession session) {
+//
+//    }
+
+    @CrossOrigin
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
+    public String login(HttpSession session, String userName) {
+        session.setAttribute("userName", userName);
+        if (users.findByuserName(userName) == null) {
+            User newUser = new User(userName, 0);
+            users.save(newUser);
+        }
+        return "redirect:/";
+    }
+
+    @CrossOrigin
+    @RequestMapping(path = "/logout", method = RequestMethod.POST)
+    public String logout(HttpSession session) {
+        session.invalidate(); //logout invalidates session.
+        return "redirect:/";
     }
 }

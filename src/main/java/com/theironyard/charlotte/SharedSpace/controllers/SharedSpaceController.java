@@ -30,20 +30,6 @@ public class SharedSpaceController {
         return "index";
     }
 
-    @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public String login(HttpSession session, String userName) {
-        session.setAttribute("userName", userName);
-        if (users.findByuserName(userName) == null) {
-            User newUser = new User(userName, 0);
-            users.save(newUser);
-        }
-        return "redirect:/";
-    }
 
-    @RequestMapping(path = "/logout", method = RequestMethod.POST)
-    public String logout(HttpSession session) {
-        session.invalidate(); //logout invalidates session.
-        return "redirect:/";
-    }
 
 }
