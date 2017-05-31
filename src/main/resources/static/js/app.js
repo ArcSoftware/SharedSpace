@@ -33,35 +33,24 @@ for (let i = 0; i < components.length; i++) {
 
 app.config( function ($stateProvider) {
     
-    // $stateProvider.state({
-    //     name: "front_page",
-    //     url: '/front_page',
-    //     component: "opening"
-    // });
+    $stateProvider.state({
+        name: "signin",
+        url: '/signin',
+        component: "signin"
+    });
 
-    // $stateProvider.state({
-    //     name: 'results',
-    //     url: '/results/:searchstring',
-    //     component: 'results',
-    // });
-    //  $stateProvider.state({
-    //     name: 'add',
-    //     url: '/add',
-    //     component: 'add',
-    // });
-
-    //     $stateProvider.state({
-    //     name: 'cart',
-    //     url: '/cart',
-    //     component: 'cart',
-    // });
+    $stateProvider.state({
+        name: 'results',
+        url: '/results/:searchstring',
+        component: 'results',
+    });
 
 })
 },{"./components/task":2,"./controllers/TaskController":3,"./services/TaskService":4}],2:[function(require,module,exports){
 module.exports = {
     name: "allTasks",
     array: {
-        templateUrl: "templates/allTasks.html",
+        templateUrl: "../../../src/main/resources/templates/allTasks.html",
         controller: "TaskController",
         bindings: {
             // $ctrl.which
@@ -82,7 +71,7 @@ module.exports = {
     func: function ($http) {
         let tasks = [];
         // jakes IP
-        $http.get('https://192.168.1.4:8080/getTasks').then(function (response) {
+        $http.get('http://jakes-computer:8080/getTasks').then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
                 tasks.push({
                     id: response.data[i].id,
@@ -90,9 +79,9 @@ module.exports = {
                     complete: response.data[i].complete,
                     points: response.data[i].points,
                     user: {
-                        id: response.data[i].user[id],
-                        userName: response.data[i].user[userName],
-                        points: response.data[i].user[points],
+                        id: response.data[i].user.id,
+                        userName: response.data[i].user.userName,
+                        points: response.data[i].user.points,
                     }
                 })
             }
