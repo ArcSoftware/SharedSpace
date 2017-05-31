@@ -30,11 +30,9 @@ public class SharedSpaceJSONController {
 
     @CrossOrigin
     @RequestMapping(path = "/addTask", method = RequestMethod.POST)
-    public void addTask(@RequestBody String task, HttpSession session, Integer points) {
-        User testUser = new User("test", 0);
-        System.out.println(task + "the task, the points = " + points);
-        Task newTask = new Task(task, false, points, null);
-        tasks.save(newTask);
+    public void addTask(@RequestBody Task task) {
+        System.out.println(task + "the task, the points = " + task.getPoints());
+        tasks.save(task);
     }
 
     @CrossOrigin
@@ -78,33 +76,26 @@ public class SharedSpaceJSONController {
     @CrossOrigin
     @RequestMapping(path = "/user", method = RequestMethod.GET)
     //mapping to check is user is logged in session.
-    public String userName(String userName, HttpSession session) {
-        session.setAttribute("userName", userName);
-        if (users.findByuserName(userName) != null) {
-            return userName;
-        } else {
-            return null;
-        }
+    public String userName(HttpSession session) {
+        return (String) session.getAttribute("userName");
     }
 
     @CrossOrigin
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public String login(HttpSession session, String userName) {
-        session.setAttribute("userName", userName);
-        if (users.findByuserName(userName) == null) {
-            User newUser = new User(userName, 0);
-            users.save(newUser);
-            System.out.println("New user was created for " + userName);
+    public User login(HttpSession session, @RequestBody User user) {
+        session.setAttribute("user", user.getUserName());
+        if (users.findByuserName(user.getUserName()) == null) {
+            users.save(user);
+            System.out.println("New user was created for " + user.getUserName());
         } else {
-            System.out.println("User exists already for " + userName + ". Logging in as that user.");
+            System.out.println("User exists already for " + user.getUserName() + ". Logging in as that user.");
         }
-        return "redirect:/";
+        return user;
     }
 
     @CrossOrigin
     @RequestMapping(path = "/logout", method = RequestMethod.POST)
-    public String logout(HttpSession session) {
+    public void logout(HttpSession session) {
         session.invalidate(); //logout invalidates session.
-        return "redirect:/";
     }
 }
