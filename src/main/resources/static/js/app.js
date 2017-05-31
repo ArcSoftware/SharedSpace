@@ -34,16 +34,6 @@ for (let i = 0; i < components.length; i++) {
     app.component(components[i].name, components[i].array);
 }
 
-
-app.config( function ($stateProvider) {
-    
-    $stateProvider.state({
-        name: "signin",
-        url: '/signin',
-        component: "signin"
-    });
-
-
 app.config( function ($stateProvider, $urlRouterProvider) {
 
 // default path should be to /signin because
@@ -53,27 +43,24 @@ app.config( function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state({
         name: "signin",
         url: '/signin',
-        component: "signin",
+        component: "signin"
     });
-
 
     $stateProvider.state({
         name: 'tasks',
         url: '/tasks',
         component: 'task',
     });
-
-
 })
 },{"./components/signin":2,"./components/task":3,"./controllers/SignInController":4,"./controllers/TaskController":5,"./services/SignInService":6,"./services/TaskService":7}],2:[function(require,module,exports){
 module.exports={
     name:"signin",
     array: {
-        temlateUrl:"templates/signin.html",
+        temlateUrl:"../../../src/main/resources/templates/signin.html",
         controller:"SignInController",
-        bindings:{
-            which: "<",
-        }
+        // bindings:{
+        //     which: "<",
+        // }
     }
 }
 },{}],3:[function(require,module,exports){
@@ -92,7 +79,11 @@ module.exports = {
 module.exports={
     name: "SignInController",
     func: function($scope, SignInService){
-       // $scope.users=SignInService.getUsers();
+       
+       $scope.go=function(){
+           SignInService.showUser($scope.user_name);
+           console.log('hello');
+       }
     }
 }
 },{}],5:[function(require,module,exports){
@@ -106,12 +97,18 @@ module.exports = {
 module.exports={
     name:'SignInService',
     func: function($http){
-        //let users=[];
-        
+       
         return{
 
-            showUsers: function(){
+            showUsers: function(user_name){
+                   console.log(hello);
                 //return users;
+                let u_name={
+                    username: user_name,
+                };
+                $http.post('http://192.168.1.4:8080/login?userName=' +user_name);
+
+               
             }
         }
     }
