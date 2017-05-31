@@ -4,6 +4,7 @@ const app = angular.module('SharedSpace', ['ui.router']);
 // require service
 const services = [
     require('./services/TaskService'),
+    require('./services/SignInService'),
 ];
 
 // loop all services
@@ -14,6 +15,7 @@ for (let i = 0; i < services.length; i++) {
 // require controllers
 const controllers = [
     require('./controllers/TaskController'),
+    require('./controllers/SignInController'),
 ];
 
 // loop all controllers
@@ -24,12 +26,23 @@ for (let i = 0; i < controllers.length; i++) {
 // require components
 const components = [
     require('./components/task'),
+    require('./components/signin'),
 ]
 
 // loop all components
 for (let i = 0; i < components.length; i++) {
     app.component(components[i].name, components[i].array);
 }
+
+
+app.config( function ($stateProvider) {
+    
+    $stateProvider.state({
+        name: "signin",
+        url: '/signin',
+        component: "signin"
+    });
+
 
 app.config( function ($stateProvider, $urlRouterProvider) {
 
@@ -43,14 +56,27 @@ app.config( function ($stateProvider, $urlRouterProvider) {
         component: "signin",
     });
 
+
     $stateProvider.state({
         name: 'tasks',
         url: '/tasks',
         component: 'task',
     });
 
+
 })
-},{"./components/task":2,"./controllers/TaskController":3,"./services/TaskService":4}],2:[function(require,module,exports){
+},{"./components/signin":2,"./components/task":3,"./controllers/SignInController":4,"./controllers/TaskController":5,"./services/SignInService":6,"./services/TaskService":7}],2:[function(require,module,exports){
+module.exports={
+    name:"signin",
+    array: {
+        temlateUrl:"templates/signin.html",
+        controller:"SignInController",
+        bindings:{
+            which: "<",
+        }
+    }
+}
+},{}],3:[function(require,module,exports){
 module.exports = {
     name: "allTasks",
     array: {
@@ -62,14 +88,35 @@ module.exports = {
         }
     }
 }; 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
+module.exports={
+    name: "SignInController",
+    func: function($scope, SignInService){
+       // $scope.users=SignInService.getUsers();
+    }
+}
+},{}],5:[function(require,module,exports){
 module.exports = {
     name: "TaskController",
     func: function ($scope, TaskService) {
         $scope.tasks = TaskService.getTasks();
     }
 } 
-},{}],4:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
+module.exports={
+    name:'SignInService',
+    func: function($http){
+        //let users=[];
+        
+        return{
+
+            showUsers: function(){
+                //return users;
+            }
+        }
+    }
+}
+},{}],7:[function(require,module,exports){
 module.exports = {
     name: 'TaskService',
     func: function ($http) {
