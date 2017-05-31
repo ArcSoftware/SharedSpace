@@ -1,16 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="static/style/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script src="static/js/app.js"></script>
-    <!--remove ../static above-->
+    <link rel="stylesheet" href="../resources/static/style/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.js"></script>
+    <script src="https://npmcdn.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.min.js"></script>
+    <script src="../resources/static/js/app.js"></script>
+    <!--remove static above when boot from Jake's server -->
 </head>
+
 <body ng-app="SharedSpace">
 
+    <section ng-controller="TaskController">
+        <p>all the tasks</p>
+        <ul>
+            <all-tasks which="tasks"></all-tasks>
+        </ul>
+    </section>
+    <!--did not need ng-repeat on all-tasks-->
+    <!--needed INSIDE the component-->
+    <!--review angular rules for - and cap letters -->
 
 
 </body>
+
 </html>
