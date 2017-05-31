@@ -35,6 +35,7 @@ for (let i = 0; i < components.length; i++) {
 }
 
 // https://scotch.io/tutorials/angular-routing-using-ui-router
+// templateUrl is older, don't do it!
 
 app.config( function ($stateProvider, $urlRouterProvider) {
 
@@ -45,17 +46,13 @@ $urlRouterProvider.otherwise('/signin');
     
     $stateProvider
         .state('signin', {
-            // name: "signin",
             url: '/signin',
             component: "signin"
-            // templateUrl: 'templates/signin.html'
         })
 
         .state('tasks', {
-            // name: 'tasks',
             url: '/tasks',
             component: 'allTasks',
-            // templateUrl: 'templates/allTasks.html'
         });
 });
 },{"./components/signin":2,"./components/task":3,"./controllers/SignInController":4,"./controllers/TaskController":5,"./services/SignInService":6,"./services/TaskService":7}],2:[function(require,module,exports){
