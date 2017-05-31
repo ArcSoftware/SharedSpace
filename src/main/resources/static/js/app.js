@@ -31,18 +31,22 @@ for (let i = 0; i < components.length; i++) {
     app.component(components[i].name, components[i].array);
 }
 
-app.config( function ($stateProvider) {
+app.config( function ($stateProvider, $urlRouterProvider) {
+
+// default path should be to /signin because
+// users cannot view tasks unless they are signed in
+    $urlRouterProvider.otherwise('/signin');
     
     $stateProvider.state({
         name: "signin",
         url: '/signin',
-        component: "signin"
+        component: "signin",
     });
 
     $stateProvider.state({
-        name: 'results',
-        url: '/results/:searchstring',
-        component: 'results',
+        name: 'tasks',
+        url: '/tasks',
+        component: 'task',
     });
 
 })
