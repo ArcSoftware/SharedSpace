@@ -40,7 +40,7 @@ app.config( function ($stateProvider, $urlRouterProvider) {
 // default path should be to /signin because
 // users cannot view tasks unless they are signed in
 
-// $urlRouterProvider.otherwise('/signin');
+$urlRouterProvider.otherwise('/signin');
     
     $stateProvider
         .state('signin', {

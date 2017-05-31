@@ -2,7 +2,7 @@ module.exports = {
     name: 'TaskService',
     func: function ($http) {
         let tasks = [];
-        // jakes IP
+                        // jakes IP thank you Ben
         $http.get('http://jakes-computer:8080/getTasks').then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
                 tasks.push({

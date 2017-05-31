@@ -41,7 +41,7 @@ app.config( function ($stateProvider, $urlRouterProvider) {
 // default path should be to /signin because
 // users cannot view tasks unless they are signed in
 
-// $urlRouterProvider.otherwise('/signin');
+$urlRouterProvider.otherwise('/signin');
     
     $stateProvider
         .state('signin', {
@@ -59,14 +59,11 @@ app.config( function ($stateProvider, $urlRouterProvider) {
         });
 });
 },{"./components/signin":2,"./components/task":3,"./controllers/SignInController":4,"./controllers/TaskController":5,"./services/SignInService":6,"./services/TaskService":7}],2:[function(require,module,exports){
-module.exports={
+module.exports = {
     name: "signin",
     array: {
         templateUrl: "/src/main/resources/templates/signin.html",
         controller: "SignInController",
-        // bindings:{
-        //     which: "<",
-        // }
     }
 }
 },{}],3:[function(require,module,exports){
@@ -97,7 +94,7 @@ module.exports={
     func: function($http){
         //let users=[];
         
-        return{
+        return {
 
             showUsers: function(){
                 //return users;
@@ -110,7 +107,7 @@ module.exports = {
     name: 'TaskService',
     func: function ($http) {
         let tasks = [];
-        // jakes IP
+                        // jakes IP thank you Ben
         $http.get('http://jakes-computer:8080/getTasks').then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
                 tasks.push({

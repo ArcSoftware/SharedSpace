@@ -3,7 +3,7 @@ module.exports={
     func: function($http){
         //let users=[];
         
-        return{
+        return {
 
             showUsers: function(){
                 //return users;
