@@ -5,15 +5,16 @@ module.exports={
         return{
 
             showUsers: function(user_name){
-                   console.log(hello);
+                   console.log('hello');
                 //return users;
                 let u_name={
-                    username: user_name,
+                    userName: user_name,
                 };
-                $http.post('http://192.168.1.4:8080/login?userName=' +user_name);
+                console.log(user_name);
+                $http.post('http://192.168.1.4:8080/login', u_name);
 
                
             }
         }
-    }
+    }   
 }

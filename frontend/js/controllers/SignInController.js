@@ -3,8 +3,8 @@ module.exports={
     func: function($scope, SignInService){
        
        $scope.go=function(){
-           SignInService.showUser($scope.user_name);
-           console.log('hello');
+           SignInService.showUsers($scope.user_name);
+           console.log('$scope.user_name');
        }
     }
 }

@@ -85,8 +85,8 @@ module.exports={
     func: function($scope, SignInService){
        
        $scope.go=function(){
-           SignInService.showUser($scope.user_name);
-           console.log('hello');
+           SignInService.showUsers($scope.user_name);
+           console.log('$scope.user_name');
        }
     }
 }
@@ -105,17 +105,18 @@ module.exports={
         return{
 
             showUsers: function(user_name){
-                   console.log(hello);
+                   console.log('hello');
                 //return users;
                 let u_name={
-                    username: user_name,
+                    userName: user_name,
                 };
-                $http.post('http://192.168.1.4:8080/login?userName=' +user_name);
+                console.log(user_name);
+                $http.post('http://192.168.1.4:8080/login', u_name);
 
                
             }
         }
-    }
+    }   
 }
 },{}],7:[function(require,module,exports){
 module.exports = {
