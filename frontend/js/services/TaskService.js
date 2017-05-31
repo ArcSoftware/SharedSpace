@@ -3,7 +3,7 @@ module.exports = {
     func: function ($http) {
         let tasks = [];
         // jakes IP
-        $http.get('https://192.168.1.4:8080/getTasks').then(function (response) {
+        $http.get('http://jakes-computer:8080/getTasks').then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
                 tasks.push({
                     id: response.data[i].id,
@@ -11,9 +11,9 @@ module.exports = {
                     complete: response.data[i].complete,
                     points: response.data[i].points,
                     user: {
-                        id: response.data[i].user[id],
-                        userName: response.data[i].user[userName],
-                        points: response.data[i].user[points],
+                        id: response.data[i].user.id,
+                        userName: response.data[i].user.userName,
+                        points: response.data[i].user.points,
                     }
                 })
             }
