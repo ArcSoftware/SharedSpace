@@ -30,29 +30,22 @@ for (let i = 0; i < components.length; i++) {
     app.component(components[i].name, components[i].array);
 }
 
-app.config( function ($stateProvider) {
+app.config( function ($stateProvider, $urlRouterProvider) {
+
+// default path should be to /signin because
+// users cannot view tasks unless they are signed in
+    $urlRouterProvider.otherwise('/signin');
     
-    // $stateProvider.state({
-    //     name: "front_page",
-    //     url: '/front_page',
-    //     component: "opening"
-    // });
+    $stateProvider.state({
+        name: "signin",
+        url: '/signin',
+        component: "signin",
+    });
 
-    // $stateProvider.state({
-    //     name: 'results',
-    //     url: '/results/:searchstring',
-    //     component: 'results',
-    // });
-    //  $stateProvider.state({
-    //     name: 'add',
-    //     url: '/add',
-    //     component: 'add',
-    // });
-
-    //     $stateProvider.state({
-    //     name: 'cart',
-    //     url: '/cart',
-    //     component: 'cart',
-    // });
+    $stateProvider.state({
+        name: 'tasks',
+        url: '/tasks',
+        component: 'task',
+    });
 
 })

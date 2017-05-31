@@ -13,28 +13,10 @@
 <body ng-app="SharedSpace">
 
     <section ng-controller="TaskController">
-        {{^user}}
-        <!--all code here runs if the user does NOT have a username-->
-        <form action="/login" method="post">
-            <input type="text" placeholder="Enter your name" name="userName"/>
-            <button type="submit">Login</button>
-        </form>
-        {{/user}}
-
-        {{#user}}
-        <!--all code here runs if the user does have a username-->
-        Welcome, {{userName}}! <!--this will fill out username from the server-->
-        <!--this will allow the user to logout of the current session-->
-        <form action="/logout" method="post">
-            <button type="submit">Logout</button>
-        </form>
-
         <p>all the tasks</p>
         <ul>
             <all-tasks which="tasks"></all-tasks>
         </ul>
-        {{/user}}
-
     </section>
     <!--did not need ng-repeat on all-tasks-->
     <!--needed INSIDE the component-->
