@@ -34,58 +34,47 @@ for (let i = 0; i < components.length; i++) {
     app.component(components[i].name, components[i].array);
 }
 
-
-app.config( function ($stateProvider) {
-    
-    $stateProvider.state({
-        name: "signin",
-        url: '/signin',
-        component: "signin"
-    });
-
+// https://scotch.io/tutorials/angular-routing-using-ui-router
 
 app.config( function ($stateProvider, $urlRouterProvider) {
 
 // default path should be to /signin because
 // users cannot view tasks unless they are signed in
-    $urlRouterProvider.otherwise('/signin');
+
+// $urlRouterProvider.otherwise('/signin');
     
-    $stateProvider.state({
-        name: "signin",
-        url: '/signin',
-        component: "signin",
-    });
+    $stateProvider
+        .state('signin', {
+            // name: "signin",
+            url: '/signin',
+            component: "signin"
+            // templateUrl: 'templates/signin.html'
+        })
 
-
-    $stateProvider.state({
-        name: 'tasks',
-        url: '/tasks',
-        component: 'task',
-    });
-
-
-})
+        .state('tasks', {
+            // name: 'tasks',
+            url: '/tasks',
+            component: 'allTasks',
+            // templateUrl: 'templates/allTasks.html'
+        });
+});
 },{"./components/signin":2,"./components/task":3,"./controllers/SignInController":4,"./controllers/TaskController":5,"./services/SignInService":6,"./services/TaskService":7}],2:[function(require,module,exports){
 module.exports={
-    name:"signin",
+    name: "signin",
     array: {
-        temlateUrl:"templates/signin.html",
-        controller:"SignInController",
-        bindings:{
-            which: "<",
-        }
+        templateUrl: "/src/main/resources/templates/signin.html",
+        controller: "SignInController",
+        // bindings:{
+        //     which: "<",
+        // }
     }
 }
 },{}],3:[function(require,module,exports){
 module.exports = {
     name: "allTasks",
     array: {
-        templateUrl: "../../../src/main/resources/templates/allTasks.html",
+        templateUrl: "/src/main/resources/templates/allTasks.html",
         controller: "TaskController",
-        bindings: {
-            // $ctrl.which
-            which: "<",
-        }
     }
 }; 
 },{}],4:[function(require,module,exports){
