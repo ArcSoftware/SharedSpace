@@ -62,8 +62,10 @@ app.config( function ($stateProvider, $urlRouterProvider) {
 module.exports={
     name: "signin",
     array: {
+
         templateUrl: "/src/main/resources/templates/signin.html",
         controller: "SignInController",
+
         // bindings:{
         //     which: "<",
         // }
@@ -81,7 +83,11 @@ module.exports = {
 module.exports={
     name: "SignInController",
     func: function($scope, SignInService){
-       // $scope.users=SignInService.getUsers();
+       
+       $scope.go=function(){
+           SignInService.showUsers($scope.user_name);
+           console.log('$scope.user_name');
+       }
     }
 }
 },{}],5:[function(require,module,exports){
@@ -95,15 +101,22 @@ module.exports = {
 module.exports={
     name:'SignInService',
     func: function($http){
-        //let users=[];
-        
+       
         return{
 
-            showUsers: function(){
+            showUsers: function(user_name){
+                   console.log('hello');
                 //return users;
+                let u_name={
+                    userName: user_name,
+                };
+                console.log(user_name);
+                $http.post('http://192.168.1.4:8080/login', u_name);
+
+               
             }
         }
-    }
+    }   
 }
 },{}],7:[function(require,module,exports){
 module.exports = {
