@@ -39,6 +39,7 @@ public class SharedSpaceJSONController {
 
     @CrossOrigin
     @RequestMapping(path = "/addTestUser", method = RequestMethod.POST)
+    //Makes a test user to test the system. Tested and works. 
     public void addTask() {
         User testUser = new User("test", 0);
         Task newTask = new Task("test this crap", false, 100, testUser);
@@ -74,11 +75,17 @@ public class SharedSpaceJSONController {
 
     }
 
-//    @CrossOrigin(origins = "http://localhost:9000")
-//    @RequestMapping(path = "/userName", method = RequestMethod.GET)
-//    public User userName(String userName, HttpSession session) {
-//
-//    }
+    @CrossOrigin
+    @RequestMapping(path = "/userName", method = RequestMethod.GET)
+    //mapping to check is user is logged in session.
+    public String userName(String userName, HttpSession session) {
+        session.setAttribute("userName", userName);
+        if (users.findByuserName(userName) != null) {
+            return userName;
+        } else {
+            return null;
+        }
+    }
 
     @CrossOrigin
     @RequestMapping(path = "/login", method = RequestMethod.POST)
@@ -87,6 +94,9 @@ public class SharedSpaceJSONController {
         if (users.findByuserName(userName) == null) {
             User newUser = new User(userName, 0);
             users.save(newUser);
+            System.out.println("New user was created for " + userName);
+        } else {
+            System.out.println("User exists already for " + userName + ". Logging in as that user.");
         }
         return "redirect:/";
     }
