@@ -1,7 +1,7 @@
 module.exports={
     name:"signin",
     array: {
-        temlateUrl:"templates/signin.html",
+        temlateUrl: "../../../src/main/resources/templates/signin.html",
         controller:"SignInController",
         bindings:{
             which: "<",

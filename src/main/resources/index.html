@@ -12,18 +12,19 @@
 
 <body ng-app="SharedSpace">
 
+    <section ng-controller="SignInController">
+        <signin></signin>
+    </section>
+
     <section ng-controller="TaskController">
-
-        <p>all the tasks</p>
-        <ul>
-            <all-tasks which="tasks"></all-tasks>
-        </ul>
-
+        <all-tasks which="tasks"></all-tasks>
     </section>
     <!--did not need ng-repeat on all-tasks-->
     <!--needed INSIDE the component-->
     <!--review angular rules for - and cap letters -->
 
+    <ui-view></ui-view>
+    
 
 </body>
 

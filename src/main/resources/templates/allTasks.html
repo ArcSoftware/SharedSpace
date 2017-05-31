@@ -1,10 +1,14 @@
-<li ng-repeat="task in $ctrl.which">
-    <!--had $ctrl.which in each one below-->
-    <p>{{task.id}}</p>
-    <p>{{task.taskName}}</p>
-    <p>{{task.complete}}</p>
-    <p>{{task.points}}</p>
-    <p>{{task.user.id}}</p>
-    <p>{{task.user.userName}}</p>
-    <p>{{task.user.points}}</p>
-</li>
+<a ui-sref="signin">Go To Signin</a>
+<p>all the tasks</p>
+<ul>
+    <li ng-repeat="task in $ctrl.which">
+        <!--had $ctrl.which in each one below-->
+        <p>Task ID: {{task.id}}</p>
+        <p>Task Name: {{task.taskName}}</p>
+        <p>Task Complete? {{task.complete}}</p>
+        <p>Task Points: {{task.points}}</p>
+        <p>User ID: {{task.user.id}}</p>
+        <p>Username: {{task.user.userName}}</p>
+        <p>User Points: {{task.user.points}}</p>
+    </li>
+</ul>
