@@ -5,8 +5,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tasks")
 public class Task {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     int id;
 
     @Column(nullable = false)
@@ -15,20 +16,28 @@ public class Task {
     @Column(nullable = false)
     boolean complete;
 
-    @ManyToOne
-    String userName;
-
     @Column
     int points;
+
+    @ManyToOne
+    User user;
 
     public Task() {
     }
 
-    public Task(String taskName, boolean complete, String userName, int points) {
+    public Task(int id, String taskName, boolean complete, int points, User user) {
+        this.id = id;
         this.taskName = taskName;
         this.complete = complete;
-        this.userName = userName;
         this.points = points;
+        this.user = user;
+    }
+
+    public Task(String taskName, boolean complete, int points, User user) {
+        this.taskName = taskName;
+        this.complete = complete;
+        this.points = points;
+        this.user = user;
     }
 
     public int getId() {
@@ -55,19 +64,19 @@ public class Task {
         this.complete = complete;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public int getPoints() {
         return points;
     }
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -10,7 +10,7 @@ Returns an array of tasks. If true- returns only complete items, if false, retur
     id: <number>,
     taskName: <String>,
     complete: true,
-    userName: <String>,
+    user: <String>,
     points: <number>
   },
 ]
@@ -22,7 +22,7 @@ Returns an array of tasks. If true- returns only complete items, if false, retur
     id: <number>,
     taskName: <String>,
     complete: false,
-    userName: null,
+    user: null,
     points: <number>
   },
 ]
@@ -35,14 +35,14 @@ Marking a task as complete and giving points to the user.
     user: <String>
 }
 ```
-## GET /getUser?userName=[userName] (if userName == 'all', return all users and their points)
+## GET /getUser?user=[user] (if user == 'all', return all users and their points)
 Query String param of user.
 Returns points the user has.
 
 ```
 [
   {
-    userName: <String>,
+    user: <String>,
     points: <number>
   },
 ]
