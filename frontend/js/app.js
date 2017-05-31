@@ -46,14 +46,14 @@ app.config( function ($stateProvider, $urlRouterProvider) {
         .state('signin', {
             // name: "signin",
             url: '/signin',
-            // component: "signin"
-            templateUrl: 'templates/signin.html'
+            component: "signin"
+            // templateUrl: 'templates/signin.html'
         })
 
         .state('tasks', {
             // name: 'tasks',
             url: '/tasks',
-            // component: 'task',
-            templateUrl: 'templates/allTasks.html'
+            component: 'allTasks',
+            // templateUrl: 'templates/allTasks.html'
         });
 });

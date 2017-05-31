@@ -47,38 +47,34 @@ app.config( function ($stateProvider, $urlRouterProvider) {
         .state('signin', {
             // name: "signin",
             url: '/signin',
-            // component: "signin"
-            templateUrl: 'templates/signin.html'
+            component: "signin"
+            // templateUrl: 'templates/signin.html'
         })
 
         .state('tasks', {
             // name: 'tasks',
             url: '/tasks',
-            // component: 'task',
-            templateUrl: 'templates/allTasks.html'
+            component: 'allTasks',
+            // templateUrl: 'templates/allTasks.html'
         });
 });
 },{"./components/signin":2,"./components/task":3,"./controllers/SignInController":4,"./controllers/TaskController":5,"./services/SignInService":6,"./services/TaskService":7}],2:[function(require,module,exports){
 module.exports={
-    name:"signin",
+    name: "signin",
     array: {
-        temlateUrl: "../../../src/main/resources/templates/signin.html",
-        controller:"SignInController",
-        bindings:{
-            which: "<",
-        }
+        templateUrl: "/src/main/resources/templates/signin.html",
+        controller: "SignInController",
+        // bindings:{
+        //     which: "<",
+        // }
     }
 }
 },{}],3:[function(require,module,exports){
 module.exports = {
     name: "allTasks",
     array: {
-        templateUrl: "../../../src/main/resources/templates/allTasks.html",
+        templateUrl: "/src/main/resources/templates/allTasks.html",
         controller: "TaskController",
-        bindings: {
-            // $ctrl.which
-            which: "<",
-        }
     }
 }; 
 },{}],4:[function(require,module,exports){

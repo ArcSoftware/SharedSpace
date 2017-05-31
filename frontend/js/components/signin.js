@@ -1,10 +1,10 @@
 module.exports={
-    name:"signin",
+    name: "signin",
     array: {
-        temlateUrl: "../../../src/main/resources/templates/signin.html",
-        controller:"SignInController",
-        bindings:{
-            which: "<",
-        }
+        templateUrl: "/src/main/resources/templates/signin.html",
+        controller: "SignInController",
+        // bindings:{
+        //     which: "<",
+        // }
     }
 }
