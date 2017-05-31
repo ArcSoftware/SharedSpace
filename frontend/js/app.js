@@ -1,10 +1,8 @@
-console.log('js linked');
-
 const app = angular.module('SharedSpace', ['ui.router']);
 
 // require service
 const services = [
-    require('./services/service'),
+    require('./services/TaskService'),
 ];
 
 // loop all services
@@ -14,7 +12,7 @@ for (let i = 0; i < services.length; i++) {
 
 // require controllers
 const controllers = [
-    require('./controllers/controller'),
+    require('./controllers/TaskController'),
 ];
 
 // loop all controllers
@@ -24,7 +22,7 @@ for (let i = 0; i < controllers.length; i++) {
 
 // require components
 const components = [
-    require('./components/component'),
+    require('./components/task'),
 ]
 
 // loop all components
@@ -32,29 +30,29 @@ for (let i = 0; i < components.length; i++) {
     app.component(components[i].name, components[i].array);
 }
 
-// app.config( function ($stateProvider) {
+app.config( function ($stateProvider) {
     
-//     $stateProvider.state({
-//         name: "front_page",
-//         url: '/front_page',
-//         component: "opening"
-//     });
+    // $stateProvider.state({
+    //     name: "front_page",
+    //     url: '/front_page',
+    //     component: "opening"
+    // });
 
-//     $stateProvider.state({
-//         name: 'results',
-//         url: '/results/:searchstring',
-//         component: 'results',
-//     });
-//      $stateProvider.state({
-//         name: 'add',
-//         url: '/add',
-//         component: 'add',
-//     });
+    // $stateProvider.state({
+    //     name: 'results',
+    //     url: '/results/:searchstring',
+    //     component: 'results',
+    // });
+    //  $stateProvider.state({
+    //     name: 'add',
+    //     url: '/add',
+    //     component: 'add',
+    // });
 
-//         $stateProvider.state({
-//         name: 'cart',
-//         url: '/cart',
-//         component: 'cart',
-//     });
+    //     $stateProvider.state({
+    //     name: 'cart',
+    //     url: '/cart',
+    //     component: 'cart',
+    // });
 
-// })
+})
