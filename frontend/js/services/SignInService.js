@@ -11,7 +11,7 @@ module.exports={
                     userName: user_name,
                 };
                 console.log(user_name);
-                $http.post('http://192.168.1.4:8080/login', u_name);
+                $http.post('http://sharedspace.herokuapp.com/login', u_name);
 
                
             }

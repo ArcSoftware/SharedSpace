@@ -3,7 +3,7 @@ module.exports = {
     func: function ($http) {
         let tasks = [];
         // jakes IP
-        $http.get('http://jakes-computer:8080/getTasks').then(function (response) {
+        $http.get('http://sharedspace.herokuapp.com/getTasks').then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
                 tasks.push({
                     id: response.data[i].id,
