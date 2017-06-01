@@ -62,10 +62,6 @@ module.exports = {
 
         templateUrl: "/src/main/resources/templates/signin.html",
         controller: "SignInController",
-
-        // bindings:{
-        //     which: "<",
-        // }
     }
 }
 },{}],3:[function(require,module,exports){
@@ -102,7 +98,6 @@ module.exports={
         
         return {
 
-
             showUsers: function(user_name){
                    console.log('hello');
                 //return users;
@@ -110,7 +105,7 @@ module.exports={
                     userName: user_name,
                 };
                 console.log(user_name);
-                $http.post('http://192.168.1.4:8080/login', u_name);
+                $http.post('https://sharedspace.herokuapp.com/login', u_name);
 
                
             }
@@ -122,8 +117,8 @@ module.exports = {
     name: 'TaskService',
     func: function ($http) {
         let tasks = [];
-                        // jakes IP thank you Ben
-        $http.get('http://jakes-computer:8080/getTasks').then(function (response) {
+                       
+        $http.get('https://sharedspace.herokuapp.com/getTasks').then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
                 tasks.push({
                     id: response.data[i].id,
@@ -144,6 +139,8 @@ module.exports = {
                 return tasks;
             }
         }
+
+        //
     }
 }
 },{}]},{},[1]);

@@ -2,8 +2,8 @@ module.exports = {
     name: 'TaskService',
     func: function ($http) {
         let tasks = [];
-                        // jakes IP thank you Ben
-        $http.get('http://jakes-computer:8080/getTasks').then(function (response) {
+                       
+        $http.get('https://sharedspace.herokuapp.com/getTasks').then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
                 tasks.push({
                     id: response.data[i].id,
@@ -24,5 +24,7 @@ module.exports = {
                 return tasks;
             }
         }
+
+        //
     }
 }
