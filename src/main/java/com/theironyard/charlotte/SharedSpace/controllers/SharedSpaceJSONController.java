@@ -60,17 +60,10 @@ public class SharedSpaceJSONController {
     }
 
     @CrossOrigin
-    @RequestMapping(path = "/userName", method = RequestMethod.GET)
-    public ArrayList<User> userNamePoints(String userName) {
-        if (userName != "all") {
-            ArrayList<User> singleUser = new ArrayList<>();
-            User currentUser = users.findByuserName(userName);
-            singleUser.add(currentUser);
-            return singleUser;
-        } else {
-            return (ArrayList<User>) users.findAll();
-        }
-
+    @RequestMapping(path = "/userPoints", method = RequestMethod.GET)
+    public ArrayList<User> userNamePoints() {
+        System.out.println("Sending an array of users with their points.");
+        return (ArrayList<User>) users.findAll();
     }
 
     @CrossOrigin
