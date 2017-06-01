@@ -2,8 +2,8 @@ package com.theironyard.charlotte.SharedSpace.controllers;
 
 import com.theironyard.charlotte.SharedSpace.entities.Task;
 import com.theironyard.charlotte.SharedSpace.entities.User;
-import com.theironyard.charlotte.SharedSpace.repositories.TaskRepo;
-import com.theironyard.charlotte.SharedSpace.repositories.UserRepo;
+import com.theironyard.charlotte.SharedSpace.services.TaskService;
+import com.theironyard.charlotte.SharedSpace.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -14,81 +14,60 @@ import java.util.ArrayList;
  */
 @RestController
 public class SharedSpaceJSONController {
-    TaskRepo tasks;
-    UserRepo users;
+    private TaskService taskService;
+    private UserService userService;
 
-    public SharedSpaceJSONController(TaskRepo tasks, UserRepo users) {
-        this.tasks = tasks;
-        this.users = users;
+    public SharedSpaceJSONController(TaskService taskService, UserService userService) {
+        this.taskService = taskService;
+        this.userService = userService;
     }
 
     @CrossOrigin
     @RequestMapping(path = "/getTasks", method = RequestMethod.GET)
     public ArrayList<Task> getTasks(boolean complete) {
-        return (ArrayList<Task>) tasks.findByComplete(complete);
+        return taskService.getTasks(complete);
     }
 
     @CrossOrigin
     @RequestMapping(path = "/addTask", method = RequestMethod.POST)
     public void addTask(@RequestBody Task task) {
-        System.out.println(task + "the task, the points = " + task.getPoints());
-        tasks.save(task);
+        taskService.createTask(task);
     }
 
     @CrossOrigin
-    @RequestMapping(path = "/addTestUser", method = RequestMethod.POST)
-    //Makes a test user to test the system. Tested and works.
+    @RequestMapping(path = "/addTestTask", method = RequestMethod.POST)
     public void addTestTask() {
-        User testUser = new User("test", 0);
-        Task newTask = new Task("test this crap", false, 100, testUser);
-        System.out.println("Adding new test task: " + newTask.getTaskName());
-        System.out.println(newTask.getId());
-        System.out.println(newTask.getPoints());
-        System.out.println(newTask.getUser().getUserName());
-        users.save(testUser);
-        tasks.save(newTask);
+        taskService.createTestTask();
     }
 
     @CrossOrigin
     @RequestMapping(path = "/markComplete", method = RequestMethod.POST)
-    public void completeTask(@RequestBody String userName, Integer taskID) {
-        User currentUser = users.findByuserName(userName);
-        Task currentTask = tasks.findOne(taskID);
-        currentTask.setComplete(true);
-        currentTask.setUser(currentUser);
-        tasks.save(currentTask);
+    public void completeTask(HttpSession session, @RequestBody Integer taskID) {
+        taskService.markTaskComplete(session, taskID);
     }
 
     @CrossOrigin
     @RequestMapping(path = "/userPoints", method = RequestMethod.GET)
     public ArrayList<User> userNamePoints() {
-        System.out.println("Sending an array of users with their points.");
-        return (ArrayList<User>) users.findAll();
+        return userService.getAllUsers();
     }
 
     @CrossOrigin
     @RequestMapping(path = "/user", method = RequestMethod.GET)
     //mapping to check is user is logged in session.
     public String userName(HttpSession session) {
-        return (String) session.getAttribute("userName");
+        return userService.checkSession(session);
     }
 
     @CrossOrigin
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public User login(HttpSession session, @RequestBody User user) {
-        session.setAttribute("user", user.getUserName());
-        if (users.findByuserName(user.getUserName()) == null) {
-            users.save(user);
-            System.out.println("New user was created for " + user.getUserName());
-        } else {
-            System.out.println("User exists already for " + user.getUserName() + ". Logging in as that user.");
-        }
-        return user;
+    public void login(HttpSession session, @RequestBody User user) {
+        userService.login(session, user);
     }
 
     @CrossOrigin
     @RequestMapping(path = "/logout", method = RequestMethod.POST)
     public void logout(HttpSession session) {
-        session.invalidate(); //logout invalidates session.
+         userService.logout(session);
     }
 }

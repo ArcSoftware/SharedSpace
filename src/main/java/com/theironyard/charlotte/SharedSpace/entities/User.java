@@ -5,17 +5,15 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
-
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     int id;
 
-   @Column
+    @Column
     String userName;
 
     @Column
     int points;
-
 
     public User() {
     }
