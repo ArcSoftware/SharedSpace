@@ -2,6 +2,14 @@
 
 <p>all the tasks</p>
 
+<!--
+    add a checkbox for each task to toggle complete (true/false)
+    items where complete === true should be moved to another array / list on the page
+    can use a query string param to filter by completed status
+        https://sharedspace.herokuapp.com/getTasks?complete=false
+        https://sharedspace.herokuapp.com/getTasks?complete=true
+-->
+
     <ul>
         <li ng-repeat="task in tasks">
             <!--had $ctrl.which in each one below-->
