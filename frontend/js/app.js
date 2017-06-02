@@ -33,9 +33,6 @@ for (let i = 0; i < components.length; i++) {
     app.component(components[i].name, components[i].array);
 }
 
-// https://scotch.io/tutorials/angular-routing-using-ui-router
-// templateUrl is older, don't do it!
-
 app.config( function ($stateProvider, $urlRouterProvider) {
 
 // default path should be to /signin because
