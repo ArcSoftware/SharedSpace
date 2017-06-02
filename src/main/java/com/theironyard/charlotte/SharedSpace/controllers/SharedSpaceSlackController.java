@@ -30,4 +30,15 @@ public class SharedSpaceSlackController {
         return textService.createTextTasks();
     }
 
+    @CrossOrigin
+    @RequestMapping(path = "/claimTasks", method = RequestMethod.POST)
+    public void claimTasks(String user_name, String text) {
+        taskService.completeTaskSlack(user_name, text);
+    }
+
+    @CrossOrigin
+    @RequestMapping(path = "/createTask", method = RequestMethod.POST)
+    public void createTaskSlack(String user_name, String text) {
+        taskService.createTaskSlack(user_name, text);
+    }
 }

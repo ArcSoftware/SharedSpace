@@ -47,10 +47,28 @@ public class TaskService {
         Task currentTask = tasks.findOne(taskID);
         currentTask.setComplete(true);
         currentTask.setUser(currentUser);
-        System.out.println("marking " + currentTask.getTaskName() + "complete by " + currentTask.getUser());
+        System.out.println("Marking " + currentTask.getTaskName() + "complete by " + currentTask.getUser());
         tasks.save(currentTask);
     }
 
+    public void completeTaskSlack(String userName, String task) {
+        User currentUser = users.findByuserName(userName);
+        Task currentTask = tasks.findBytaskName(task);
+        if (currentUser == null || currentUser == null) {
+            System.out.println("Invalid user or task found");
+        } else {
+            currentTask.setComplete(true);
+            currentTask.setUser(currentUser);
+            System.out.println("Marking " + currentTask.getTaskName() + "complete by " + currentTask.getUser());
+            tasks.save(currentTask);
+        }
+    }
 
+    public void createTaskSlack(String userName, String taskName) {
+        Task newTask = new Task(taskName, false, 100, null);
+        System.out.format("New task: %s \n created by : %s via Slack for 100 points!\n", newTask.getTaskName(),
+                userName);
+        tasks.save(newTask);
+    }
 
 }
