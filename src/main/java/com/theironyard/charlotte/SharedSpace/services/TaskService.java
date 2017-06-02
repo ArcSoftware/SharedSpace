@@ -47,6 +47,7 @@ public class TaskService {
         Task currentTask = tasks.findOne(taskID);
         currentTask.setComplete(true);
         currentTask.setUser(currentUser);
+        System.out.println("marking " + currentTask.getTaskName() + "complete by " + currentTask.getUser());
         tasks.save(currentTask);
     }
 
