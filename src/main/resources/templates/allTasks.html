@@ -9,7 +9,7 @@
         https://sharedspace.herokuapp.com/getTasks?complete=false
         https://sharedspace.herokuapp.com/getTasks?complete=true
 -->
-
+    <input type="text" placeholder="search the tasks..." ng-model="search">
     <ul>
         <li ng-repeat="task in tasks">
             <!--had $ctrl.which in each one below-->
@@ -17,8 +17,12 @@
             <p>Task Name: {{task.taskName}}</p>
             <p>Task Complete? {{task.complete}}</p>
             <p>Task Points: {{task.points}}</p>
+            <!--  n.b. we do not care about WHO makes the task - just who completes it
             <p>User ID: {{task.user.id}}</p>
             <p>Username: {{task.user.userName}}</p>
-            <p>User Points: {{task.user.points}}</p>
+            <p>User Points: {{task.user.points}}</p>-->
+            <form>
+                <input type="checkbox" ng-model="task.complete" ng-change="markComplete(task)"><label>Done</label>
+            </form>
         </li>
     </ul>

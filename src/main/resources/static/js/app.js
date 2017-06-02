@@ -85,20 +85,22 @@ module.exports = {
     name: "TaskController",
     func: function ($scope, TaskService) {
         $scope.tasks = TaskService.getTasks();
+        $scope.markComplete = function(task) {
+            // service call here (value is already changed to the right value)
+            $scope.tasks = TaskService.completeTask(task);
+        }
     }
 } 
 },{}],6:[function(require,module,exports){
-module.exports={
-    name:'SignInService',
-    func: function($http){
-        //let users=[];
+module.exports = {
+    name: 'SignInService',
+    func: function($http) {
         
         return {
 
             showUsers: function(user_name){
-                //    console.log('hello');
                 //return users;
-                let u_name={
+                let u_name = {
                     userName: user_name,
                 };
                 console.log(user_name);
@@ -113,19 +115,21 @@ module.exports = {
     name: 'TaskService',
     func: function ($http) {
         let tasks = [];
-                       
+
         $http.get('https://sharedspace.herokuapp.com/getTasks').then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
+
                 tasks.push({
                     id: response.data[i].id,
                     taskName: response.data[i].taskName,
                     complete: response.data[i].complete,
                     points: response.data[i].points,
-                    user: {
-                        id: response.data[i].user.id,
-                        userName: response.data[i].user.userName,
-                        points: response.data[i].user.points,
-                    }
+                    // n.b. we don't care about WHO makes the task - just who completes it
+                    // user: {
+                    //     id: response.data[i].user.id,
+                    //     userName: response.data[i].user.userName,
+                    //     points: response.data[i].user.points,
+                    // }
                 })
             }
         });
@@ -133,10 +137,16 @@ module.exports = {
         return {
             getTasks: function () {
                 return tasks;
+            },
+            completeTask(task) {
+                $http.post('https://sharedspace.herokuapp.com/markComplete', task.id).then(function (response) {
+                    console.log('post request submitted');
+                })
             }
         }
+    },
 
-        //
-    }
 }
+
+
 },{}]},{},[1]);
