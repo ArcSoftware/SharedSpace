@@ -4,10 +4,7 @@ import com.theironyard.charlotte.SharedSpace.entities.Text;
 import com.theironyard.charlotte.SharedSpace.services.TaskService;
 import com.theironyard.charlotte.SharedSpace.services.TextService;
 import com.theironyard.charlotte.SharedSpace.services.UserService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Jake on 6/2/17.
@@ -28,17 +25,5 @@ public class SharedSpaceSlackController {
     @RequestMapping(path = "/getTasks", method = RequestMethod.POST)
     public Text getTasks() {
         return textService.createTextTasks();
-    }
-
-    @CrossOrigin
-    @RequestMapping(path = "/claimTasks", method = RequestMethod.POST)
-    public void claimTasks(String user_name, String text) {
-        taskService.completeTaskSlack(user_name, text);
-    }
-
-    @CrossOrigin
-    @RequestMapping(path = "/createTask", method = RequestMethod.POST)
-    public void createTaskSlack(String user_name, String text) {
-        taskService.createTaskSlack(user_name, text);
     }
 }
