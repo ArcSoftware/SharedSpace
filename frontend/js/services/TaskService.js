@@ -27,11 +27,21 @@ module.exports = {
         $http.get('https://sharedspace.herokuapp.com/getTasks?complete=true').then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
 
+                let name;
+                if (response.data[i].user === null ||
+                    response.data[i].user === undefined || 
+                    response.data[i].user === '') {
+                        name = 'Anonymous';
+                    } else {
+                        name = response.data[i].user;
+                    }
+
                 completed.push({
                     id: response.data[i].id,
                     taskName: response.data[i].taskName,
                     complete: response.data[i].complete,
                     points: response.data[i].points,
+                    user: name,
                 })
             }
         });
@@ -44,6 +54,9 @@ module.exports = {
             completeTask(task) {
                 $http.post('https://sharedspace.herokuapp.com/markComplete', task.id).then(function (response) {
                     console.log('post request submitted');
+                    completed.push(tasks.pop());
+                    // console.log(tasks);
+                    // console.log(completed);
                 })
             },
             getComplete: function () {
