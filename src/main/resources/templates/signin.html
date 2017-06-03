@@ -1,9 +1,7 @@
-<a ui-sref="tasks">Go To Tasks</a>
-
-<section class="u_signin"> 
-    <input text="txtuser" placeholder="Enter name" ng-model="user_name">
-    <a ui-sref="tasks"<button ng-click="go()">GO</button></a>
-    <!--
-        go should also route the user to /tasks endpoint
-    -->
-</section>
+<a ui-sref="tasks"><button>Go To Tasks</button></a>
+<form>
+    <section class="u_signin">
+        <input text="txtuser" placeholder="Enter name" ng-model="user_name">
+        <a ui-sref="tasks" <button ng-click="go()">GO</button></a>
+    </section>
+</form>

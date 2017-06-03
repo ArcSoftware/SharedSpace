@@ -1,4 +1,4 @@
-<a ui-sref="signin">Go To Signin</a>
+<a ui-sref="signin"><button>Go To Signin</button></a>
 
 <p>all the tasks</p>
 
@@ -11,7 +11,7 @@
 -->
     <input type="text" placeholder="search the tasks..." ng-model="search">
     <ul>
-        <li ng-repeat="task in tasks">
+        <li ng-repeat="task in tasks | filter:search">
             <!--had $ctrl.which in each one below-->
             <p>Task ID: {{task.id}}</p>
             <p>Task Name: {{task.taskName}}</p>
