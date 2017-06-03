@@ -21,6 +21,22 @@ module.exports = {
             }
         });
 
+        let completed = [];
+        
+        // retrieve tasks that have been completed (complete === true)
+        $http.get('https://sharedspace.herokuapp.com/getTasks?complete=true').then(function (response) {
+            for (let i = 0; i < response.data.length; i++) {
+
+                completed.push({
+                    id: response.data[i].id,
+                    taskName: response.data[i].taskName,
+                    complete: response.data[i].complete,
+                    points: response.data[i].points,
+                })
+            }
+        });
+
+
         return {
             getTasks: function () {
                 return tasks;
@@ -29,7 +45,11 @@ module.exports = {
                 $http.post('https://sharedspace.herokuapp.com/markComplete', task.id).then(function (response) {
                     console.log('post request submitted');
                 })
-            }
+            },
+            getComplete: function () {
+                console.log('get complete run');
+                return completed;
+            },
         }
     },
 

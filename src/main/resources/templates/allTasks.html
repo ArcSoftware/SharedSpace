@@ -9,9 +9,9 @@
         https://sharedspace.herokuapp.com/getTasks?complete=false
         https://sharedspace.herokuapp.com/getTasks?complete=true
 -->
-    <input type="text" placeholder="search the tasks..." ng-model="search">
+    <input type="text" placeholder="search available tasks" ng-model="searchIncomplete">
     <ul>
-        <li ng-repeat="task in tasks | filter:search">
+        <li ng-repeat="task in tasks | filter:searchIncomplete">
             <!--had $ctrl.which in each one below-->
             <p>Task ID: {{task.id}}</p>
             <p>Task Name: {{task.taskName}}</p>
@@ -24,5 +24,15 @@
             <form>
                 <input type="checkbox" ng-model="task.complete" ng-change="markComplete(task)"><label>Done</label>
             </form>
+        </li>
+    </ul>
+
+    <input type="text" placeholder="search completed tasks" ng-model="searchComplete">
+    <ul>
+        <li ng-repeat="complete in completed | filter:searchComplete">
+            <p>Task ID: {{complete.id}}</p>
+            <p>Task Name: {{complete.taskName}}</p>
+            <p>Task Complete? {{complete.complete}}</p>
+            <p>Task Points: {{complete.points}}</p>
         </li>
     </ul>
