@@ -1,14 +1,8 @@
 <a ui-sref="signin"><button>Go To Signin</button></a>
 
-<p>all the tasks</p>
-
-<!--
-    add a checkbox for each task to toggle complete (true/false)
-    items where complete === true should be moved to another array / list on the page
-    can use a query string param to filter by completed status
-        https://sharedspace.herokuapp.com/getTasks?complete=false
-        https://sharedspace.herokuapp.com/getTasks?complete=true
--->
+<div class="task-wrapper row">
+<section class="incomplete small-4 columns">
+    <h2>Incomplete Tasks</h2>
     <input type="text" placeholder="search available tasks" ng-model="searchIncomplete">
     <ul>
         <li ng-repeat="task in tasks | filter:searchIncomplete">
@@ -26,7 +20,10 @@
             </form>
         </li>
     </ul>
+</section>
 
+<section class="complete small-4 columns">
+    <h2>Completed Tasks</h2>
     <input type="text" placeholder="search completed tasks" ng-model="searchComplete">
     <ul>
         <li ng-repeat="complete in completed | filter:searchComplete">
@@ -34,5 +31,13 @@
             <p>Task Name: {{complete.taskName}}</p>
             <p>Task Complete? {{complete.complete}}</p>
             <p>Task Points: {{complete.points}}</p>
+            <p>Completed By: {{complete.user}}</p>
         </li>
     </ul>
+</section>
+</div>
+
+<section class="leaderboard small-4 columns">
+    <h2>Leaderboard</h2>
+    
+</section>

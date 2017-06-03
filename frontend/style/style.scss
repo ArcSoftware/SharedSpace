@@ -1,3 +1,14 @@
-// body {
-//   background-color: green;
-// }
+@import '../../node_modules/foundation-sites/scss/foundation';
+
+@include foundation-global-styles;
+@include foundation-flex-grid;
+@include foundation-flex-classes;
+$grid-row-width : 100em;
+// $dark-grey-font : #4B4945;
+// $grey-border: #F1F1F1;
+
+@import 'header';
+@import 'search';
+@import 'tasks';
+@import 'signin';
+@import 'leaderboard';
