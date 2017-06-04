@@ -4,6 +4,7 @@ const app = angular.module('SharedSpace', ['ui.router']);
 const services = [
     require('./services/TaskService'),
     require('./services/SignInService'),
+    require('./services/UserService'),
 ];
 
 // loop all services
@@ -15,6 +16,7 @@ for (let i = 0; i < services.length; i++) {
 const controllers = [
     require('./controllers/TaskController'),
     require('./controllers/SignInController'),
+    require('./controllers/UserController'),
 ];
 
 // loop all controllers
@@ -26,6 +28,8 @@ for (let i = 0; i < controllers.length; i++) {
 const components = [
     require('./components/task'),
     require('./components/signin'),
+    require('./components/about'),
+    require('./components/users'),
 ]
 
 // loop all components
@@ -54,5 +58,10 @@ $urlRouterProvider.otherwise('/signin');
         .state('about', {
             url: '/about',
             component: 'about',
+        })
+
+        .state('users', {
+            url: '/users',
+            component: 'users',
         });
 });

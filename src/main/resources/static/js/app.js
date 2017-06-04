@@ -5,6 +5,7 @@ const app = angular.module('SharedSpace', ['ui.router']);
 const services = [
     require('./services/TaskService'),
     require('./services/SignInService'),
+    require('./services/UserService'),
 ];
 
 // loop all services
@@ -16,6 +17,7 @@ for (let i = 0; i < services.length; i++) {
 const controllers = [
     require('./controllers/TaskController'),
     require('./controllers/SignInController'),
+    require('./controllers/UserController'),
 ];
 
 // loop all controllers
@@ -27,6 +29,8 @@ for (let i = 0; i < controllers.length; i++) {
 const components = [
     require('./components/task'),
     require('./components/signin'),
+    require('./components/about'),
+    require('./components/users'),
 ]
 
 // loop all components
@@ -55,9 +59,22 @@ $urlRouterProvider.otherwise('/signin');
         .state('about', {
             url: '/about',
             component: 'about',
+        })
+
+        .state('users', {
+            url: '/users',
+            component: 'users',
         });
 });
-},{"./components/signin":2,"./components/task":3,"./controllers/SignInController":4,"./controllers/TaskController":5,"./services/SignInService":6,"./services/TaskService":7}],2:[function(require,module,exports){
+},{"./components/about":2,"./components/signin":3,"./components/task":4,"./components/users":5,"./controllers/SignInController":6,"./controllers/TaskController":7,"./controllers/UserController":8,"./services/SignInService":9,"./services/TaskService":10,"./services/UserService":11}],2:[function(require,module,exports){
+module.exports = {
+    name: "about",
+    array: {
+        templateUrl: "/src/main/resources/templates/about.html",
+        
+    }
+}; 
+},{}],3:[function(require,module,exports){
 module.exports = {
     name: "signin",
     array: {
@@ -66,7 +83,7 @@ module.exports = {
         controller: "SignInController",
     }
 }
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 module.exports = {
     name: "allTasks",
     array: {
@@ -74,7 +91,15 @@ module.exports = {
         controller: "TaskController",
     }
 }; 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
+module.exports = {
+    name: "users",
+    array: {
+        templateUrl: "/src/main/resources/templates/users.html",
+        controller: "UserController",
+    }
+}; 
+},{}],6:[function(require,module,exports){
 module.exports={
     name: "SignInController",
     func: function($scope, SignInService){
@@ -85,7 +110,7 @@ module.exports={
        }
     }
 }
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 module.exports = {
     name: "TaskController",
     func: function ($scope, TaskService) {
@@ -97,7 +122,15 @@ module.exports = {
         }
     }
 } 
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
+module.exports={
+    name: "UserController",
+    func: function($scope, UserService){
+       // need to make service
+       $scope.users = UserService.getUsers();
+    }
+}
+},{}],9:[function(require,module,exports){
 module.exports = {
     name: 'SignInService',
     func: function($http) {
@@ -116,7 +149,7 @@ module.exports = {
         }
     }   
 }
-},{}],7:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 module.exports = {
     name: 'TaskService',
     func: function ($http) {
@@ -188,4 +221,28 @@ module.exports = {
 }
 
 
+},{}],11:[function(require,module,exports){
+module.exports = {
+  name: 'UserService',
+  func: function ($http) {
+    let users = [];
+    // ask Jake - may want to rename this endpoint?
+    $http.get('https://sharedspace.herokuapp.com/userPoints').then(function (response) {
+      for (let i = 0; i < response.data.length; i++) {
+
+        users.push({
+          id: response.data[i].id,
+          userName: response.data[i].userName,
+          points: response.data[i].points,
+        })
+      }
+    },
+    )
+    return {
+      getUsers: function () {
+        return users;
+      }
+    }
+  }
+};
 },{}]},{},[1]);
