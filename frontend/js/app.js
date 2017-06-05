@@ -4,7 +4,11 @@ const app = angular.module('SharedSpace', ['ui.router','chart.js']);
 const services = [
     require('./services/TaskService'),
     require('./services/SignInService'),
+
     require('./services/LeaderBoardService'),
+
+    require('./services/UserService'),
+
 ];
 
 // loop all services
@@ -16,8 +20,12 @@ for (let i = 0; i < services.length; i++) {
 const controllers = [
     require('./controllers/TaskController'),
     require('./controllers/SignInController'),
+
     require('./controllers/LeaderBoardController'),
-    //require('./ChartController'),
+    
+
+    require('./controllers/UserController'),
+
 ];
 
 // loop all controllers
@@ -29,7 +37,11 @@ for (let i = 0; i < controllers.length; i++) {
 const components = [
     require('./components/task'),
     require('./components/signin'),
+
     require('./components/leaderboard'),
+    require('./components/about'),
+    require('./components/users'),
+
 ]
 
 // loop all components
@@ -37,28 +49,24 @@ for (let i = 0; i < components.length; i++) {
     app.component(components[i].name, components[i].array);
 }
 
-// https://scotch.io/tutorials/angular-routing-using-ui-router
-
 app.config( function ($stateProvider, $urlRouterProvider) {
 
 // default path should be to /signin because
 // users cannot view tasks unless they are signed in
 
-// $urlRouterProvider.otherwise('/signin');
+$urlRouterProvider.otherwise('/signin');
     
     $stateProvider
 
         .state('signin', {
-            // name: "signin",
             url: '/signin',
             component: "signin"
-            // templateUrl: 'templates/signin.html'
         })
 
         .state('tasks', {
-            // name: 'tasks',
             url: '/tasks',
             component: 'allTasks',
+
             // templateUrl: 'templates/allTasks.html'
         })
 
@@ -67,6 +75,18 @@ app.config( function ($stateProvider, $urlRouterProvider) {
             url: '/leaderboard',
             component: 'leaderboard',
             // templateUrl: 'templates/allTasks.html'
+
+        })
+        
+        .state('about', {
+            url: '/about',
+            component: 'about',
+        })
+
+        .state('users', {
+            url: '/users',
+            component: 'users',
+
         });
 
        

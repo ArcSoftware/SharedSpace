@@ -10,4 +10,5 @@ import java.util.List;
  */
 public interface TaskRepo extends CrudRepository<Task, Integer> {
     List<Task> findByComplete(boolean complete);
+    Task findBytaskName(String name);
 }
