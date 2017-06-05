@@ -1,0 +1,18 @@
+<a ui-sref="signin"><button>Go To Signin</button></a>
+<a ui-sref="tasks"><button>Go To Tasks</button></a>
+<a ui-sref="about"><button>about</button></a>
+
+<div class="user-wrapper row">
+<section class="users small-4 columns">
+    <h2>Users</h2>
+    <input type="text" placeholder="search users" ng-model="searchUsers">
+    <ul>
+        <li ng-repeat="user in users | filter:searchUsers">
+            
+            <p>User ID: {{user.id}}</p>
+            <p>Username: {{user.userName}}</p>
+            <p>Points: {{user.points}}</p>
+
+        </li>
+    </ul>
+</section>
