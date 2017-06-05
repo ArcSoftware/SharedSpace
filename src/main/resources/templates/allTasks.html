@@ -1,6 +1,9 @@
-<a ui-sref="signin"><button>Go To Signin</button></a>
-<a ui-sref="users"><button>Go To Users</button></a>
-<a ui-sref="about"><button>about</button></a>
+<a ui-sref="signin"><button>Signin</button></a>
+<a ui-sref="tasks"><button>Tasks</button></a>
+<a ui-sref="users"><button>Users</button></a>
+<a ui-sref="leaderboard"><button>Leaderboard</button></a>
+<a ui-sref="about"><button>About</button></a>
+<a ui-sref="newTask"><button>New Task</button></a>
 
 <div class="task-wrapper row">
 <section class="incomplete small-4 columns">
@@ -9,20 +12,11 @@
     <ul>
         <li ng-repeat="task in tasks | filter:searchIncomplete">
             <!--had $ctrl.which in each one below-->
-            <p>Task ID: {{task.id}}</p>
+            <!--<p>Task ID: {{task.id}}</p>-->
             <p>Task Name: {{task.taskName}}</p>
-            <p>Task Complete? {{task.complete}}</p>
+            <!--<p>Task Complete? {{task.complete}}</p>-->
             <p>Task Points: {{task.points}}</p>
 
-<!--
-    can we have a time stamp from server? 
-    moment js relative time ... minutes ago
--->
-
-            <!--  n.b. we do not care about WHO makes the task - just who completes it
-            <p>User ID: {{task.user.id}}</p>
-            <p>Username: {{task.user.userName}}</p>
-            <p>User Points: {{task.user.points}}</p>-->
             <form>
                 <input type="checkbox" ng-model="task.complete" ng-change="markComplete(task)"><label>Done</label>
             </form>
@@ -35,12 +29,15 @@
     <input type="text" placeholder="search completed tasks" ng-model="searchComplete">
     <ul>
         <li ng-repeat="complete in completed | filter:searchComplete">
-            <p>Task ID: {{complete.id}}</p>
+            <!--<p>Task ID: {{complete.id}}</p>-->
             <p>Task Name: {{complete.taskName}}</p>
-            <p>Task Complete? {{complete.complete}}</p>
+            <!--<p>Task Complete? {{complete.complete}}</p>-->
             <p>Task Points: {{complete.points}}</p>
-            <p>Completed By: {{complete.user}}</p>
+            <p>Completed By: {{complete.user.userName || 'anonymous'}}</p>
+            <!--add anonymous as the default 'user'-->
         </li>
     </ul>
 </section>
 </div>
+
+<!--<div ng-include="users.html"></div>-->

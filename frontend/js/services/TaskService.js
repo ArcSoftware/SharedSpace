@@ -63,11 +63,16 @@ module.exports = {
                 console.log('get complete run');
                 return completed;
             },
-            createTask(task) {
-                $http.post('https://sharedspace.herokuapp.com/addTask', task.id).then(function (response) {
-                    // post request to make a new task...
+            newTask(name, points) {
+                let newTask = {
+                    taskName: name,
+                    points: points
+                };
+                $http.post('https://sharedspace.herokuapp.com/addTask', newTask).then(function (response) {
+                   console.log('new task submitted');
                 })
-            }
+            },
+            
         }
     },
 
