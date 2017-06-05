@@ -45,21 +45,37 @@ public class TaskService {
     public void markTaskComplete(HttpSession session, int taskID) {
         User currentUser = users.findByuserName((String) session.getAttribute("userName"));
         Task currentTask = tasks.findOne(taskID);
+        currentUser.setPoints(currentUser.getPoints() + currentTask.getPoints());
         currentTask.setComplete(true);
         currentTask.setUser(currentUser);
         System.out.println("Marking " + currentTask.getTaskName() + "complete by " + currentTask.getUser());
+        users.save(currentUser);
         tasks.save(currentTask);
     }
 
     public void completeTaskSlack(String userName, String task) {
         User currentUser = users.findByuserName(userName);
-        Task currentTask = tasks.findBytaskName(task);
-        if (currentUser == null || currentUser == null) {
-            System.out.println("Invalid user or task found");
+        Task currentTask = tasks.findFirstByTaskName(task);
+        if (currentTask == null) {
+            System.out.println("Invalid task");
+        }
+        if (currentUser == null) {
+            currentUser = new User();
+            currentUser.setUserName(userName);
+            currentUser.setPoints(currentTask.getPoints());
+            currentTask.setComplete(true);
+            currentTask.setUser(currentUser);
+            System.out.println("Creating a new user for " + userName + " and assigning " + currentTask.getTaskName() +
+            " to new user.");
+            users.save(currentUser);
+            tasks.save(currentTask);
+
         } else {
+            currentUser.setPoints(currentUser.getPoints() + currentTask.getPoints());
             currentTask.setComplete(true);
             currentTask.setUser(currentUser);
             System.out.println("Marking " + currentTask.getTaskName() + "complete by " + currentTask.getUser());
+            users.save(currentUser);
             tasks.save(currentTask);
         }
     }
