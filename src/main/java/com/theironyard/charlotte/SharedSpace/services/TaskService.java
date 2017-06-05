@@ -59,9 +59,11 @@ public class TaskService {
         if (currentUser == null || currentUser == null) {
             System.out.println("Invalid user or task found");
         } else {
+            currentUser.setPoints(currentUser.getPoints() + currentTask.getPoints());
             currentTask.setComplete(true);
             currentTask.setUser(currentUser);
             System.out.println("Marking " + currentTask.getTaskName() + "complete by " + currentTask.getUser());
+            users.save(currentUser);
             tasks.save(currentTask);
         }
     }
