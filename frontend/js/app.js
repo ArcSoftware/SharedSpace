@@ -1,4 +1,4 @@
-const app = angular.module('SharedSpace', ['ui.router']);
+const app = angular.module('SharedSpace', ['ui.router','chart.js']);
 
 // require service
 const services = [
@@ -17,6 +17,7 @@ const controllers = [
     require('./controllers/TaskController'),
     require('./controllers/SignInController'),
     require('./controllers/LeaderBoardController'),
+    //require('./ChartController'),
 ];
 
 // loop all controllers

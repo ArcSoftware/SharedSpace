@@ -1,5 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-const app = angular.module('SharedSpace', ['ui.router']);
+const app = angular.module('SharedSpace', ['ui.router','chart.js']);
 
 // require service
 const services = [
@@ -18,6 +18,7 @@ const controllers = [
     require('./controllers/TaskController'),
     require('./controllers/SignInController'),
     require('./controllers/LeaderBoardController'),
+    //require('./ChartController'),
 ];
 
 // loop all controllers
@@ -106,9 +107,18 @@ module.exports = {
 module.exports={
     name: "LeaderBoardController",
     func: function($scope, LeaderBoardService){
-        $scope.leadUsers= LeaderBoardService.getLeadUsers();
-
-
+       $scope.leadUsers= LeaderBoardService.getLeadUsers();
+       
+        
+        //console.log(labels.push);
+        $scope.labels = LeaderBoardService.getUserName();
+        $scope.series = ['Series A'];
+        $scope.data = LeaderBoardService.getPointData();
+        console.log($scope.labels);
+        // $scope.data = data;
+    //      [25, 59, 80, 81, 56, 55, 40]
+    //     // [28, 48, 40, 19, 86, 27, 90]
+    //   ];
     }
 }
 },{}],6:[function(require,module,exports){
@@ -134,18 +144,31 @@ module.exports= {
     name: 'LeaderBoardService',
     func: function($http){
         let leadUsers=[];
-        $http.get('http://sharedspace.herokuapp.com/userPoints').then(function(response){
+        let userNames=[];
+        let pointDatas=[];
+        $http.get('https://sharedspace.herokuapp.com/userPoints').then(function(response){
             for(let i=0; i<response.data.length;i++){
                 leadUsers.push({
                     id:response.data[i].id,
                     userName:response.data[i].userName,
                     points:response.data[i].points,
-                })
+                });
+                userNames.push(response.data[i].userName);
+                pointDatas.push(response.data[i].points);
             }
         });
         return {
             getLeadUsers:function(){
                 return leadUsers;
+            },
+
+            getUserName : function() {
+                return userNames;
+            },
+
+            getPointData : function() {
+
+                return pointDatas;
             }
         }
     }
@@ -164,7 +187,7 @@ module.exports={
                     userName: user_name,
                 };
                 console.log(user_name);
-                $http.post('http://sharedspace.herokuapp.com/login', u_name);
+                $http.post('https://sharedspace.herokuapp.com/login', u_name);
 
                
             }
@@ -177,7 +200,7 @@ module.exports = {
     func: function ($http) {
         let tasks = [];
         // jakes IP
-        $http.get('http://sharedspace.herokuapp.com/getTasks').then(function (response) {
+        $http.get('https://sharedspace.herokuapp.com/getTasks').then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
                 tasks.push({
                     id: response.data[i].id,
