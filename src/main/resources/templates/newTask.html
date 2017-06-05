@@ -6,9 +6,26 @@
 <a ui-sref="newTask"><button>New Task</button></a>
 
 <form>
-    <section class="row align-center">
-        <input type="text" placeholder="Enter task name" ng-model="taskName">
-        <input type="number" placeholder="Enter points" ng-model="taskPoints">
-        <a ui-sref="tasks"><button ng-click="submit()">Submit</button></a>
-    </section>
+  <section class="row align-center">
+    <!--<input type="text" placeholder="Enter task name" ng-model="taskName">-->
+    <select name="Tasks" ng-model="taskName">
+      <option selected disabled hidden style='display: none' value=''></option>
+      <optgroup label="Tasks">
+      <option value="Take out Garbage">Take out Garbage</option>
+      <option value="Refill Coffee">Refill Coffee</option>
+      <option value="Turn off lights">Turn off Lights</option>
+    </select>
+    
+    <!--<input type="number" placeholder="Enter points" ng-model="taskPoints">-->
+    <select name="Points" ng-model="taskPoints">
+      <option selected disabled hidden style='display: none' value=''></option>
+      <optgroup label="Points">
+      <option value="100">100</option>
+      <option value="200">200</option>
+      <option value="300">300</option>
+      <option value="400">400</option>
+      <option value="500">500</option>
+    </select>
+    <a ui-sref="tasks"><button ng-click="submit()">Submit</button></a>
+  </section>
 </form>
