@@ -91,6 +91,8 @@ module.exports = {
         controller: "TaskController",
     }
 }; 
+
+// need a new component for create new task?
 },{}],5:[function(require,module,exports){
 module.exports = {
     name: "users",
@@ -120,6 +122,7 @@ module.exports = {
             // service call here (value is already changed to the right value)
             $scope.tasks = TaskService.completeTask(task);
         }
+        // need a create task call here
     }
 } 
 },{}],8:[function(require,module,exports){
@@ -174,19 +177,19 @@ module.exports = {
         });
 
         let completed = [];
-        
+
         // retrieve tasks that have been completed (complete === true)
         $http.get('https://sharedspace.herokuapp.com/getTasks?complete=true').then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
 
                 let name;
                 if (response.data[i].user === null ||
-                    response.data[i].user === undefined || 
+                    response.data[i].user === undefined ||
                     response.data[i].user === '') {
-                        name = 'Anonymous';
-                    } else {
-                        name = response.data[i].user;
-                    }
+                    name = 'Anonymous';
+                } else {
+                    name = response.data[i].user;
+                }
 
                 completed.push({
                     id: response.data[i].id,
@@ -215,6 +218,11 @@ module.exports = {
                 console.log('get complete run');
                 return completed;
             },
+            createTask(task) {
+                $http.post('https://sharedspace.herokuapp.com/addTask', task.id).then(function (response) {
+                    // post request to make a new task...
+                })
+            }
         }
     },
 
