@@ -1,23 +1,13 @@
-<!--<!doctype html>
-<html>
 
-<head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
-    <script src="angular-chart.js"></script>
-    <script src="chart2.js"></script>
-</head>-->
-
-<!--<body ng-app="ChartApp">-->
-<section>
-    <h1>Bar Chart</h1>
+<section class="leaderboard">
+    <h1>Leader Board Chart</h1>
 
     <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series">
     </canvas>
 
 
     <section>
-        <h1>Leader Board</h1>
+        <!--<h1>Leader Board</h1>-->
         <ul>
             <li ng-repeat="leaduser in leadUsers">
                 <P>Id: {{leaduser.id}}</P>
@@ -27,17 +17,3 @@
         </ul>
     </section>
 </section>
-<!--</body>-->
-
-<!--</html>-->
-<!--
-<section>
- <h1>Leader Board</h1>
-    <ul>
-        <li ng-repeat="leaduser in leadUsers">
-            <P>Id: {{leaduser.id}}</P>
-            <p>UserName: {{leaduser.userName}}</p>
-            <p>Points: {{leaduser.points}}</p>
-        </li>
-        </ul>
-</section>-->

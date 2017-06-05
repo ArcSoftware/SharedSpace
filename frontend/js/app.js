@@ -67,14 +67,12 @@ $urlRouterProvider.otherwise('/signin');
             url: '/tasks',
             component: 'allTasks',
 
-            // templateUrl: 'templates/allTasks.html'
         })
 
          .state('leaderboard', {
             // name: 'tasks',
             url: '/leaderboard',
             component: 'leaderboard',
-            // templateUrl: 'templates/allTasks.html'
 
         })
         

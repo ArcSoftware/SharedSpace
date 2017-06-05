@@ -54,7 +54,7 @@ module.exports = {
             completeTask(task) {
                 $http.post('https://sharedspace.herokuapp.com/markComplete', task.id).then(function (response) {
                     console.log('post request submitted');
-                    completed.push(tasks.pop());
+                     completed.push(tasks.pop());
                     // console.log(tasks);
                     // console.log(completed);
                 })
