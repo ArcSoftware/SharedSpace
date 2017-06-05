@@ -23,13 +23,13 @@ public class SharedSpaceController {
     @RequestMapping(path = "/claimTasks", method = RequestMethod.POST)
     public String claimTasks(String user_name, String text) {
         taskService.completeTaskSlack(user_name, text);
-        return "index";
+        return "SlackResponse";
     }
 
     @CrossOrigin
     @RequestMapping(path = "/createTask", method = RequestMethod.POST)
     public String createTaskSlack(String user_name, String text) {
         taskService.createTaskSlack(user_name, text);
-        return "index";
+        return "SlackResponse";
     }
 }
