@@ -56,8 +56,19 @@ public class TaskService {
     public void completeTaskSlack(String userName, String task) {
         User currentUser = users.findByuserName(userName);
         Task currentTask = tasks.findBytaskName(task);
-        if (currentUser == null || currentUser == null) {
-            System.out.println("Invalid user or task found");
+        if (currentTask == null) {
+            System.out.println("Invalid task");
+        }
+        if (currentUser == null) {
+            currentUser.setUserName(userName);
+            currentUser.setPoints(currentTask.getPoints());
+            currentTask.setComplete(true);
+            currentTask.setUser(currentUser);
+            System.out.println("Creating a new user for " + userName + " and assigning " + currentTask.getTaskName() +
+            " to new user.");
+            users.save(currentUser);
+            tasks.save(currentTask);
+
         } else {
             currentUser.setPoints(currentUser.getPoints() + currentTask.getPoints());
             currentTask.setComplete(true);
