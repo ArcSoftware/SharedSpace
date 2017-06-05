@@ -60,6 +60,7 @@ public class TaskService {
             System.out.println("Invalid task");
         }
         if (currentUser == null) {
+            currentUser = new User(); 
             currentUser.setUserName(userName);
             currentUser.setPoints(currentTask.getPoints());
             currentTask.setComplete(true);
