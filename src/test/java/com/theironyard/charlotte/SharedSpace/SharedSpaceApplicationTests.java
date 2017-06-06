@@ -15,7 +15,7 @@ public class SharedSpaceApplicationTests {
 
 	@Test
 	public void checkIfDateTimeIsOutputingCorrectly() {
-		
+
 	}
 
 }
