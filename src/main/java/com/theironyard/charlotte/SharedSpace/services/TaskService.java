@@ -47,7 +47,9 @@ public class TaskService {
     public void markTaskComplete(HttpSession session, int taskID) {
         User currentUser = users.findByuserName((String) session.getAttribute("userName"));
         Task currentTask = tasks.findOne(taskID);
-        currentUser.setPoints(currentUser.getPoints() + currentTask.getPoints());
+        Integer points = currentUser.getPoints() + currentTask.getPoints();
+        points = points == null ? 0 : points;
+        currentUser.setPoints(points);
         currentTask.setComplete(true);
         currentTask.setUser(currentUser);
         currentTask.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
