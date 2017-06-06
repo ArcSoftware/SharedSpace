@@ -45,8 +45,11 @@ public class TaskService {
     }
 
     public void markTaskComplete(HttpSession session, int taskID) {
-        User currentUser = users.findByuserName((String) session.getAttribute("userName"));
+        User currentUser = users.findByuserName((String)session.getAttribute("userName"));
+        System.out.println("User is " + currentUser.getUserName());
         Task currentTask = tasks.findOne(taskID);
+        System.out.println("Task is " + currentTask.getTaskName());
+        System.out.println("Task points: " + currentTask.getPoints());
         Integer points = currentUser.getPoints();
         points = points == null ? 0 : points;
         currentUser.setPoints(points + currentTask.getPoints());
