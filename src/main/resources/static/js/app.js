@@ -131,8 +131,6 @@ module.exports = {
         controller: "TaskController",
     }
 }; 
-
-// need a new component for create new task?
 },{}],7:[function(require,module,exports){
 module.exports = {
     name: "users",
@@ -185,11 +183,10 @@ module.exports = {
     name: "TaskController",
     func: function ($scope, TaskService) {
         $scope.tasks = TaskService.getTasks();
-        $scope.completed = TaskService.getComplete();
         $scope.markComplete = function(task) {
-            $scope.tasks = TaskService.completeTask(task);
+            TaskService.completeTask(task);
         }
-        // need a create task call here
+        
     }
 } 
 },{}],12:[function(require,module,exports){
@@ -267,17 +264,11 @@ module.exports = {
                     taskName: response.data[i].taskName,
                     complete: response.data[i].complete,
                     points: response.data[i].points,
-                    // n.b. we don't care about WHO makes the task - just who completes it
-                    // user: {
-                    //     id: response.data[i].user.id,
-                    //     userName: response.data[i].user.userName,
-                    //     points: response.data[i].user.points,
-                    // }
                 })
             }
         });
 
-        let completed = [];
+        // let completed = []; no longer needed
 
         // retrieve tasks that have been completed (complete === true)
         $http.get('https://sharedspace.herokuapp.com/getTasks?complete=true').then(function (response) {
@@ -291,8 +282,8 @@ module.exports = {
                 } else {
                     name = response.data[i].user;
                 }
-
-                completed.push({
+                // was completed array
+                tasks.push({
                     id: response.data[i].id,
                     taskName: response.data[i].taskName,
                     complete: response.data[i].complete,
@@ -310,14 +301,10 @@ module.exports = {
             completeTask(task) {
                 $http.post('https://sharedspace.herokuapp.com/markComplete', task.id).then(function (response) {
                     console.log('post request submitted');
-                    completed.push(tasks.pop());
-                    // console.log(tasks);
-                    // console.log(completed);
+                    // completed.push(tasks.pop());
+                    task.complete = true;
+
                 })
-            },
-            getComplete: function () {
-                console.log('get complete run');
-                return completed;
             },
             newTask(name, points) {
                 let newTask = {
