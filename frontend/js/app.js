@@ -4,9 +4,8 @@ const app = angular.module('SharedSpace', ['ui.router','chart.js']);
 const services = [
     require('./services/TaskService'),
     require('./services/SignInService'),
-
     require('./services/LeaderBoardService'),
-
+    // where is this service?
     require('./services/UserService'),
 
 ];
@@ -19,11 +18,10 @@ for (let i = 0; i < services.length; i++) {
 // require controllers
 const controllers = [
     require('./controllers/TaskController'),
+    require('./controllers/NewTaskController'),
     require('./controllers/SignInController'),
-
     require('./controllers/LeaderBoardController'),
-    
-
+    // where is this controller??
     require('./controllers/UserController'),
 
 ];
@@ -36,12 +34,12 @@ for (let i = 0; i < controllers.length; i++) {
 // require components
 const components = [
     require('./components/task'),
+    require('./components/newTask'),
     require('./components/signin'),
-
     require('./components/leaderboard'),
+    // where is this component?
     require('./components/about'),
     require('./components/users'),
-
 ]
 
 // loop all components
@@ -70,10 +68,8 @@ $urlRouterProvider.otherwise('/signin');
         })
 
          .state('leaderboard', {
-            // name: 'tasks',
             url: '/leaderboard',
             component: 'leaderboard',
-
         })
         
         .state('about', {
@@ -81,10 +77,14 @@ $urlRouterProvider.otherwise('/signin');
             component: 'about',
         })
 
+        .state('newTask', {
+            url: '/newTask',
+            component: 'newTask',
+        })
+
         .state('users', {
             url: '/users',
             component: 'users',
-
         });
 
        
