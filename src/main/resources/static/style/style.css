@@ -1,4 +1,3 @@
-
 /**
  * Foundation for Sites by ZURB
  * Version 6.3.1
@@ -1116,13 +1115,12 @@ pre {
   .large-order-6 {
     order: 6; } }
 
+body h1 {
+  padding: 0;
+  margin: 0; }
+
 body button {
   outline: 1px solid black; }
 
 body .logo {
   color: green; }
-
-.task-wrapper {
-  padding: 0;
-  margin: 0; }
-

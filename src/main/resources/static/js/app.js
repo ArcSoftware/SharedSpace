@@ -5,11 +5,10 @@ const app = angular.module('SharedSpace', ['ui.router','chart.js']);
 const services = [
     require('./services/TaskService'),
     require('./services/SignInService'),
-<<<<<<< HEAD
     require('./services/LeaderBoardService'),
-=======
+    // where is this service?
     require('./services/UserService'),
->>>>>>> fe503f217eaf6aea60a563cd7e277131274a34c3
+
 ];
 
 // loop all services
@@ -20,13 +19,12 @@ for (let i = 0; i < services.length; i++) {
 // require controllers
 const controllers = [
     require('./controllers/TaskController'),
+    require('./controllers/NewTaskController'),
     require('./controllers/SignInController'),
-<<<<<<< HEAD
     require('./controllers/LeaderBoardController'),
-    //require('./ChartController'),
-=======
+    // where is this controller??
     require('./controllers/UserController'),
->>>>>>> fe503f217eaf6aea60a563cd7e277131274a34c3
+
 ];
 
 // loop all controllers
@@ -37,13 +35,12 @@ for (let i = 0; i < controllers.length; i++) {
 // require components
 const components = [
     require('./components/task'),
+    require('./components/newTask'),
     require('./components/signin'),
-<<<<<<< HEAD
     require('./components/leaderboard'),
-=======
+    // where is this component?
     require('./components/about'),
     require('./components/users'),
->>>>>>> fe503f217eaf6aea60a563cd7e277131274a34c3
 ]
 
 // loop all components
@@ -68,16 +65,11 @@ $urlRouterProvider.otherwise('/signin');
         .state('tasks', {
             url: '/tasks',
             component: 'allTasks',
-<<<<<<< HEAD
-            // templateUrl: 'templates/allTasks.html'
         })
 
          .state('leaderboard', {
-            // name: 'tasks',
             url: '/leaderboard',
             component: 'leaderboard',
-            // templateUrl: 'templates/allTasks.html'
-=======
         })
         
         .state('about', {
@@ -85,16 +77,27 @@ $urlRouterProvider.otherwise('/signin');
             component: 'about',
         })
 
+        .state('newTask', {
+            url: '/newTask',
+            component: 'newTask',
+        })
+
         .state('users', {
             url: '/users',
             component: 'users',
->>>>>>> fe503f217eaf6aea60a563cd7e277131274a34c3
         });
 
        
 });
-<<<<<<< HEAD
-},{"./components/leaderboard":2,"./components/signin":3,"./components/task":4,"./controllers/LeaderBoardController":5,"./controllers/SignInController":6,"./controllers/TaskController":7,"./services/LeaderBoardService":8,"./services/SignInService":9,"./services/TaskService":10}],2:[function(require,module,exports){
+},{"./components/about":2,"./components/leaderboard":3,"./components/newTask":4,"./components/signin":5,"./components/task":6,"./components/users":7,"./controllers/LeaderBoardController":8,"./controllers/NewTaskController":9,"./controllers/SignInController":10,"./controllers/TaskController":11,"./controllers/UserController":12,"./services/LeaderBoardService":13,"./services/SignInService":14,"./services/TaskService":15,"./services/UserService":16}],2:[function(require,module,exports){
+module.exports = {
+    name: "about",
+    array: {
+        templateUrl: "/src/main/resources/templates/about.html",
+        
+    }
+}; 
+},{}],3:[function(require,module,exports){
 module.exports={
     name: "leaderboard",
     array: {
@@ -104,28 +107,23 @@ module.exports={
 
     }
 }
-},{}],3:[function(require,module,exports){
-module.exports={
-=======
-},{"./components/about":2,"./components/signin":3,"./components/task":4,"./components/users":5,"./controllers/SignInController":6,"./controllers/TaskController":7,"./controllers/UserController":8,"./services/SignInService":9,"./services/TaskService":10,"./services/UserService":11}],2:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 module.exports = {
-    name: "about",
+    name: "newTask",
     array: {
-        templateUrl: "/src/main/resources/templates/about.html",
-        
+        templateUrl: "/src/main/resources/templates/newTask.html",
+        controller: "NewTaskController",
     }
 }; 
-},{}],3:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports = {
->>>>>>> fe503f217eaf6aea60a563cd7e277131274a34c3
     name: "signin",
     array: {
-
         templateUrl: "/src/main/resources/templates/signin.html",
         controller: "SignInController",
     }
 }
-},{}],4:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 module.exports = {
     name: "allTasks",
     array: {
@@ -133,8 +131,15 @@ module.exports = {
         controller: "TaskController",
     }
 }; 
-<<<<<<< HEAD
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
+module.exports = {
+    name: "users",
+    array: {
+        templateUrl: "/src/main/resources/templates/users.html",
+        controller: "UserController",
+    }
+}; 
+},{}],8:[function(require,module,exports){
 module.exports={
     name: "LeaderBoardController",
     func: function($scope, LeaderBoardService){
@@ -152,44 +157,47 @@ module.exports={
     //   ];
     }
 }
-=======
-
-// need a new component for create new task?
-},{}],5:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 module.exports = {
-    name: "users",
-    array: {
-        templateUrl: "/src/main/resources/templates/users.html",
-        controller: "UserController",
+  name: "NewTaskController",
+  func: function ($scope, TaskService) {
+
+    $scope.submit = function () {
+      TaskService.newTask($scope.taskName, $scope.taskPoints);
     }
-}; 
->>>>>>> fe503f217eaf6aea60a563cd7e277131274a34c3
-},{}],6:[function(require,module,exports){
-module.exports={
+  }
+}
+},{}],10:[function(require,module,exports){
+module.exports = {
     name: "SignInController",
-    func: function($scope, SignInService){
-       
-       $scope.go=function(){
-           SignInService.showUsers($scope.user_name);
-           console.log('$scope.user_name');
-       }
+    func: function ($scope, SignInService) {
+
+        $scope.go = function () {
+            SignInService.showUsers($scope.user_name);
+            console.log('$scope.user_name');
+        }
     }
 }
-},{}],7:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports = {
     name: "TaskController",
     func: function ($scope, TaskService) {
         $scope.tasks = TaskService.getTasks();
-        $scope.completed = TaskService.getComplete();
         $scope.markComplete = function(task) {
-            // service call here (value is already changed to the right value)
-            $scope.tasks = TaskService.completeTask(task);
+            TaskService.completeTask(task);
         }
-        // need a create task call here
+        
     }
 } 
-},{}],8:[function(require,module,exports){
-<<<<<<< HEAD
+},{}],12:[function(require,module,exports){
+module.exports={
+    name: "UserController",
+    func: function($scope, UserService){
+       // need to make service
+       $scope.users = UserService.getUsers();
+    }
+}
+},{}],13:[function(require,module,exports){
 module.exports= {
     name: 'LeaderBoardService',
     func: function($http){
@@ -223,17 +231,7 @@ module.exports= {
         }
     }
 }
-},{}],9:[function(require,module,exports){
-=======
->>>>>>> fe503f217eaf6aea60a563cd7e277131274a34c3
-module.exports={
-    name: "UserController",
-    func: function($scope, UserService){
-       // need to make service
-       $scope.users = UserService.getUsers();
-    }
-}
-},{}],9:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports = {
     name: 'SignInService',
     func: function($http) {
@@ -252,16 +250,12 @@ module.exports = {
         }
     }   
 }
-},{}],10:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = {
     name: 'TaskService',
     func: function ($http) {
         let tasks = [];
-<<<<<<< HEAD
-        // jakes IP
-=======
 
->>>>>>> fe503f217eaf6aea60a563cd7e277131274a34c3
         $http.get('https://sharedspace.herokuapp.com/getTasks').then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
 
@@ -270,17 +264,11 @@ module.exports = {
                     taskName: response.data[i].taskName,
                     complete: response.data[i].complete,
                     points: response.data[i].points,
-                    // n.b. we don't care about WHO makes the task - just who completes it
-                    // user: {
-                    //     id: response.data[i].user.id,
-                    //     userName: response.data[i].user.userName,
-                    //     points: response.data[i].user.points,
-                    // }
                 })
             }
         });
 
-        let completed = [];
+        // let completed = []; no longer needed
 
         // retrieve tasks that have been completed (complete === true)
         $http.get('https://sharedspace.herokuapp.com/getTasks?complete=true').then(function (response) {
@@ -294,8 +282,8 @@ module.exports = {
                 } else {
                     name = response.data[i].user;
                 }
-
-                completed.push({
+                // was completed array
+                tasks.push({
                     id: response.data[i].id,
                     taskName: response.data[i].taskName,
                     complete: response.data[i].complete,
@@ -313,32 +301,32 @@ module.exports = {
             completeTask(task) {
                 $http.post('https://sharedspace.herokuapp.com/markComplete', task.id).then(function (response) {
                     console.log('post request submitted');
-                    completed.push(tasks.pop());
-                    // console.log(tasks);
-                    // console.log(completed);
+                    // completed.push(tasks.pop());
+                    task.complete = true;
+
                 })
             },
-            getComplete: function () {
-                console.log('get complete run');
-                return completed;
-            },
-            createTask(task) {
-                $http.post('https://sharedspace.herokuapp.com/addTask', task.id).then(function (response) {
-                    // post request to make a new task...
+            newTask(name, points) {
+                let newTask = {
+                    taskName: name,
+                    points: points
+                };
+                $http.post('https://sharedspace.herokuapp.com/addTask', newTask).then(function (response) {
+                   console.log('new task submitted');
                 })
-            }
+            },
+            
         }
     },
 
 }
 
 
-},{}],11:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports = {
   name: 'UserService',
   func: function ($http) {
     let users = [];
-    // ask Jake - may want to rename this endpoint?
     $http.get('https://sharedspace.herokuapp.com/userPoints').then(function (response) {
       for (let i = 0; i < response.data.length; i++) {
 
