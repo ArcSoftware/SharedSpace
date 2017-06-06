@@ -13,4 +13,9 @@ public class SharedSpaceApplicationTests {
 	public void contextLoads() {
 	}
 
+	@Test
+	public void checkIfDateTimeIsOutputingCorrectly() {
+		
+	}
+
 }

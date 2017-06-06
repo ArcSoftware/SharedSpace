@@ -7,7 +7,9 @@ import com.theironyard.charlotte.SharedSpace.repositories.UserRepo;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by Jake on 6/1/17.
@@ -48,6 +50,8 @@ public class TaskService {
         currentUser.setPoints(currentUser.getPoints() + currentTask.getPoints());
         currentTask.setComplete(true);
         currentTask.setUser(currentUser);
+        currentTask.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                .format(Calendar.getInstance().getTime()));
         System.out.println("Marking " + currentTask.getTaskName() + "complete by " + currentTask.getUser());
         users.save(currentUser);
         tasks.save(currentTask);
@@ -58,22 +62,17 @@ public class TaskService {
         Task currentTask = tasks.findFirstByTaskName(task);
         if (currentTask == null) {
             System.out.println("Invalid task");
-        }
-        if (currentUser == null) {
-            currentUser = new User();
-            currentUser.setUserName(userName);
-            currentUser.setPoints(currentTask.getPoints());
-            currentTask.setComplete(true);
-            currentTask.setUser(currentUser);
-            System.out.println("Creating a new user for " + userName + " and assigning " + currentTask.getTaskName() +
-            " to new user.");
-            users.save(currentUser);
-            tasks.save(currentTask);
-
         } else {
+            if (currentUser == null) {
+                currentUser = new User();
+                currentUser.setUserName(userName);
+                System.out.println("Creating a new user for " + currentUser.getUserName());
+            }
             currentUser.setPoints(currentUser.getPoints() + currentTask.getPoints());
             currentTask.setComplete(true);
             currentTask.setUser(currentUser);
+            currentTask.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                    .format(Calendar.getInstance().getTime()));
             System.out.println("Marking " + currentTask.getTaskName() + "complete by " + currentTask.getUser());
             users.save(currentUser);
             tasks.save(currentTask);
