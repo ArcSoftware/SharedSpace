@@ -93,7 +93,7 @@ $urlRouterProvider.otherwise('/signin');
 module.exports = {
     name: "about",
     array: {
-        templateUrl: "/src/main/resources/templates/about.html",
+        templateUrl: "/controllers/about.html",
         
     }
 }; 
@@ -102,7 +102,7 @@ module.exports={
     name: "leaderboard",
     array: {
 
-        templateUrl: "/src/main/resources/templates/leaderboard.html",
+        templateUrl: "/controllers/leaderboard.html",
         controller: "LeaderBoardController",
 
     }
@@ -111,7 +111,7 @@ module.exports={
 module.exports = {
     name: "newTask",
     array: {
-        templateUrl: "/src/main/resources/templates/newTask.html",
+        templateUrl: "/controllers/newTask.html",
         controller: "NewTaskController",
     }
 }; 
@@ -119,7 +119,7 @@ module.exports = {
 module.exports = {
     name: "signin",
     array: {
-        templateUrl: "/src/main/resources/templates/signin.html",
+        templateUrl: "/controllers/signin.html",
         controller: "SignInController",
     }
 }
@@ -127,7 +127,7 @@ module.exports = {
 module.exports = {
     name: "allTasks",
     array: {
-        templateUrl: "/src/main/resources/templates/allTasks.html",
+        templateUrl: "/controllers/allTasks.html",
         controller: "TaskController",
     }
 }; 
@@ -135,7 +135,7 @@ module.exports = {
 module.exports = {
     name: "users",
     array: {
-        templateUrl: "/src/main/resources/templates/users.html",
+        templateUrl: "/controllers/users.html",
         controller: "UserController",
     }
 }; 
