@@ -90,7 +90,9 @@ $urlRouterProvider.otherwise('/signin');
 module.exports = {
     name: "about",
     array: {
-        templateUrl: "/src/main/resources/templates/about.html",
+        templateUrl: "/controllers/about.html",
+//        changing from /src/main/resources/templates/about.html for heroku support
+        //          new path is /controllers/about.html
         
     }
 }; 
@@ -99,7 +101,9 @@ module.exports={
     name: "leaderboard",
     array: {
 
-        templateUrl: "/src/main/resources/templates/leaderboard.html",
+        templateUrl: "/controllers/leaderboard.html",
+//        changing from /src/main/resources/template/leaderboard.html for heroku support
+//          new path is /controllers/leaderboard.html
         controller: "LeaderBoardController",
 
     }
@@ -108,7 +112,9 @@ module.exports={
 module.exports = {
     name: "newTask",
     array: {
-        templateUrl: "/src/main/resources/templates/newTask.html",
+        templateUrl: "/controllers/newTask.html",
+//        changing from /src/main/resources/template/newTask.html for heroku support
+        //          new path is /controllers/newTask.html
         controller: "NewTaskController",
     }
 }; 
@@ -116,7 +122,9 @@ module.exports = {
 module.exports = {
     name: "signin",
     array: {
-        templateUrl: "/src/main/resources/templates/signin.html",
+        templateUrl: "/controllers/signin.html",
+//        changing from /src/main/resources/template/signin.html for heroku support
+        //          new path is /controllers/signin.html
         controller: "SignInController",
     }
 }
@@ -124,7 +132,9 @@ module.exports = {
 module.exports = {
     name: "allTasks",
     array: {
-        templateUrl: "/src/main/resources/templates/allTasks.html",
+        templateUrl: "/controllers/allTasks.html",
+//        changing from /src/main/resources/template/allTasks.html for heroku support
+        //          new path is /controllers/allTasks.html
         controller: "TaskController",
     }
 }; 
@@ -132,7 +142,9 @@ module.exports = {
 module.exports = {
     name: "users",
     array: {
-        templateUrl: "/src/main/resources/templates/users.html",
+        templateUrl: "/controllers/users.html",
+//        changing from /src/main/resources/template/users.html for heroku support
+        //          new path is /controllers/users.html
         controller: "UserController",
     }
 }; 

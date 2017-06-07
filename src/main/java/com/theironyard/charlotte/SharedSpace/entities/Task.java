@@ -19,17 +19,29 @@ public class Task {
     @Column
     int points;
 
+    @Column
+    String time;
+
     @ManyToOne
     User user;
 
     public Task() {
     }
 
-    public Task(int id, String taskName, boolean complete, int points, User user) {
+    public Task(int id, String taskName, boolean complete, int points, String time, User user) {
         this.id = id;
         this.taskName = taskName;
         this.complete = complete;
         this.points = points;
+        this.time = time;
+        this.user = user;
+    }
+
+    public Task(String taskName, boolean complete, int points, String time, User user) {
+        this.taskName = taskName;
+        this.complete = complete;
+        this.points = points;
+        this.time = time;
         this.user = user;
     }
 
@@ -78,5 +90,13 @@ public class Task {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }
