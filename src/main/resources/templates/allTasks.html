@@ -29,7 +29,9 @@
         <!--orderBy:'+':true | filter:searchComplete | limitTo: 5">-->
         <li ng-repeat="task in tasks | filter:{complete:true} | filter:searchComplete">
             <input type="checkbox" checked="true" disabled="true">
-            <span class="grey-strikethrough"><b>{{task.taskName}}</b> completed for <b>{{task.points}}</b> points by <b>{{task.user.userName || 'anonymous'}}</b></span>
+            <span class="grey-strikethrough"><b>{{task.taskName}}</b> completed for <b>{{task.points | number}}</b> points by <b>{{task.user.userName || 'anonymous'}}</b>
+                <span am-time-ago="task.time"></span>
+            </span>
         </li>
     </ul>
 </div>

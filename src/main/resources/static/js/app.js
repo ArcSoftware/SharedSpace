@@ -1,12 +1,11 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-const app = angular.module('SharedSpace', ['ui.router','chart.js']);
+const app = angular.module('SharedSpace', ['ui.router','chart.js','angularMoment']);
 
 // require service
 const services = [
     require('./services/TaskService'),
     require('./services/SignInService'),
     require('./services/LeaderBoardService'),
-    // where is this service?
     require('./services/UserService'),
 
 ];
@@ -22,7 +21,6 @@ const controllers = [
     require('./controllers/NewTaskController'),
     require('./controllers/SignInController'),
     require('./controllers/LeaderBoardController'),
-    // where is this controller??
     require('./controllers/UserController'),
 
 ];
@@ -38,7 +36,6 @@ const components = [
     require('./components/newTask'),
     require('./components/signin'),
     require('./components/leaderboard'),
-    // where is this component?
     require('./components/about'),
     require('./components/users'),
 ]
@@ -269,6 +266,7 @@ module.exports = {
                         taskName: response.data[i].taskName,
                         complete: response.data[i].complete,
                         points: response.data[i].points,
+                        time: response.data[i].time,
                     })
                 }
             });
@@ -293,6 +291,7 @@ module.exports = {
                     taskName: response.data[i].taskName,
                     complete: response.data[i].complete,
                     points: response.data[i].points,
+                    time: response.data[i].time,
                     user: name,
                 })
             }
@@ -301,7 +300,7 @@ module.exports = {
                 return tasks;
             },
             completeTask(task) {
-                $http.post('https://sharedspace.herokuapp.com/markComplete', task.id).then(function (response) {
+                $http.post('https://sharedspace.herokuapp.com/markComplete', task.id, { withCredentials: true }).then(function (response) {
                     console.log('post request submitted');
                     // completed.push(tasks.pop());
                     task.complete = true;
@@ -313,7 +312,8 @@ module.exports = {
                     taskName: name.toLowerCase(),
                     points: points
                 };
-                return $http.post('https://sharedspace.herokuapp.com/addTask', newTask).then(function (response) {
+                //https://192.168.1.4:8080/addTask
+                return $http.post('https://sharedspace.herokuapp.com/addTask', newTask, { withCredentials: true }).then(function (response) {
                    console.log('new task submitted');
                 })
             },

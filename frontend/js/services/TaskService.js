@@ -14,6 +14,7 @@ module.exports = {
                         taskName: response.data[i].taskName,
                         complete: response.data[i].complete,
                         points: response.data[i].points,
+                        time: response.data[i].time,
                     })
                 }
             });
@@ -38,6 +39,7 @@ module.exports = {
                     taskName: response.data[i].taskName,
                     complete: response.data[i].complete,
                     points: response.data[i].points,
+                    time: response.data[i].time,
                     user: name,
                 })
             }
@@ -46,7 +48,7 @@ module.exports = {
                 return tasks;
             },
             completeTask(task) {
-                $http.post('https://sharedspace.herokuapp.com/markComplete', task.id).then(function (response) {
+                $http.post('https://sharedspace.herokuapp.com/markComplete', task.id, { withCredentials: true }).then(function (response) {
                     console.log('post request submitted');
                     // completed.push(tasks.pop());
                     task.complete = true;
@@ -58,7 +60,8 @@ module.exports = {
                     taskName: name.toLowerCase(),
                     points: points
                 };
-                return $http.post('https://sharedspace.herokuapp.com/addTask', newTask).then(function (response) {
+                //https://192.168.1.4:8080/addTask
+                return $http.post('https://sharedspace.herokuapp.com/addTask', newTask, { withCredentials: true }).then(function (response) {
                    console.log('new task submitted');
                 })
             },
