@@ -1,11 +1,10 @@
-const app = angular.module('SharedSpace', ['ui.router','chart.js']);
+const app = angular.module('SharedSpace', ['ui.router','chart.js','angularMoment']);
 
 // require service
 const services = [
     require('./services/TaskService'),
     require('./services/SignInService'),
     require('./services/LeaderBoardService'),
-    // where is this service?
     require('./services/UserService'),
 
 ];
@@ -21,7 +20,6 @@ const controllers = [
     require('./controllers/NewTaskController'),
     require('./controllers/SignInController'),
     require('./controllers/LeaderBoardController'),
-    // where is this controller??
     require('./controllers/UserController'),
 
 ];
@@ -37,7 +35,6 @@ const components = [
     require('./components/newTask'),
     require('./components/signin'),
     require('./components/leaderboard'),
-    // where is this component?
     require('./components/about'),
     require('./components/users'),
 ]

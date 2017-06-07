@@ -4,41 +4,40 @@
 <a ui-sref="about"><button>About</button></a>
 <a ui-sref="newTask"><button>New Task</button></a>
 <section class="row">
-<section class="incomplete small-4 columns">
+<section class="incomplete small-3 columns">
     <h2>Incomplete Tasks</h2>
     <input type="text" placeholder="search available tasks" ng-model="searchIncomplete">
     <ul>
-        <li ng-repeat="task in tasks | filter:{complete:false} | filter:searchIncomplete">
+        <li ng-repeat="task in tasks | filter:{complete:false} | orderBy : 'id' : true | filter:searchIncomplete">
             <!--had $ctrl.which in each one below-->
             <!--<p>Task ID: {{task.id}}</p>-->
-            <p>Task Name: {{task.taskName}}</p>
-            <p>Task Complete? {{task.complete}}</p>
-            <p>Task Points: {{task.points}}</p>
-
             <form>
-                <input type="checkbox" ng-model="task.complete" ng-change="markComplete(task)"><label>Done</label>
+                <input type="checkbox" ng-model="task.complete" ng-change="markComplete(task)">
+                <span><b>{{task.taskName}}</b> - <b>{{task.points}}</b></span>
             </form>
+            
+
+            
         </li>
     </ul>
 </section>
 
-<section class="complete small-4 columns">
-    <h2>Completed Tasks</h2>
+<section class="complete small-5 columns">
+    <h2>Recently Completed Tasks</h2>
     <input type="text" placeholder="search completed tasks" ng-model="searchComplete">
     <ul>
+        <!--orderBy:'+':true | filter:searchComplete | limitTo: 5">-->
         <li ng-repeat="task in tasks | filter:{complete:true} | filter:searchComplete">
-            <!--<p>Task ID: {{complete.id}}</p>-->
-            <p>Task Name: {{task.taskName}}</p>
-            <!--<p>Task Complete? {{complete.complete}}</p>-->
-            <p>Task Points: {{task.points}}</p>
-            <p>Completed By: {{task.user.userName || 'anonymous'}}</p>
-            <!--add anonymous as the default 'user'-->
+            <input type="checkbox" checked="true" disabled="true">
+            <span class="grey-strikethrough"><b>{{task.taskName}}</b> completed for <b>{{task.points | number}}</b> points by <b>{{task.user.userName || 'anonymous'}}</b>
+                <span am-time-ago="task.time"></span>
+            </span>
         </li>
     </ul>
 </div>
 </section>
 
-<section class="users small-4 columns">
+<section class="users small-3 columns">
     <users></users>
 </section>
 

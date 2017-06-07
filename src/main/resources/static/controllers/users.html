@@ -1,16 +1,17 @@
 <div class="user-wrapper">
-    <section>
-        <h2>Users</h2>
-        <input type="text" placeholder="search users" ng-model="searchUsers">
+    <section class="user-inner">
+        <h2>Top 5 Users</h2>
+        <!--<input type="text" placeholder="search users" ng-model="searchUsers">-->
         <ul>
             <!--rank the users by points                                (reverse = true)-->
-            <li ng-repeat="user in users | filter:searchUsers | orderBy : 'points' : true">
+            <ol>
+            <li ng-repeat="user in users | orderBy : 'points' : true | limitTo: 5 ">
 
-                <p>User ID: {{user.id}}</p>
-                <p>Username: {{user.userName}}</p>
-                <p>Points: {{user.points}}</p>
+                <span>{{user.userName || 'anonymous user'}} - </span>
+                <span>{{user.points | number}}</span>
 
             </li>
+            </ul>
         </ul>
     </section>
 </div>
