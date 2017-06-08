@@ -22,7 +22,7 @@ const controllers = [
     require('./controllers/AllCompleteController'),
     require('./controllers/NewTaskController'),
     require('./controllers/SignInController'),
-    require('./controllers/LogoutController'),
+    require('./controllers/NavController'),
     require('./controllers/LeaderBoardController'),
     require('./controllers/UserController'),
 
@@ -39,7 +39,7 @@ const components = [
     require('./components/newTask'),
     require('./components/allComplete'),
     require('./components/signin'),
-    require('./components/logout'),
+    require('./components/navbar'),
     require('./components/leaderboard'),
     require('./components/about'),
     require('./components/users'),
@@ -84,10 +84,10 @@ $urlRouterProvider.otherwise('/signin');
             component: 'allComplete',
         })
 
-        .state('logout', {
-            url: '/logout',
-            component: 'logout',
-        })
+        // .state('logout', {
+        //     url: '/logout',
+        //     component: 'logout',
+        // })
 
         .state('newTask', {
             url: '/newTask',
@@ -101,7 +101,7 @@ $urlRouterProvider.otherwise('/signin');
 
        
 });
-},{"./components/about":2,"./components/allComplete":3,"./components/leaderboard":4,"./components/logout":5,"./components/newTask":6,"./components/signin":7,"./components/task":8,"./components/users":9,"./controllers/AllCompleteController":10,"./controllers/LeaderBoardController":11,"./controllers/LogoutController":12,"./controllers/NewTaskController":13,"./controllers/SignInController":14,"./controllers/TaskController":15,"./controllers/UserController":16,"./services/LeaderBoardService":17,"./services/LogoutService":18,"./services/SignInService":19,"./services/TaskService":20,"./services/UserService":21}],2:[function(require,module,exports){
+},{"./components/about":2,"./components/allComplete":3,"./components/leaderboard":4,"./components/navbar":5,"./components/newTask":6,"./components/signin":7,"./components/task":8,"./components/users":9,"./controllers/AllCompleteController":10,"./controllers/LeaderBoardController":11,"./controllers/NavController":12,"./controllers/NewTaskController":13,"./controllers/SignInController":14,"./controllers/TaskController":15,"./controllers/UserController":16,"./services/LeaderBoardService":17,"./services/LogoutService":18,"./services/SignInService":19,"./services/TaskService":20,"./services/UserService":21}],2:[function(require,module,exports){
 module.exports = {
     name: "about",
     array: {
@@ -133,9 +133,10 @@ module.exports={
 }
 },{}],5:[function(require,module,exports){
 module.exports = {
-    name: "logout",
+    name: "navbar",
     array: {
-        templateUrl: "/controllers/logout.html",
+        templateUrl: "/controllers/navbar.html",
+        controller: "NavController",
     }
 }
 },{}],6:[function(require,module,exports){
@@ -188,9 +189,15 @@ module.exports = {
 },{}],11:[function(require,module,exports){
 module.exports={
     name: "LeaderBoardController",
-    func: function($scope, LeaderBoardService){
+    func: function($scope, LeaderBoardService, $state, LogoutService){
        $scope.leadUsers= LeaderBoardService.getLeadUsers();
        
+       // next three lines go into the nav controller
+       // don't forget $state and LogoutService
+       $scope.logout = function() {
+           LogoutService.logout();
+            $state.go('signin');
+       };
         
         //console.log(labels.push);
         $scope.labels = LeaderBoardService.getUserName();
@@ -205,9 +212,12 @@ module.exports={
 }
 },{}],12:[function(require,module,exports){
 module.exports = {
-    name: "LogoutController",
-    func: function ($scope, LogoutService) {
-        LogoutService.logout();
+    name: "NavController",
+    func: function ($scope, LogoutService, $state) {
+        $scope.logout = function() {
+           LogoutService.logout();
+            $state.go('signin');
+       }
     }
 }
 },{}],13:[function(require,module,exports){
@@ -295,7 +305,6 @@ module.exports = {
             logout: function(){
                 $http.post('https://sharedspace.herokuapp.com/logout');
                 console.log('sucussful logout');
-
             }
         }
     }   

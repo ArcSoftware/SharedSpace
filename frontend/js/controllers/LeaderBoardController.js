@@ -1,8 +1,14 @@
 module.exports={
     name: "LeaderBoardController",
-    func: function($scope, LeaderBoardService){
+    func: function($scope, LeaderBoardService, $state, LogoutService){
        $scope.leadUsers= LeaderBoardService.getLeadUsers();
        
+       // next three lines go into the nav controller
+       // don't forget $state and LogoutService
+       $scope.logout = function() {
+           LogoutService.logout();
+            $state.go('signin');
+       };
         
         //console.log(labels.push);
         $scope.labels = LeaderBoardService.getUserName();
