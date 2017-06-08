@@ -1,4 +1,4 @@
-const app = angular.module('SharedSpace', ['ui.router','chart.js','angularMoment']);
+const app = angular.module('SharedSpace', ['ui.router','angularMoment']);
 
 // require service
 const services = [
