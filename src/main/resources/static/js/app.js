@@ -210,7 +210,7 @@ module.exports={
 module.exports = {
     name: "LogoutController",
     func: function ($scope, LogoutService) {
-        SignInService.logout();
+        LogoutService.logout();
     }
 }
 },{}],13:[function(require,module,exports){
