@@ -7,11 +7,10 @@ import com.theironyard.charlotte.SharedSpace.repositories.UserRepo;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
-import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
-import java.util.TimeZone;
 
 /**
  * Created by Jake on 6/1/17.
@@ -57,8 +56,7 @@ public class TaskService {
         currentUser.setPoints(points + currentTask.getPoints());
         currentTask.setComplete(true);
         currentTask.setUser(currentUser);
-        currentTask.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
-                .format(Calendar.getInstance(TimeZone.getTimeZone("EST")).getTime()));
+        currentTask.setTime(Instant.now().atZone(ZoneId.of("UTC-4")).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
         System.out.println("Marking " + currentTask.getTaskName() + "complete by " + currentTask.getUser().getUserName()
                 + " at " + currentTask.getTime());
         users.save(currentUser);
@@ -79,8 +77,7 @@ public class TaskService {
             currentUser.setPoints(currentUser.getPoints() + currentTask.getPoints());
             currentTask.setComplete(true);
             currentTask.setUser(currentUser);
-            currentTask.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
-                    .format(Calendar.getInstance(TimeZone.getTimeZone("EST")).getTime()));
+            currentTask.setTime(Instant.now().atZone(ZoneId.of("UTC-4")).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
             System.out.println("Marking " + currentTask.getTaskName() + "complete by "
                     + currentTask.getUser().getUserName());
             users.save(currentUser);
