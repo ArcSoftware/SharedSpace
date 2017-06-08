@@ -19,8 +19,6 @@ module.exports = {
                 }
             });
 
-        // let completed = []; no longer needed
-
         // retrieve tasks that have been completed (complete === true)
         $http.get('https://sharedspace.herokuapp.com/getTasks?complete=true').then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
@@ -29,11 +27,11 @@ module.exports = {
                 if (response.data[i].user === null ||
                     response.data[i].user === undefined ||
                     response.data[i].user === '') {
-                    name = 'Anonymous';
+                    name = 'You';
                 } else {
                     name = response.data[i].user;
                 }
-                // was completed array
+                
                 tasks.push({
                     id: response.data[i].id,
                     taskName: response.data[i].taskName,
@@ -44,9 +42,11 @@ module.exports = {
                 })
             }
         });
-                // only first five
+                
                 return tasks;
-            },
+        },
+
+
             completeTask(task) {
                 console.log(task.id);
                 console.log(task.complete);
@@ -55,7 +55,7 @@ module.exports = {
                     console.log('post request submitted');
                     // completed.push(tasks.pop());
                     task.complete = true;
-
+                    console.log(task.time);
                 })
             },
             newTask(name, points) {
