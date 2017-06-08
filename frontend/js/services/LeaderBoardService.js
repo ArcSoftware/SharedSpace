@@ -14,15 +14,7 @@ module.exports= {
                 });
                 userNames.push(response.data[i].userName);
                 pointDatas.push(response.data[i].points);
-                // ops.options=[{
-                    
-                //     size:{
-                       
-                //         height: 200,
-                //         width: 600,
-                //     }
-                // }
-                // ];
+               
             }
         });
         return {
