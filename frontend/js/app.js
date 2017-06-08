@@ -4,6 +4,7 @@ const app = angular.module('SharedSpace', ['ui.router','angularMoment']);
 const services = [
     require('./services/TaskService'),
     require('./services/SignInService'),
+    require('./services/LogoutService'),
     require('./services/LeaderBoardService'),
     require('./services/UserService'),
 
@@ -17,8 +18,10 @@ for (let i = 0; i < services.length; i++) {
 // require controllers
 const controllers = [
     require('./controllers/TaskController'),
+    require('./controllers/AllCompleteController'),
     require('./controllers/NewTaskController'),
     require('./controllers/SignInController'),
+    require('./controllers/LogoutController'),
     require('./controllers/LeaderBoardController'),
     require('./controllers/UserController'),
 
@@ -33,7 +36,9 @@ for (let i = 0; i < controllers.length; i++) {
 const components = [
     require('./components/task'),
     require('./components/newTask'),
+    require('./components/allComplete'),
     require('./components/signin'),
+    require('./components/logout'),
     require('./components/leaderboard'),
     require('./components/about'),
     require('./components/users'),
@@ -71,6 +76,16 @@ $urlRouterProvider.otherwise('/signin');
         .state('about', {
             url: '/about',
             component: 'about',
+        })
+
+        .state('allComplete', {
+            url: '/allComplete',
+            component: 'allComplete',
+        })
+
+        .state('logout', {
+            url: '/logout',
+            component: 'logout',
         })
 
         .state('newTask', {
