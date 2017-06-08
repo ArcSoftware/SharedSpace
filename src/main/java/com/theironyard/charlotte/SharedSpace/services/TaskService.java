@@ -59,7 +59,8 @@ public class TaskService {
         currentTask.setUser(currentUser);
         currentTask.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
                 .format(Calendar.getInstance(TimeZone.getTimeZone("EST")).getTime()));
-        System.out.println("Marking " + currentTask.getTaskName() + "complete by " + currentTask.getUser());
+        System.out.println("Marking " + currentTask.getTaskName() + "complete by " + currentTask.getUser().getUserName()
+                + " at " + currentTask.getTime());
         users.save(currentUser);
         tasks.save(currentTask);
     }
@@ -80,7 +81,8 @@ public class TaskService {
             currentTask.setUser(currentUser);
             currentTask.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
                     .format(Calendar.getInstance(TimeZone.getTimeZone("EST")).getTime()));
-            System.out.println("Marking " + currentTask.getTaskName() + "complete by " + currentTask.getUser());
+            System.out.println("Marking " + currentTask.getTaskName() + "complete by "
+                    + currentTask.getUser().getUserName());
             users.save(currentUser);
             tasks.save(currentTask);
         }
