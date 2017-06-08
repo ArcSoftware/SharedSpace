@@ -7,8 +7,8 @@
             <ol>
             <li ng-repeat="user in users | orderBy : 'points' : true | limitTo: 5 ">
 
-                <span>{{user.userName || 'anonymous user'}} - </span>
-                <span>{{user.points | number}}</span>
+                <span>{{ user.userName || 'anonymous user' }} - </span>
+                <span>{{ user.points | number }}</span>
 
             </li>
             </ul>
