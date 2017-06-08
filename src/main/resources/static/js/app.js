@@ -5,6 +5,7 @@ const app = angular.module('SharedSpace', ['ui.router','chart.js','angularMoment
 const services = [
     require('./services/TaskService'),
     require('./services/SignInService'),
+    require('./services/LogoutService'),
     require('./services/LeaderBoardService'),
     require('./services/UserService'),
 
@@ -18,8 +19,10 @@ for (let i = 0; i < services.length; i++) {
 // require controllers
 const controllers = [
     require('./controllers/TaskController'),
+    require('./controllers/AllCompleteController'),
     require('./controllers/NewTaskController'),
     require('./controllers/SignInController'),
+    require('./controllers/LogoutController'),
     require('./controllers/LeaderBoardController'),
     require('./controllers/UserController'),
 
@@ -34,7 +37,9 @@ for (let i = 0; i < controllers.length; i++) {
 const components = [
     require('./components/task'),
     require('./components/newTask'),
+    require('./components/allComplete'),
     require('./components/signin'),
+    require('./components/logout'),
     require('./components/leaderboard'),
     require('./components/about'),
     require('./components/users'),
@@ -74,6 +79,16 @@ $urlRouterProvider.otherwise('/signin');
             component: 'about',
         })
 
+        .state('allComplete', {
+            url: '/allComplete',
+            component: 'allComplete',
+        })
+
+        .state('logout', {
+            url: '/logout',
+            component: 'logout',
+        })
+
         .state('newTask', {
             url: '/newTask',
             component: 'newTask',
@@ -86,7 +101,7 @@ $urlRouterProvider.otherwise('/signin');
 
        
 });
-},{"./components/about":2,"./components/leaderboard":3,"./components/newTask":4,"./components/signin":5,"./components/task":6,"./components/users":7,"./controllers/LeaderBoardController":8,"./controllers/NewTaskController":9,"./controllers/SignInController":10,"./controllers/TaskController":11,"./controllers/UserController":12,"./services/LeaderBoardService":13,"./services/SignInService":14,"./services/TaskService":15,"./services/UserService":16}],2:[function(require,module,exports){
+},{"./components/about":2,"./components/allComplete":3,"./components/leaderboard":4,"./components/logout":5,"./components/newTask":6,"./components/signin":7,"./components/task":8,"./components/users":9,"./controllers/AllCompleteController":10,"./controllers/LeaderBoardController":11,"./controllers/LogoutController":12,"./controllers/NewTaskController":13,"./controllers/SignInController":14,"./controllers/TaskController":15,"./controllers/UserController":16,"./services/LeaderBoardService":17,"./services/LogoutService":18,"./services/SignInService":19,"./services/TaskService":20,"./services/UserService":21}],2:[function(require,module,exports){
 module.exports = {
     name: "about",
     array: {
@@ -97,6 +112,14 @@ module.exports = {
     }
 }; 
 },{}],3:[function(require,module,exports){
+module.exports = {
+    name: "allComplete",
+    array: {
+        templateUrl: "/controllers/allComplete.html",
+        controller: "AllCompleteController",
+    }
+}
+},{}],4:[function(require,module,exports){
 module.exports={
     name: "leaderboard",
     array: {
@@ -108,7 +131,17 @@ module.exports={
 
     }
 }
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
+module.exports = {
+    name: "logout",
+    array: {
+        templateUrl: "/controllers/logout.html",
+//        changing from /src/main/resources/template/signin.html for heroku support
+        //          new path is /controllers/signin.html
+        controller: "LogoutController"
+    }
+}
+},{}],6:[function(require,module,exports){
 module.exports = {
     name: "newTask",
     array: {
@@ -118,7 +151,7 @@ module.exports = {
         controller: "NewTaskController",
     }
 }; 
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 module.exports = {
     name: "signin",
     array: {
@@ -128,17 +161,17 @@ module.exports = {
         controller: "SignInController",
     }
 }
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 module.exports = {
     name: "allTasks",
     array: {
         templateUrl: "/controllers/allTasks.html",
 //        changing from /src/main/resources/template/allTasks.html for heroku support
         //          new path is /controllers/allTasks.html
-        controller: "TaskController",
+        controller: "TaskController"
     }
-}; 
-},{}],7:[function(require,module,exports){
+};
+},{}],9:[function(require,module,exports){
 module.exports = {
     name: "users",
     array: {
@@ -148,7 +181,14 @@ module.exports = {
         controller: "UserController",
     }
 }; 
-},{}],8:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
+module.exports = {
+    name: "AllCompleteController",
+    func: function ($scope, TaskService) {
+        $scope.tasks = TaskService.getTasks();
+    }
+} 
+},{}],11:[function(require,module,exports){
 module.exports={
     name: "LeaderBoardController",
     func: function($scope, LeaderBoardService){
@@ -166,7 +206,14 @@ module.exports={
     //   ];
     }
 }
-},{}],9:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
+module.exports = {
+    name: "LogoutController",
+    func: function ($scope, LogoutService) {
+        LogoutService.logout();
+    }
+}
+},{}],13:[function(require,module,exports){
 module.exports = {
   name: "NewTaskController",
   func: function ($scope, TaskService, $state) {
@@ -178,7 +225,7 @@ module.exports = {
     }
   }
 }
-},{}],10:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports = {
     name: "SignInController",
     func: function ($scope, SignInService) {
@@ -189,7 +236,7 @@ module.exports = {
         }
     }
 }
-},{}],11:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = {
     name: "TaskController",
     func: function ($scope, TaskService) {
@@ -200,7 +247,7 @@ module.exports = {
         
     }
 } 
-},{}],12:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports={
     name: "UserController",
     func: function($scope, UserService){
@@ -208,7 +255,7 @@ module.exports={
        $scope.users = UserService.getUsers();
     }
 }
-},{}],13:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 module.exports= {
     name: 'LeaderBoardService',
     func: function($http){
@@ -242,7 +289,20 @@ module.exports= {
         }
     }
 }
-},{}],14:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
+module.exports = {
+    name: 'LogoutService',
+    func: function($http) {
+        
+        return {
+            logout: function(){
+                $http.post('https://sharedspace.herokuapp.com/logout');
+                console.log('sucussful logout');
+            }
+        }
+    }   
+}
+},{}],19:[function(require,module,exports){
 module.exports = {
     name: 'SignInService',
     func: function($http) {
@@ -261,7 +321,7 @@ module.exports = {
         }
     }   
 }
-},{}],15:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = {
     name: 'TaskService',
     func: function ($http) {
@@ -283,8 +343,6 @@ module.exports = {
                 }
             });
 
-        // let completed = []; no longer needed
-
         // retrieve tasks that have been completed (complete === true)
         $http.get('https://sharedspace.herokuapp.com/getTasks?complete=true').then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
@@ -293,11 +351,11 @@ module.exports = {
                 if (response.data[i].user === null ||
                     response.data[i].user === undefined ||
                     response.data[i].user === '') {
-                    name = 'Anonymous';
+                    name = 'You';
                 } else {
                     name = response.data[i].user;
                 }
-                // was completed array
+                
                 tasks.push({
                     id: response.data[i].id,
                     taskName: response.data[i].taskName,
@@ -308,9 +366,11 @@ module.exports = {
                 })
             }
         });
-                // only first five
+                
                 return tasks;
-            },
+        },
+
+
             completeTask(task) {
                 console.log(task.id);
                 console.log(task.complete);
@@ -319,7 +379,7 @@ module.exports = {
                     console.log('post request submitted');
                     // completed.push(tasks.pop());
                     task.complete = true;
-
+                    console.log(task.time);
                 })
             },
             newTask(name, points) {
@@ -339,7 +399,7 @@ module.exports = {
 }
 
 
-},{}],16:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 module.exports = {
   name: 'UserService',
   func: function ($http) {
