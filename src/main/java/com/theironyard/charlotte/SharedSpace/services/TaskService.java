@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * Created by Jake on 6/1/17.
@@ -55,8 +57,8 @@ public class TaskService {
         currentUser.setPoints(points + currentTask.getPoints());
         currentTask.setComplete(true);
         currentTask.setUser(currentUser);
-        currentTask.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-                .format(Calendar.getInstance().getTime()));
+        currentTask.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
+                .format(Calendar.getInstance(TimeZone.getTimeZone("EST")).getTime()));
         System.out.println("Marking " + currentTask.getTaskName() + "complete by " + currentTask.getUser());
         users.save(currentUser);
         tasks.save(currentTask);
@@ -76,8 +78,8 @@ public class TaskService {
             currentUser.setPoints(currentUser.getPoints() + currentTask.getPoints());
             currentTask.setComplete(true);
             currentTask.setUser(currentUser);
-            currentTask.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-                    .format(Calendar.getInstance().getTime()));
+            currentTask.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
+                    .format(Calendar.getInstance(TimeZone.getTimeZone("EST")).getTime()));
             System.out.println("Marking " + currentTask.getTaskName() + "complete by " + currentTask.getUser());
             users.save(currentUser);
             tasks.save(currentTask);
