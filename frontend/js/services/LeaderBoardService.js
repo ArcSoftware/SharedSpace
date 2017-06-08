@@ -1,6 +1,7 @@
 module.exports= {
     name: 'LeaderBoardService',
     func: function($http){
+        //let ops=$scope;
         let leadUsers=[];
         let userNames=[];
         let pointDatas=[];
@@ -13,6 +14,7 @@ module.exports= {
                 });
                 userNames.push(response.data[i].userName);
                 pointDatas.push(response.data[i].points);
+               
             }
         });
         return {

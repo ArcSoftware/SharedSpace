@@ -61,6 +61,7 @@ $urlRouterProvider.otherwise('/signin');
         .state('tasks', {
             url: '/tasks',
             component: 'allTasks',
+
         })
 
          .state('leaderboard', {

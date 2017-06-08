@@ -1132,3 +1132,6 @@ body .logo {
 .row .complete .grey-strikethrough {
   color: grey;
   text-decoration: line-through; }
+
+.leaderboard {
+  width: 50%; }
