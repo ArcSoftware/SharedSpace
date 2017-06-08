@@ -106,11 +106,8 @@ module.exports = {
     name: "about",
     array: {
         templateUrl: "/controllers/about.html",
-//        changing from /src/main/resources/templates/about.html for heroku support
-        //          new path is /controllers/about.html
-        
     }
-}; 
+}
 },{}],3:[function(require,module,exports){
 module.exports = {
     name: "allComplete",
@@ -148,7 +145,7 @@ module.exports = {
         //          new path is /controllers/newTask.html
         controller: "NewTaskController",
     }
-}; 
+}
 },{}],7:[function(require,module,exports){
 module.exports = {
     name: "signin",
@@ -189,25 +186,14 @@ module.exports = {
 },{}],11:[function(require,module,exports){
 module.exports={
     name: "LeaderBoardController",
-    func: function($scope, LeaderBoardService, $state, LogoutService){
+    func: function($scope, LeaderBoardService){
        $scope.leadUsers= LeaderBoardService.getLeadUsers();
-       
-       // next three lines go into the nav controller
-       // don't forget $state and LogoutService
-       $scope.logout = function() {
-           LogoutService.logout();
-            $state.go('signin');
-       };
         
         //console.log(labels.push);
         $scope.labels = LeaderBoardService.getUserName();
         $scope.series = ['Series A'];
         $scope.data = LeaderBoardService.getPointData();
         console.log($scope.labels);
-        // $scope.data = data;
-    //      [25, 59, 80, 81, 56, 55, 40]
-    //     // [28, 48, 40, 19, 86, 27, 90]
-    //   ];
     }
 }
 },{}],12:[function(require,module,exports){
@@ -240,6 +226,17 @@ module.exports = {
         $scope.go = function () {
             SignInService.showUsers($scope.user_name);
             console.log('$scope.user_name');
+        },
+
+        // not working as expected...
+
+        loggedIn = function () {
+            if (isLoggedIn() === false) {
+                console.log('not logged in');
+                $state.go('signin');
+            } else {
+                console.log('logged in');
+            }
         }
     }
 }
@@ -324,6 +321,18 @@ module.exports = {
                 console.log(user_name);
                 $http.post('https://sharedspace.herokuapp.com/login', u_name);
                
+            },
+
+            isLoggedIn: function() {
+                return $http.get('https://sharedspace.herokuapp.com/user').then(function(response) {
+                    if (response === '') {
+                        console.log('not signed in');
+                        return false;
+                    } else {
+                        console.log('signed in');
+                        return true;
+                    }
+                })
             }
         }
     }   
