@@ -136,9 +136,6 @@ module.exports = {
     name: "logout",
     array: {
         templateUrl: "/controllers/logout.html",
-//        changing from /src/main/resources/template/signin.html for heroku support
-        //          new path is /controllers/signin.html
-        controller: "LogoutController"
     }
 }
 },{}],6:[function(require,module,exports){
@@ -298,6 +295,7 @@ module.exports = {
             logout: function(){
                 $http.post('https://sharedspace.herokuapp.com/logout');
                 console.log('sucussful logout');
+
             }
         }
     }   
