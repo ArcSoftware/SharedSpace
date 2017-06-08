@@ -1,7 +1,11 @@
 module.exports = {
   name: 'UserService',
   func: function ($http) {
-    let users = [];
+    
+    return {
+      getUsers: function () {
+
+        let users = [];
     $http.get('https://sharedspace.herokuapp.com/userPoints').then(function (response) {
       for (let i = 0; i < response.data.length; i++) {
 
@@ -13,8 +17,6 @@ module.exports = {
       }
     },
     )
-    return {
-      getUsers: function () {
         return users;
       }
     }

@@ -31,7 +31,7 @@ public class UserService {
     }
 
     public void login(HttpSession session, User user) {
-        session.setAttribute("user", user.getUserName());
+        session.setAttribute("userName", user.getUserName());
         if (users.findByuserName(user.getUserName()) == null) {
             users.save(user);
             System.out.println("New user was created for " + user.getUserName());

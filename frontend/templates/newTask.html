@@ -11,9 +11,9 @@
     <select name="Tasks" ng-model="taskName">
       <option selected disabled hidden style='display: none' value=''></option>
       <optgroup label="Tasks">
-      <option value="Take out Garbage">Take out Garbage</option>
-      <option value="Refill Coffee">Refill Coffee</option>
-      <option value="Turn off lights">Turn off Lights</option>
+      <option value="take out garbage">Take out Garbage</option>
+      <option value="refill coffee">Refill Coffee</option>
+      <option value="turn off lights">Turn off Lights</option>
     </select>
     
     <!--<input type="number" placeholder="Enter points" ng-model="taskPoints">-->
@@ -27,6 +27,6 @@
       <option value="400">400</option>
       <option value="500">500</option>
     </select>
-    <a ui-sref="tasks"><button ng-click="submit()">Submit</button></a>
+    <button ng-click="submit()">Submit</button>
   </section>
 </form>

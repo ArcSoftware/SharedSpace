@@ -1,12 +1,11 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-const app = angular.module('SharedSpace', ['ui.router','chart.js']);
+const app = angular.module('SharedSpace', ['ui.router','chart.js','angularMoment']);
 
 // require service
 const services = [
     require('./services/TaskService'),
     require('./services/SignInService'),
     require('./services/LeaderBoardService'),
-    // where is this service?
     require('./services/UserService'),
 
 ];
@@ -22,7 +21,6 @@ const controllers = [
     require('./controllers/NewTaskController'),
     require('./controllers/SignInController'),
     require('./controllers/LeaderBoardController'),
-    // where is this controller??
     require('./controllers/UserController'),
 
 ];
@@ -38,7 +36,6 @@ const components = [
     require('./components/newTask'),
     require('./components/signin'),
     require('./components/leaderboard'),
-    // where is this component?
     require('./components/about'),
     require('./components/users'),
 ]
@@ -94,7 +91,9 @@ $urlRouterProvider.otherwise('/signin');
 module.exports = {
     name: "about",
     array: {
-        templateUrl: "/src/main/resources/templates/about.html",
+        templateUrl: "/controllers/about.html",
+//        changing from /src/main/resources/templates/about.html for heroku support
+        //          new path is /controllers/about.html
         
     }
 }; 
@@ -103,7 +102,9 @@ module.exports={
     name: "leaderboard",
     array: {
 
-        templateUrl: "/src/main/resources/templates/leaderboard.html",
+        templateUrl: "/controllers/leaderboard.html",
+//        changing from /src/main/resources/template/leaderboard.html for heroku support
+//          new path is /controllers/leaderboard.html
         controller: "LeaderBoardController",
 
     }
@@ -112,7 +113,9 @@ module.exports={
 module.exports = {
     name: "newTask",
     array: {
-        templateUrl: "/src/main/resources/templates/newTask.html",
+        templateUrl: "/controllers/newTask.html",
+//        changing from /src/main/resources/template/newTask.html for heroku support
+        //          new path is /controllers/newTask.html
         controller: "NewTaskController",
     }
 }; 
@@ -120,7 +123,9 @@ module.exports = {
 module.exports = {
     name: "signin",
     array: {
-        templateUrl: "/src/main/resources/templates/signin.html",
+        templateUrl: "/controllers/signin.html",
+//        changing from /src/main/resources/template/signin.html for heroku support
+        //          new path is /controllers/signin.html
         controller: "SignInController",
     }
 }
@@ -128,7 +133,9 @@ module.exports = {
 module.exports = {
     name: "allTasks",
     array: {
-        templateUrl: "/src/main/resources/templates/allTasks.html",
+        templateUrl: "/controllers/allTasks.html",
+//        changing from /src/main/resources/template/allTasks.html for heroku support
+        //          new path is /controllers/allTasks.html
         controller: "TaskController",
     }
 }; 
@@ -136,7 +143,9 @@ module.exports = {
 module.exports = {
     name: "users",
     array: {
-        templateUrl: "/src/main/resources/templates/users.html",
+        templateUrl: "/controllers/users.html",
+//        changing from /src/main/resources/template/users.html for heroku support
+        //          new path is /controllers/users.html
         controller: "UserController",
     }
 }; 
@@ -158,10 +167,12 @@ module.exports={
 },{}],9:[function(require,module,exports){
 module.exports = {
   name: "NewTaskController",
-  func: function ($scope, TaskService) {
+  func: function ($scope, TaskService, $state) {
 
     $scope.submit = function () {
-      TaskService.newTask($scope.taskName, $scope.taskPoints);
+      TaskService.newTask($scope.taskName, $scope.taskPoints).then(function() {
+        $state.go('tasks');
+      });
     }
   }
 }
@@ -254,19 +265,23 @@ module.exports = {
 module.exports = {
     name: 'TaskService',
     func: function ($http) {
-        let tasks = [];
 
-        $http.get('https://sharedspace.herokuapp.com/getTasks').then(function (response) {
-            for (let i = 0; i < response.data.length; i++) {
+        return {
+            getTasks: function () {
+                let tasks = [];
 
-                tasks.push({
-                    id: response.data[i].id,
-                    taskName: response.data[i].taskName,
-                    complete: response.data[i].complete,
-                    points: response.data[i].points,
-                })
-            }
-        });
+            $http.get('https://sharedspace.herokuapp.com/getTasks').then(function (response) {
+                for (let i = 0; i < response.data.length; i++) {
+
+                    tasks.push({
+                        id: response.data[i].id,
+                        taskName: response.data[i].taskName,
+                        complete: response.data[i].complete,
+                        points: response.data[i].points,
+                        time: response.data[i].time,
+                    })
+                }
+            });
 
         // let completed = []; no longer needed
 
@@ -288,18 +303,19 @@ module.exports = {
                     taskName: response.data[i].taskName,
                     complete: response.data[i].complete,
                     points: response.data[i].points,
+                    time: response.data[i].time,
                     user: name,
                 })
             }
         });
-
-
-        return {
-            getTasks: function () {
+                // only first five
                 return tasks;
             },
             completeTask(task) {
-                $http.post('https://sharedspace.herokuapp.com/markComplete', task.id).then(function (response) {
+                console.log(task.id);
+                console.log(task.complete);
+                
+                $http.post('https://sharedspace.herokuapp.com/markComplete', task.id, { withCredentials: true }).then(function (response) {
                     console.log('post request submitted');
                      completed.push(tasks.pop());
                     // console.log(tasks);
@@ -313,10 +329,11 @@ module.exports = {
             },
             newTask(name, points) {
                 let newTask = {
-                    taskName: name,
+                    taskName: name.toLowerCase(),
                     points: points
                 };
-                $http.post('https://sharedspace.herokuapp.com/addTask', newTask).then(function (response) {
+                //https://192.168.1.4:8080/addTask
+                return $http.post('https://sharedspace.herokuapp.com/addTask', newTask, { withCredentials: true }).then(function (response) {
                    console.log('new task submitted');
                 })
             },
@@ -331,7 +348,11 @@ module.exports = {
 module.exports = {
   name: 'UserService',
   func: function ($http) {
-    let users = [];
+    
+    return {
+      getUsers: function () {
+
+        let users = [];
     $http.get('https://sharedspace.herokuapp.com/userPoints').then(function (response) {
       for (let i = 0; i < response.data.length; i++) {
 
@@ -343,8 +364,6 @@ module.exports = {
       }
     },
     )
-    return {
-      getUsers: function () {
         return users;
       }
     }

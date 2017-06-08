@@ -1125,5 +1125,13 @@ body button {
 body .logo {
   color: green; }
 
+.row ul {
+  list-style-type: none;
+  padding: 0; }
+
+.row .complete .grey-strikethrough {
+  color: grey;
+  text-decoration: line-through; }
+
 .leaderboard {
   width: 50%; }

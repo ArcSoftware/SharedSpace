@@ -1,7 +1,9 @@
 module.exports = {
     name: "newTask",
     array: {
-        templateUrl: "/src/main/resources/templates/newTask.html",
+        templateUrl: "/controllers/newTask.html",
+//        changing from /src/main/resources/template/newTask.html for heroku support
+        //          new path is /controllers/newTask.html
         controller: "NewTaskController",
     }
 }; 
