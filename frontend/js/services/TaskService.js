@@ -53,13 +53,8 @@ module.exports = {
                 
                 $http.post('https://sharedspace.herokuapp.com/markComplete', task.id, { withCredentials: true }).then(function (response) {
                     console.log('post request submitted');
-                     completed.push(tasks.pop());
-                    // console.log(tasks);
-                    // console.log(completed);
-
                     // completed.push(tasks.pop());
                     task.complete = true;
-
 
                 })
             },

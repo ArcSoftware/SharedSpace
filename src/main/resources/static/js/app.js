@@ -62,7 +62,6 @@ $urlRouterProvider.otherwise('/signin');
         .state('tasks', {
             url: '/tasks',
             component: 'allTasks',
-
         })
 
          .state('leaderboard', {
@@ -153,7 +152,7 @@ module.exports = {
 module.exports={
     name: "LeaderBoardController",
     func: function($scope, LeaderBoardService){
-      // $scope.leadUsers= LeaderBoardService.getLeadUsers();
+       $scope.leadUsers= LeaderBoardService.getLeadUsers();
        
         
         //console.log(labels.push);
@@ -161,7 +160,10 @@ module.exports={
         $scope.series = ['Series A'];
         $scope.data = LeaderBoardService.getPointData();
         console.log($scope.labels);
-     
+        // $scope.data = data;
+    //      [25, 59, 80, 81, 56, 55, 40]
+    //     // [28, 48, 40, 19, 86, 27, 90]
+    //   ];
     }
 }
 },{}],9:[function(require,module,exports){
@@ -210,7 +212,6 @@ module.exports={
 module.exports= {
     name: 'LeaderBoardService',
     func: function($http){
-        //let ops=$scope;
         let leadUsers=[];
         let userNames=[];
         let pointDatas=[];
@@ -223,7 +224,6 @@ module.exports= {
                 });
                 userNames.push(response.data[i].userName);
                 pointDatas.push(response.data[i].points);
-               
             }
         });
         return {
@@ -317,13 +317,8 @@ module.exports = {
                 
                 $http.post('https://sharedspace.herokuapp.com/markComplete', task.id, { withCredentials: true }).then(function (response) {
                     console.log('post request submitted');
-                     completed.push(tasks.pop());
-                    // console.log(tasks);
-                    // console.log(completed);
-
                     // completed.push(tasks.pop());
                     task.complete = true;
-
 
                 })
             },
