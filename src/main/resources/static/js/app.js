@@ -67,6 +67,18 @@ $urlRouterProvider.otherwise('/signin');
         .state('tasks', {
             url: '/tasks',
             component: 'allTasks',
+            onEnter($state, SignInService) {
+                console.log('checking for login');
+                // return false;
+                return SignInService.isLoggedIn()
+                    .then(loggedIn => {
+                        console.log(`Logged in? ${loggedIn}`);
+                        if (!loggedIn) $state.go('signin');
+                        else {
+                            return true;
+                        }
+                    })
+            },
         })
 
          .state('leaderboard', {
@@ -100,7 +112,16 @@ $urlRouterProvider.otherwise('/signin');
         });
 
        
-});
+})
+// .run(function($rootScope){ // runs at the beginning of the app
+//     console.log('run function');
+//     $rootScope.$on('$stateChangeStart', function (event) {
+//         console.log('route change');
+//     });
+
+// });
+
+
 },{"./components/about":2,"./components/allComplete":3,"./components/leaderboard":4,"./components/navbar":5,"./components/newTask":6,"./components/signin":7,"./components/task":8,"./components/users":9,"./controllers/AllCompleteController":10,"./controllers/LeaderBoardController":11,"./controllers/NavController":12,"./controllers/NewTaskController":13,"./controllers/SignInController":14,"./controllers/TaskController":15,"./controllers/UserController":16,"./services/LeaderBoardService":17,"./services/LogoutService":18,"./services/SignInService":19,"./services/TaskService":20,"./services/UserService":21}],2:[function(require,module,exports){
 module.exports = {
     name: "about",
@@ -230,8 +251,8 @@ module.exports = {
 
         // not working as expected...
 
-        loggedIn = function () {
-            if (isLoggedIn() === false) {
+        $scope.loggedIn = function () {
+            if (SignInService.isLoggedIn() === false) {
                 console.log('not logged in');
                 $state.go('signin');
             } else {
@@ -300,7 +321,7 @@ module.exports = {
         
         return {
             logout: function(){
-                $http.post('https://sharedspace.herokuapp.com/logout');
+                $http.post('https://sharedspace.herokuapp.com/logout', { withCredentials: true });
                 console.log('sucussful logout');
             }
         }
@@ -319,17 +340,22 @@ module.exports = {
                     userName: user_name.toLowerCase(),
                 };
                 console.log(user_name);
-                $http.post('https://sharedspace.herokuapp.com/login', u_name);
+                $http.post('https://sharedspace.herokuapp.com/login', u_name, { withCredentials: true });
                
             },
 
             isLoggedIn: function() {
-                return $http.get('https://sharedspace.herokuapp.com/user').then(function(response) {
-                    if (response === '') {
+                return $http.get('https://sharedspace.herokuapp.com/user', { 
+                    withCredentials: true,
+                    transformResponse: [function (data) {
+                        return data;
+                    }]
+                }).then(function(response) {
+                    if (response.data === '') { // check null too
                         console.log('not signed in');
                         return false;
                     } else {
-                        console.log('signed in');
+                        console.log('signed in'); // get signed in user
                         return true;
                     }
                 })
@@ -360,7 +386,7 @@ module.exports = {
             });
 
         // retrieve tasks that have been completed (complete === true)
-        $http.get('https://sharedspace.herokuapp.com/getTasks?complete=true').then(function (response) {
+        $http.get('https://sharedspace.herokuapp.com/getTasks?complete=true', { withCredentials: true }).then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
 
                 let name;

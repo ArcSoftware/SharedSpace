@@ -20,7 +20,7 @@ module.exports = {
             });
 
         // retrieve tasks that have been completed (complete === true)
-        $http.get('https://sharedspace.herokuapp.com/getTasks?complete=true').then(function (response) {
+        $http.get('https://sharedspace.herokuapp.com/getTasks?complete=true', { withCredentials: true }).then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
 
                 let name;

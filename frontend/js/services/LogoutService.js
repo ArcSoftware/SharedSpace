@@ -4,7 +4,7 @@ module.exports = {
         
         return {
             logout: function(){
-                $http.post('https://sharedspace.herokuapp.com/logout');
+                $http.post('https://sharedspace.herokuapp.com/logout', { withCredentials: true });
                 console.log('sucussful logout');
             }
         }

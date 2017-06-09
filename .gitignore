@@ -24,8 +24,8 @@ dist/
 nbdist/
 .nb-gradle/
 
-node_modules
 public
+node_modules
 .sass-cache
 *.map
 .DS_Store
