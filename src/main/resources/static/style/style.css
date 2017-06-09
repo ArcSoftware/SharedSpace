@@ -1133,5 +1133,11 @@ body .logo {
   color: grey;
   text-decoration: line-through; }
 
+.row .incomplete {
+  margin: 0; }
+
+.row .users {
+  text-align: center; }
+
 .leaderboard {
   width: 50%; }

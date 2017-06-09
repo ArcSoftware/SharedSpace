@@ -22,6 +22,8 @@ const controllers = [
     require('./controllers/SignInController'),
     require('./controllers/LeaderBoardController'),
     require('./controllers/UserController'),
+    require('./controllers/AddUserController'),
+    require('./controllers/LoggedInUserController'),
 
 ];
 
@@ -38,6 +40,8 @@ const components = [
     require('./components/leaderboard'),
     require('./components/about'),
     require('./components/users'),
+    require('./components/adduser'),
+    require('./components/loggedinuser')
 ]
 
 // loop all components
@@ -83,11 +87,21 @@ $urlRouterProvider.otherwise('/signin');
         .state('users', {
             url: '/users',
             component: 'users',
+        })
+
+        .state('adduser',{
+            url: '/adduser',
+            component: 'adduser',
+        })
+
+        .state('loggedinuser',{
+            url: '/loggedinuser',
+            component : 'loggedinuser',
         });
 
        
 });
-},{"./components/about":2,"./components/leaderboard":3,"./components/newTask":4,"./components/signin":5,"./components/task":6,"./components/users":7,"./controllers/LeaderBoardController":8,"./controllers/NewTaskController":9,"./controllers/SignInController":10,"./controllers/TaskController":11,"./controllers/UserController":12,"./services/LeaderBoardService":13,"./services/SignInService":14,"./services/TaskService":15,"./services/UserService":16}],2:[function(require,module,exports){
+},{"./components/about":2,"./components/adduser":3,"./components/leaderboard":4,"./components/loggedinuser":5,"./components/newTask":6,"./components/signin":7,"./components/task":8,"./components/users":9,"./controllers/AddUserController":10,"./controllers/LeaderBoardController":11,"./controllers/LoggedInUserController":12,"./controllers/NewTaskController":13,"./controllers/SignInController":14,"./controllers/TaskController":15,"./controllers/UserController":16,"./services/LeaderBoardService":17,"./services/SignInService":18,"./services/TaskService":19,"./services/UserService":20}],2:[function(require,module,exports){
 module.exports = {
     name: "about",
     array: {
@@ -99,6 +113,14 @@ module.exports = {
 }; 
 },{}],3:[function(require,module,exports){
 module.exports={
+    name:"adduser",
+    array:{
+        templateUrl: "/controllers/adduser.html",
+        controller : "AddUserController",
+    }
+};
+},{}],4:[function(require,module,exports){
+module.exports={
     name: "leaderboard",
     array: {
 
@@ -109,7 +131,15 @@ module.exports={
 
     }
 }
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
+module.exports={
+    name: "loggedinuser",
+    array:{
+        templateUrl: "/controllers/loggedinuser.html",
+        controller: "LoggedInUserController",
+    }
+}
+},{}],6:[function(require,module,exports){
 module.exports = {
     name: "newTask",
     array: {
@@ -119,7 +149,7 @@ module.exports = {
         controller: "NewTaskController",
     }
 }; 
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 module.exports = {
     name: "signin",
     array: {
@@ -129,7 +159,7 @@ module.exports = {
         controller: "SignInController",
     }
 }
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 module.exports = {
     name: "allTasks",
     array: {
@@ -139,7 +169,7 @@ module.exports = {
         controller: "TaskController",
     }
 }; 
-},{}],7:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 module.exports = {
     name: "users",
     array: {
@@ -149,7 +179,14 @@ module.exports = {
         controller: "UserController",
     }
 }; 
-},{}],8:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
+module.exports= {
+    name: "AddUserController",
+    func: function($scope, UserService){
+
+    }
+}
+},{}],11:[function(require,module,exports){
 module.exports={
     name: "LeaderBoardController",
     func: function($scope, LeaderBoardService){
@@ -164,7 +201,15 @@ module.exports={
      
     }
 }
-},{}],9:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
+module.exports={
+    name: "LoggedInUserController",
+    func: function ($scope, SignInService){
+        console.log('hello');
+        $scope.user=SignInService.getLoggedInUser();
+    }
+}
+},{}],13:[function(require,module,exports){
 module.exports = {
   name: "NewTaskController",
   func: function ($scope, TaskService, $state) {
@@ -176,7 +221,7 @@ module.exports = {
     }
   }
 }
-},{}],10:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports = {
     name: "SignInController",
     func: function ($scope, SignInService) {
@@ -187,10 +232,10 @@ module.exports = {
         }
     }
 }
-},{}],11:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = {
     name: "TaskController",
-    func: function ($scope, TaskService) {
+    func: function ($scope, TaskService, SignInService) {
         $scope.tasks = TaskService.getTasks();
         $scope.markComplete = function(task) {
             TaskService.completeTask(task);
@@ -198,7 +243,7 @@ module.exports = {
         
     }
 } 
-},{}],12:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports={
     name: "UserController",
     func: function($scope, UserService){
@@ -206,11 +251,11 @@ module.exports={
        $scope.users = UserService.getUsers();
     }
 }
-},{}],13:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 module.exports= {
     name: 'LeaderBoardService',
     func: function($http){
-        //let ops=$scope;
+        
         let leadUsers=[];
         let userNames=[];
         let pointDatas=[];
@@ -242,7 +287,7 @@ module.exports= {
         }
     }
 }
-},{}],14:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 module.exports = {
     name: 'SignInService',
     func: function($http) {
@@ -257,11 +302,27 @@ module.exports = {
                 console.log(user_name);
                 $http.post('https://sharedspace.herokuapp.com/login', u_name);
                
-            }
+            },
+            
+            getLoggedInUser: function() {
+                let user;
+                $http.get('https://sharedspace.herokuapp.com/user').then(function(response){
+                  user=response.data.userName;
+                  console.log(response.data);
+                });
+                 
+
+         },
+
+            // getUsers:function(user_name){
+            //     $http.get('https://sharedspace.herokuapp.com/login', user_name).then(function(response){
+            //            console.log(u_name);
+            //     });
+            // }
         }
     }   
 }
-},{}],15:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 module.exports = {
     name: 'TaskService',
     func: function ($http) {
@@ -344,7 +405,7 @@ module.exports = {
 }
 
 
-},{}],16:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = {
   name: 'UserService',
   func: function ($http) {

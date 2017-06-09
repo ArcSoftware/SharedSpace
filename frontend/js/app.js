@@ -21,6 +21,8 @@ const controllers = [
     require('./controllers/SignInController'),
     require('./controllers/LeaderBoardController'),
     require('./controllers/UserController'),
+    require('./controllers/AddUserController'),
+    require('./controllers/LoggedInUserController'),
 
 ];
 
@@ -37,6 +39,8 @@ const components = [
     require('./components/leaderboard'),
     require('./components/about'),
     require('./components/users'),
+    require('./components/adduser'),
+    require('./components/loggedinuser')
 ]
 
 // loop all components
@@ -82,6 +86,16 @@ $urlRouterProvider.otherwise('/signin');
         .state('users', {
             url: '/users',
             component: 'users',
+        })
+
+        .state('adduser',{
+            url: '/adduser',
+            component: 'adduser',
+        })
+
+        .state('loggedinuser',{
+            url: '/loggedinuser',
+            component : 'loggedinuser',
         });
 
        

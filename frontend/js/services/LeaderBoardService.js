@@ -1,7 +1,7 @@
 module.exports= {
     name: 'LeaderBoardService',
     func: function($http){
-        //let ops=$scope;
+        
         let leadUsers=[];
         let userNames=[];
         let pointDatas=[];
