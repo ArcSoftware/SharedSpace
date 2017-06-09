@@ -1,4 +1,4 @@
-const app = angular.module('SharedSpace', ['ui.router','chart.js','angularMoment']);
+const app = angular.module('SharedSpace', ['ui.router','angularMoment']);
 
 // require service
 const services = [
@@ -21,7 +21,7 @@ const controllers = [
     require('./controllers/AllCompleteController'),
     require('./controllers/NewTaskController'),
     require('./controllers/SignInController'),
-    require('./controllers/LogoutController'),
+    require('./controllers/NavController'),
     require('./controllers/LeaderBoardController'),
     require('./controllers/UserController'),
 
@@ -38,7 +38,7 @@ const components = [
     require('./components/newTask'),
     require('./components/allComplete'),
     require('./components/signin'),
-    require('./components/logout'),
+    require('./components/navbar'),
     require('./components/leaderboard'),
     require('./components/about'),
     require('./components/users'),
@@ -83,10 +83,10 @@ $urlRouterProvider.otherwise('/signin');
             component: 'allComplete',
         })
 
-        .state('logout', {
-            url: '/logout',
-            component: 'logout',
-        })
+        // .state('logout', {
+        //     url: '/logout',
+        //     component: 'logout',
+        // })
 
         .state('newTask', {
             url: '/newTask',

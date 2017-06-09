@@ -6,4 +6,4 @@ module.exports = {
         //          new path is /controllers/newTask.html
         controller: "NewTaskController",
     }
-}; 
+}
