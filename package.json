@@ -20,6 +20,7 @@
   "dependencies": {
     "@types/node": "^6.0.72",
     "ava": "^0.19.1",
+    "chart.js": "^2.6.0",
     "foundation-sites": "^6.3.1",
     "gulp": "^3.9.1",
     "gulp-browser": "^3.0.4",

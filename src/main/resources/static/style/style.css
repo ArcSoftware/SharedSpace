@@ -1123,7 +1123,8 @@ body button {
   outline: 1px solid black; }
 
 body .logo {
-  color: green; }
+  color: #37393A;
+  font-family: 'Nunito', sans-serif; }
 
 .row ul {
   list-style-type: none;
@@ -1132,6 +1133,7 @@ body .logo {
 .row .complete .grey-strikethrough {
   color: grey;
   text-decoration: line-through; }
+<<<<<<< HEAD
 
 .row .incomplete {
   margin: 0; }
@@ -1141,3 +1143,5 @@ body .logo {
 
 .leaderboard {
   width: 50%; }
+=======
+>>>>>>> 8fb1fa4ec13d21d122dfb65be2721a0b11719004

@@ -14,7 +14,6 @@ module.exports= {
                 });
                 userNames.push(response.data[i].userName);
                 pointDatas.push(response.data[i].points);
-               
             }
         });
         return {

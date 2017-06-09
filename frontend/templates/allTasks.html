@@ -1,17 +1,14 @@
-<a ui-sref="signin"><button>Signin</button></a>
-<a ui-sref="tasks"><button>Tasks</button></a>
-<a ui-sref="leaderboard"><button>Leaderboard</button></a>
-<a ui-sref="about"><button>About</button></a>
-<a ui-sref="newTask"><button>New Task</button></a>
+
+
+<navbar></navbar>
+
 
 <section class="row">
-<section class="incomplete small-3 columns">
+<section class="incomplete small-4 columns">
     <h2>Incomplete Tasks</h2>
     <input type="text" placeholder="search available tasks" ng-model="searchIncomplete">
     <ul>
-        <li ng-repeat="task in tasks | filter:{complete:false} | orderBy : 'id' : true | filter:searchIncomplete">
-            <!--had $ctrl.which in each one below-->
-            <!--<p>Task ID: {{task.id}}</p>-->
+        <li ng-repeat="task in tasks | filter:{complete:false} | filter:searchIncomplete">
             <form>
                 <input type="checkbox" ng-model="task.complete" ng-change="markComplete(task)">
                 <span><b>{{task.taskName}}</b> - <b>{{task.points}}</b></span>
@@ -23,23 +20,25 @@
     </ul>
 </section>
 
-<section class="complete small-5 columns">
+<section class="complete small-4 columns">
     <h2>Recently Completed Tasks</h2>
-    <input type="text" placeholder="search completed tasks" ng-model="searchComplete">
+    <!--<input type="text" placeholder="search completed tasks" ng-model="searchComplete">-->
     <ul>
         <!--orderBy:'+':true | filter:searchComplete | limitTo: 5">-->
-        <li ng-repeat="task in tasks | filter:{complete:true} | filter:searchComplete">
+        <li ng-repeat="task in tasks | filter:{complete:true} | orderBy: 'time' : true | limitTo: 5">
             <input type="checkbox" checked="true" disabled="true">
-            <span class="grey-strikethrough"><b>{{task.taskName}}</b> completed for <b>{{task.points | number}}</b> points by <b>{{task.user.userName || 'anonymous'}}</b>
+            <span class="grey-strikethrough"><b>{{task.user.userName || 'You'}}</b> completed <b>{{task.taskName}}</b>
                 <span am-time-ago="task.time"></span>
             </span>
         </li>
     </ul>
+    <a ui-sref="allComplete"><button>See all</button></a>
 </div>
 </section>
 
-<section class="users small-3 columns">
+<section class="users small-4 columns">
     <users></users>
+    <a ui-sref="leaderboard"><button>See all</button></a>
 </section>
 
 </section>

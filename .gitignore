@@ -1,6 +1,5 @@
 .gradle
-/build/
-!gradle/wrapper/gradle-wrapper.jar
+
 
 ### STS ###
 .apt_generated
@@ -18,14 +17,12 @@
 
 ### NetBeans ###
 nbproject/private/
-build/
 nbbuild/
 dist/
 nbdist/
 .nb-gradle/
 
 node_modules
-public
 .sass-cache
 *.map
 .DS_Store

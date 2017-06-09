@@ -1,9 +1,10 @@
-const app = angular.module('SharedSpace', ['ui.router','chart.js','angularMoment']);
+const app = angular.module('SharedSpace', ['ui.router','angularMoment','chart.js']);
 
 // require service
 const services = [
     require('./services/TaskService'),
     require('./services/SignInService'),
+    require('./services/LogoutService'),
     require('./services/LeaderBoardService'),
     require('./services/UserService'),
 
@@ -17,8 +18,10 @@ for (let i = 0; i < services.length; i++) {
 // require controllers
 const controllers = [
     require('./controllers/TaskController'),
+    require('./controllers/AllCompleteController'),
     require('./controllers/NewTaskController'),
     require('./controllers/SignInController'),
+    require('./controllers/NavController'),
     require('./controllers/LeaderBoardController'),
     require('./controllers/UserController'),
     require('./controllers/AddUserController'),
@@ -35,7 +38,9 @@ for (let i = 0; i < controllers.length; i++) {
 const components = [
     require('./components/task'),
     require('./components/newTask'),
+    require('./components/allComplete'),
     require('./components/signin'),
+    require('./components/navbar'),
     require('./components/leaderboard'),
     require('./components/about'),
     require('./components/users'),
@@ -65,7 +70,18 @@ $urlRouterProvider.otherwise('/signin');
         .state('tasks', {
             url: '/tasks',
             component: 'allTasks',
-
+            onEnter($state, SignInService) {
+                console.log('checking for login');
+                // return false;
+                return SignInService.isLoggedIn()
+                    .then(loggedIn => {
+                        console.log(`Logged in? ${loggedIn}`);
+                        if (!loggedIn) $state.go('signin');
+                        else {
+                            return true;
+                        }
+                    })
+            },
         })
 
          .state('leaderboard', {
@@ -77,6 +93,16 @@ $urlRouterProvider.otherwise('/signin');
             url: '/about',
             component: 'about',
         })
+
+        .state('allComplete', {
+            url: '/allComplete',
+            component: 'allComplete',
+        })
+
+        // .state('logout', {
+        //     url: '/logout',
+        //     component: 'logout',
+        // })
 
         .state('newTask', {
             url: '/newTask',
@@ -99,4 +125,12 @@ $urlRouterProvider.otherwise('/signin');
         });
 
        
-});
+})
+// .run(function($rootScope){ // runs at the beginning of the app
+//     console.log('run function');
+//     $rootScope.$on('$stateChangeStart', function (event) {
+//         console.log('route change');
+//     });
+
+// });
+
