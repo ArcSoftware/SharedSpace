@@ -24,7 +24,6 @@ dist/
 nbdist/
 .nb-gradle/
 
-public
 node_modules
 .sass-cache
 *.map
