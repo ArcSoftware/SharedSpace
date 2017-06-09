@@ -9,8 +9,8 @@ module.exports = {
 
         // not working as expected...
 
-        loggedIn = function () {
-            if (isLoggedIn() === false) {
+        $scope.loggedIn = function () {
+            if (SignInService.isLoggedIn() === false) {
                 console.log('not logged in');
                 $state.go('signin');
             } else {

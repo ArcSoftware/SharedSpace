@@ -1123,7 +1123,8 @@ body button {
   outline: 1px solid black; }
 
 body .logo {
-  color: green; }
+  color: #37393A;
+  font-family: 'Nunito', sans-serif; }
 
 .row ul {
   list-style-type: none;

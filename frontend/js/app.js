@@ -66,6 +66,18 @@ $urlRouterProvider.otherwise('/signin');
         .state('tasks', {
             url: '/tasks',
             component: 'allTasks',
+            onEnter($state, SignInService) {
+                console.log('checking for login');
+                // return false;
+                return SignInService.isLoggedIn()
+                    .then(loggedIn => {
+                        console.log(`Logged in? ${loggedIn}`);
+                        if (!loggedIn) $state.go('signin');
+                        else {
+                            return true;
+                        }
+                    })
+            },
         })
 
          .state('leaderboard', {
@@ -99,4 +111,12 @@ $urlRouterProvider.otherwise('/signin');
         });
 
        
-});
+})
+// .run(function($rootScope){ // runs at the beginning of the app
+//     console.log('run function');
+//     $rootScope.$on('$stateChangeStart', function (event) {
+//         console.log('route change');
+//     });
+
+// });
+

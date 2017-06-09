@@ -3,9 +3,19 @@
 @include foundation-global-styles;
 @include foundation-flex-grid;
 @include foundation-flex-classes;
-$grid-row-width : 100em;
-// $dark-grey-font : #4B4945;
-// $grey-border: #F1F1F1;
+
+// color scheme
+$background : #FAF0E6;
+$dark-grey : #37393A;
+$green-accent: #729B79;
+$light-blue-accent: #64B6AC;
+$dark-blue-accent: #366699;
+
+// font-family:
+// 'Cambay', sans-serif;
+// 'Alegreya Sans', sans-serif;
+// 'Nunito', sans-serif;
+
 
 @import 'header';
 @import 'search';
@@ -13,3 +23,5 @@ $grid-row-width : 100em;
 @import 'users';
 @import 'signin';
 @import 'leaderboard';
+
+$grid-row-width : 100em;
