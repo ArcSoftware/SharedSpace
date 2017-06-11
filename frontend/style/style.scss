@@ -1,11 +1,10 @@
 @import '../../node_modules/foundation-sites/scss/foundation';
 
 @include foundation-global-styles;
-@include foundation-flex-grid;
-@include foundation-flex-classes;
+@include foundation-grid;
 
 // color scheme
-$background : #FAF0E6;
+$background : #FAF0E6; // too yellow-ish?
 $dark-grey : #37393A;
 $green-accent: #729B79;
 $light-blue-accent: #64B6AC;
@@ -25,3 +24,7 @@ $dark-blue-accent: #366699;
 @import 'leaderboard';
 
 $grid-row-width : 100em;
+
+body {
+  background-color: $background;
+}
