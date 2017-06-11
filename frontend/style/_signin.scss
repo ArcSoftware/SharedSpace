@@ -1,4 +1,5 @@
 header {
+    overflow-x: hidden;
     @include grid-row;
 
     form {

@@ -1266,17 +1266,90 @@ h1 {
   color: #37393A;
   font-family: 'Alegreya Sans', sans-serif;
   text-align: center;
-  font-size: 3.5em; }
+  font-size: 3em; }
 
-.row ul {
+h2 {
+  text-align: center;
+  font-family: 'Cambay', sans-serif;
+  margin: 0;
+  padding: 0; }
+
+ul {
   list-style-type: none;
   padding: 0; }
 
-.row .complete .grey-strikethrough {
+li {
+  font-size: 1.2em;
+  padding-left: 10px;
+  -webkit-animation: fadein 1.5s;
+  /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1.5s;
+  /* Firefox < 16 */
+  -ms-animation: fadein 1.5s;
+  /* Internet Explorer */
+  animation: fadein 1.5s; }
+
+@keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+.grey-strikethrough {
   color: grey;
   text-decoration: line-through; }
 
+.complete {
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto; }
+  .complete::before, .complete::after {
+    display: table;
+    content: ' '; }
+  .complete::after {
+    clear: both; }
+
+.incomplete {
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto; }
+  .incomplete::before, .incomplete::after {
+    display: table;
+    content: ' '; }
+  .incomplete::after {
+    clear: both; }
+  .incomplete .search-tasks {
+    width: 100%;
+    margin: 0 auto; }
+  .incomplete ul li {
+    line-height: 50px; }
+  .incomplete ul li:nth-child(odd) {
+    background-color: #366699;
+    color: white; }
+  .incomplete ul li:nth-child(even) {
+    background-color: white;
+    color: #366699; }
+  .incomplete input {
+    font-size: 1.2em;
+    padding-left: 10px;
+    line-height: 30px; }
+
+.users {
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #64B6AC;
+  color: #37393A; }
+  .users::before, .users::after {
+    display: table;
+    content: ' '; }
+  .users::after {
+    clear: both; }
+  .users li:nth-child(1) {
+    color: greenyellow; }
+
 header {
+  overflow-x: hidden;
   max-width: 75rem;
   margin-right: auto;
   margin-left: auto; }
