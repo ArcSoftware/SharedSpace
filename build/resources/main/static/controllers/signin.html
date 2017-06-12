@@ -1,12 +1,11 @@
-<a ui-sref="signin"><button>Signin</button></a>
-<a ui-sref="logout"><button>Logout</button></a>
-<a ui-sref="tasks"><button>Tasks</button></a>
-<a ui-sref="leaderboard"><button>Leaderboard</button></a>
-<a ui-sref="about"><button>About</button></a>
-<a ui-sref="newTask"><button>New Task</button></a>
+<!--<navbar></navbar>-->
+
+<header>
 <form>
-    <section class="u_signin row align-center">
-        <input text="txtuser" placeholder="Enter name" ng-model="user_name" class="column small-9">
-        <a ui-sref="tasks" <button ng-click="go()">GO</button></a>
+     <!--row align-center-->
+    <section class="u_signin">
+        <input text="txtuser" placeholder="username" ng-model="user_name">
+        <a ui-sref="tasks" <button class="go" ng-click="go()">Signin</button></a>
     </section>
 </form>
+</header>

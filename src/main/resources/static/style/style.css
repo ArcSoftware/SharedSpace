@@ -1472,6 +1472,11 @@ header {
 canvas {
   display: none; }
 
+.pics .headshot {
+  margin: auto;
+  display: block;
+  width: 240px; }
+
 @media (min-width: 768px) {
   canvas {
     display: block;

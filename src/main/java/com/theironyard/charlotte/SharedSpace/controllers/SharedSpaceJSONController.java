@@ -1,8 +1,10 @@
 package com.theironyard.charlotte.SharedSpace.controllers;
 
 import com.theironyard.charlotte.SharedSpace.entities.Task;
+import com.theironyard.charlotte.SharedSpace.entities.Text;
 import com.theironyard.charlotte.SharedSpace.entities.User;
 import com.theironyard.charlotte.SharedSpace.services.TaskService;
+import com.theironyard.charlotte.SharedSpace.services.TextService;
 import com.theironyard.charlotte.SharedSpace.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,16 +18,24 @@ import java.util.ArrayList;
 public class SharedSpaceJSONController {
     private TaskService taskService;
     private UserService userService;
+    private TextService textService;
 
-    public SharedSpaceJSONController(TaskService taskService, UserService userService) {
+    public SharedSpaceJSONController(TaskService taskService, UserService userService, TextService textService) {
         this.taskService = taskService;
         this.userService = userService;
+        this.textService = textService;
     }
 
     @CrossOrigin
     @RequestMapping(path = "/getTasks", method = RequestMethod.GET)
     public ArrayList<Task> getTasks(boolean complete) {
         return taskService.getTasks(complete);
+    }
+
+    @CrossOrigin
+    @RequestMapping(path = "/getTasks", method = RequestMethod.POST)
+    public Text getTasks() {
+        return textService.createTextTasks();
     }
 
     @CrossOrigin
@@ -54,7 +64,6 @@ public class SharedSpaceJSONController {
 
     @CrossOrigin
     @RequestMapping(path = "/user", method = RequestMethod.GET)
-    //mapping to check is user is logged in session.
     public String userName(HttpSession session) {
         return userService.checkSession(session);
     }
