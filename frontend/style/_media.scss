@@ -1,0 +1,47 @@
+@media (min-width: 768px) {
+  canvas {
+    display: block;
+    width: 90%;
+  }
+
+  .user-wrapper {
+    display: none;
+  }
+
+  li {
+    font-size: 1.3em;
+  }
+
+  .u_signin {
+    max-width: 800px;
+    margin: 0 auto;
+    .go {
+      font-size: 1.3em;
+      max-width: 200px;
+      position: relative;
+      left: 42%;
+      bottom: 80px;
+      padding: 20px 40px 20px 40px;
+      &:hover {
+        background-color: #81a888;
+      }
+    }
+  }
+
+  .new-task {
+    text-align: center;
+
+    label {
+      text-align: right;
+    }
+
+    select {
+      @include grid-row;
+      max-width: 300px;
+    }
+    option {
+    max-width: 300px;
+    }
+  }
+
+} // close media

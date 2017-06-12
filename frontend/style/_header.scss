@@ -1,13 +1,25 @@
-body {
+
   h1 {
     padding: 0;
     margin: 0;
   }
-  button {
-    outline: 1px solid black;
-  }
+  
   .logo {
     color: $dark-grey;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Alegreya Sans', sans-serif;
+    text-align: center;
+    font-size: 3em;
   }
-}
+
+  .navbar {
+    text-align: center;
+
+    button {
+      color: $dark-blue-accent;
+      border: 1px solid black;
+      padding: 20px 30px 20px 30px;
+      &:hover {
+        color: black;
+      }
+    }
+  }

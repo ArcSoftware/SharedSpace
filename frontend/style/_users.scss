@@ -1,7 +1,22 @@
+.users {
+  display: none;
+}
+
 .user-wrapper {
+  ul {
 
-  .user-inner {
-    
+    li:nth-child(odd) {
+        // background-color: #EEE;
+        color: $dark-grey;
+      }
+
+      li:nth-child(even) {
+        background-color: #eee;
+        color: $dark-grey;
+      }
+
+      li:nth-child(1) {
+      color: green;
+    }
   }
-
 }

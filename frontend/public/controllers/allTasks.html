@@ -1,27 +1,23 @@
 <navbar></navbar>
 
 <section class="row">
-<section class="incomplete small-4 columns">
+<section class="incomplete">
     <h2>Incomplete Tasks</h2>
-    <input type="text" placeholder="search available tasks" ng-model="searchIncomplete">
+    <input type="text" placeholder="search by tasks or points" ng-model="searchIncomplete" class="search-tasks">
+    
     <ul>
-        <li ng-repeat="task in tasks | filter:{complete:false} | filter:searchIncomplete">
+        <li ng-repeat="task in tasks | filter:{complete:false} | filter:searchIncomplete | orderBy: 'time' : true">
             <form>
                 <input type="checkbox" ng-model="task.complete" ng-change="markComplete(task)">
                 <span><b>{{task.taskName}}</b> - <b>{{task.points}}</b></span>
             </form>
-            
-
-            
         </li>
     </ul>
 </section>
 
-<section class="complete small-4 columns">
+<section class="complete">
     <h2>Recently Completed Tasks</h2>
-    <!--<input type="text" placeholder="search completed tasks" ng-model="searchComplete">-->
     <ul>
-        <!--orderBy:'+':true | filter:searchComplete | limitTo: 5">-->
         <li ng-repeat="task in tasks | filter:{complete:true} | orderBy: 'time' : true | limitTo: 5">
             <input type="checkbox" checked="true" disabled="true">
             <span class="grey-strikethrough"><b>{{task.user.userName || 'You'}}</b> completed <b>{{task.taskName}}</b>
@@ -29,11 +25,11 @@
             </span>
         </li>
     </ul>
-    <a ui-sref="allComplete"><button>See all</button></a>
+    <a ui-sref="allComplete"><button class="see-all">See all</button></a>
 </div>
 </section>
 
-<section class="users small-4 columns">
+<section class="users">
     <users></users>
     <a ui-sref="leaderboard"><button>See all</button></a>
 </section>
