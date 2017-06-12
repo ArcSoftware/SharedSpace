@@ -1,11 +1,11 @@
 <div class="user-wrapper">
     <section class="user-inner">
-        <h2>Top 5 Users</h2>
+        <h2>All Users</h2>
         <!--<input type="text" placeholder="search users" ng-model="searchUsers">-->
         <ul>
             <!--rank the users by points                                (reverse = true)-->
             <ol>
-            <li ng-repeat="user in users | orderBy : 'points' : true | limitTo: 5 ">
+            <li ng-repeat="user in users | orderBy : 'points' : true">
 
                 <span>{{ user.userName || 'anonymous user' }} - </span>
                 <span>{{ user.points | number }}</span>
