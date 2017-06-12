@@ -7,6 +7,7 @@ const services = [
     require('./services/LogoutService'),
     require('./services/LeaderBoardService'),
     require('./services/UserService'),
+    require('./services/NavService'),
 
 ];
 
@@ -112,11 +113,3 @@ $urlRouterProvider.otherwise('/signin');
 
        
 })
-// .run(function($rootScope){ // runs at the beginning of the app
-//     console.log('run function');
-//     $rootScope.$on('$stateChangeStart', function (event) {
-//         console.log('route change');
-//     });
-
-// });
-

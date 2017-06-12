@@ -44,4 +44,28 @@
     }
   }
 
+    .navbar {
+    text-align: center;
+    background-color: $light-blue-accent;
+
+    button {
+      color: $dark-blue-accent;
+      display: inline;
+      border: none;
+      padding: 20px 30px 20px 30px;
+      width: inherit;
+      &:hover {
+        color: white;
+      }
+    }
+    .dropdown-nav-button {
+      display: none;
+    }
+  }
+
+.nav-wrap {
+  display: block;
+}
+
+
 } // close media

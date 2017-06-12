@@ -8,6 +8,7 @@ const services = [
     require('./services/LogoutService'),
     require('./services/LeaderBoardService'),
     require('./services/UserService'),
+    require('./services/NavService'),
 
 ];
 
@@ -113,16 +114,7 @@ $urlRouterProvider.otherwise('/signin');
 
        
 })
-// .run(function($rootScope){ // runs at the beginning of the app
-//     console.log('run function');
-//     $rootScope.$on('$stateChangeStart', function (event) {
-//         console.log('route change');
-//     });
-
-// });
-
-
-},{"./components/about":2,"./components/allComplete":3,"./components/leaderboard":4,"./components/navbar":5,"./components/newTask":6,"./components/signin":7,"./components/task":8,"./components/users":9,"./controllers/AllCompleteController":10,"./controllers/LeaderBoardController":11,"./controllers/NavController":12,"./controllers/NewTaskController":13,"./controllers/SignInController":14,"./controllers/TaskController":15,"./controllers/UserController":16,"./services/LeaderBoardService":17,"./services/LogoutService":18,"./services/SignInService":19,"./services/TaskService":20,"./services/UserService":21}],2:[function(require,module,exports){
+},{"./components/about":2,"./components/allComplete":3,"./components/leaderboard":4,"./components/navbar":5,"./components/newTask":6,"./components/signin":7,"./components/task":8,"./components/users":9,"./controllers/AllCompleteController":10,"./controllers/LeaderBoardController":11,"./controllers/NavController":12,"./controllers/NewTaskController":13,"./controllers/SignInController":14,"./controllers/TaskController":15,"./controllers/UserController":16,"./services/LeaderBoardService":17,"./services/LogoutService":18,"./services/NavService":19,"./services/SignInService":20,"./services/TaskService":21,"./services/UserService":22}],2:[function(require,module,exports){
 module.exports = {
     name: "about",
     array: {
@@ -220,11 +212,14 @@ module.exports={
 },{}],12:[function(require,module,exports){
 module.exports = {
     name: "NavController",
-    func: function ($scope, LogoutService, $state) {
+    func: function ($scope, LogoutService, $state, NavService) {
         $scope.logout = function() {
            LogoutService.logout();
             $state.go('signin');
-       }
+       },
+       $scope.toggleNav = function () {
+            NavService.toggleNav();
+        }
     }
 }
 },{}],13:[function(require,module,exports){
@@ -248,8 +243,6 @@ module.exports = {
             SignInService.showUsers($scope.user_name);
             console.log('$scope.user_name');
         },
-
-        // not working as expected...
 
         $scope.loggedIn = function () {
             if (SignInService.isLoggedIn() === false) {
@@ -329,6 +322,17 @@ module.exports = {
 }
 },{}],19:[function(require,module,exports){
 module.exports = {
+    name: 'NavService',
+    func: function() {
+        return {
+            toggleNav: function(){
+                console.log('clicked');
+            },
+          }
+        }
+      }
+},{}],20:[function(require,module,exports){
+module.exports = {
     name: 'SignInService',
     func: function($http) {
         
@@ -363,7 +367,7 @@ module.exports = {
         }
     }   
 }
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 module.exports = {
     name: 'TaskService',
     func: function ($http) {
@@ -441,7 +445,7 @@ module.exports = {
 }
 
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 module.exports = {
   name: 'UserService',
   func: function ($http) {

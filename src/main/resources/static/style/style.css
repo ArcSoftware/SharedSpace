@@ -1269,13 +1269,24 @@ h1 {
   font-size: 3em; }
 
 .navbar {
-  text-align: center; }
+  text-align: center;
+  background-color: #64B6AC; }
+  .navbar a {
+    text-decoration: none; }
   .navbar button {
+    display: block;
     color: #366699;
-    border: 1px solid black;
-    padding: 20px 30px 20px 30px; }
-    .navbar button:hover {
-      color: black; }
+    border: 1px solid #366699;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: white; }
+
+.nav-wrap {
+  display: none; }
+
+.hamburger {
+  font-size: 1.5em; }
 
 h2 {
   text-align: center;
@@ -1491,7 +1502,22 @@ canvas {
       .new-task select::after {
         clear: both; }
     .new-task option {
-      max-width: 300px; } }
+      max-width: 300px; }
+  .navbar {
+    text-align: center;
+    background-color: #64B6AC; }
+    .navbar button {
+      color: #366699;
+      display: inline;
+      border: none;
+      padding: 20px 30px 20px 30px;
+      width: inherit; }
+      .navbar button:hover {
+        color: white; }
+    .navbar .dropdown-nav-button {
+      display: none; }
+  .nav-wrap {
+    display: block; } }
 
 body {
   background-color: #FAF0E6; }
