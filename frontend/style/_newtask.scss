@@ -1,8 +1,6 @@
 .new-task {
-
-  select {
-    color: red;
-  }
+  
+  margin-top: 50px;
 
   .submit-task {
     background-color: $green-accent;
@@ -13,6 +11,7 @@
     font-size: 1em;
     display: block;
     margin: 0 auto;
+    margin-top: 10px;
   }
 
 }

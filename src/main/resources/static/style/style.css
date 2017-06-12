@@ -1268,6 +1268,15 @@ h1 {
   text-align: center;
   font-size: 3em; }
 
+.navbar {
+  text-align: center; }
+  .navbar button {
+    color: #366699;
+    border: 1px solid black;
+    padding: 20px 30px 20px 30px; }
+    .navbar button:hover {
+      color: black; }
+
 h2 {
   text-align: center;
   font-family: 'Cambay', sans-serif;
@@ -1294,9 +1303,6 @@ li {
     opacity: 0; }
   to {
     opacity: 1; } }
-
-.grey-strikethrough {
-  text-decoration: line-through; }
 
 .complete {
   max-width: 75rem;
@@ -1342,35 +1348,54 @@ li {
     padding-left: 10px;
     line-height: 30px; }
 
-.users {
+.grey-strikethrough {
+  text-decoration: line-through; }
+
+.search-complete {
+  width: 100%;
+  margin: 0 auto;
+  line-height: 30px;
+  font-size: 1.2em; }
+
+.grey-strikethrough .users {
   max-width: 75rem;
   margin-right: auto;
   margin-left: auto;
   background-color: #64B6AC;
   color: #37393A; }
-  .users::before, .users::after {
+  .grey-strikethrough .users::before, .grey-strikethrough .users::after {
     display: table;
     content: ' '; }
-  .users::after {
+  .grey-strikethrough .users::after {
     clear: both; }
-  .users li:nth-child(1) {
+  .grey-strikethrough .users li:nth-child(1) {
     color: greenyellow; }
 
-.new-task select {
-  color: red; }
-
-.new-task .submit-task {
-  background-color: #729B79;
-  color: white;
-  padding: 10px 20px 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 1em;
-  display: block;
-  margin: 0 auto; }
+.new-task {
+  margin-top: 50px; }
+  .new-task .submit-task {
+    background-color: #729B79;
+    color: white;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px; }
 
 .users {
   display: none; }
+
+.user-wrapper ul li:nth-child(odd) {
+  color: #37393A; }
+
+.user-wrapper ul li:nth-child(even) {
+  background-color: #eee;
+  color: #37393A; }
+
+.user-wrapper ul li:nth-child(1) {
+  color: green; }
 
 header {
   overflow-x: hidden;
@@ -1433,7 +1458,8 @@ canvas {
 
 @media (min-width: 768px) {
   canvas {
-    display: block; }
+    display: block;
+    width: 90%; }
   .user-wrapper {
     display: none; }
   li {
@@ -1450,15 +1476,24 @@ canvas {
       padding: 20px 40px 20px 40px; }
       .u_signin .go:hover {
         background-color: #81a888; }
-  .new-task select {
-    max-width: 75rem;
-    margin-right: auto;
-    margin-left: auto; }
-    .new-task select::before, .new-task select::after {
-      display: table;
-      content: ' '; }
-    .new-task select::after {
-      clear: both; } }
+  .new-task {
+    text-align: center; }
+    .new-task label {
+      text-align: right; }
+    .new-task select {
+      max-width: 75rem;
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 300px; }
+      .new-task select::before, .new-task select::after {
+        display: table;
+        content: ' '; }
+      .new-task select::after {
+        clear: both; }
+    .new-task option {
+      max-width: 300px; } }
 
 body {
   background-color: #FAF0E6; }
+  body .row {
+    max-width: 50rem; }

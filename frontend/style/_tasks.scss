@@ -23,10 +23,6 @@ h2 {
       }
   }
 
-  .grey-strikethrough {
-      text-decoration: line-through;
-    }
-
   .complete {
     @include grid-row;
     ul {
@@ -77,6 +73,19 @@ h2 {
       line-height: 30px;
    }
   } 
+
+  .grey-strikethrough {
+      text-decoration: line-through;
+    }
+
+  .search-complete {
+    width: 100%;
+    margin: 0 auto;
+    line-height: 30px;
+    font-size: 1.2em;
+  }
+
+  .grey-strikethrough
 
   .users {
     @include grid-row;

@@ -1,9 +1,9 @@
 <navbar></navbar>
 
+<section class="row">
 <h2>All Completed Tasks</h2>
-    <input type="text" placeholder="search completed tasks" ng-model="searchComplete">
+    <input type="text" class="search-complete" placeholder="search completed tasks" ng-model="searchComplete">
     <ul>
-        <!--orderBy:'+':true | filter:searchComplete | limitTo: 5">-->
         <li ng-repeat="task in tasks | filter:{complete:true} | orderBy: 'time' : true | filter:searchComplete">
             <input type="checkbox" checked="true" disabled="true">
             <span class="grey-strikethrough"><b>{{task.taskName}}</b> completed for <b>{{task.points | number}}</b> points by <b>{{task.user.userName || 'You'}}</b>
@@ -11,3 +11,4 @@
             </span>
         </li>
     </ul>
+<section>

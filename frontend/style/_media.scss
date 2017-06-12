@@ -1,6 +1,7 @@
 @media (min-width: 768px) {
   canvas {
     display: block;
+    width: 90%;
   }
 
   .user-wrapper {
@@ -28,8 +29,18 @@
   }
 
   .new-task {
+    text-align: center;
+
+    label {
+      text-align: right;
+    }
+
     select {
       @include grid-row;
+      max-width: 300px;
+    }
+    option {
+    max-width: 300px;
     }
   }
 
