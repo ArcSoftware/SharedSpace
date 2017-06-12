@@ -44,7 +44,7 @@
     }
   }
 
-    .navbar {
+  .navbar {
     text-align: center;
     background-color: $light-blue-accent;
 
@@ -54,14 +54,18 @@
       border: none;
       padding: 20px 30px 20px 30px;
       width: inherit;
+      color: white;
       &:hover {
-        color: white;
+        color: $background;
       }
     }
-    .dropdown-nav-button {
-      display: none;
-    }
+
   }
+
+.hamburger,
+.dropdown-nav-button {
+  display: none;
+}
 
 .nav-wrap {
   display: block;

@@ -7,7 +7,6 @@ const services = [
     require('./services/LogoutService'),
     require('./services/LeaderBoardService'),
     require('./services/UserService'),
-    require('./services/NavService'),
 
 ];
 
@@ -73,9 +72,8 @@ $urlRouterProvider.otherwise('/signin');
                 return SignInService.isLoggedIn()
                     .then(loggedIn => {
                         console.log(`Logged in? ${loggedIn}`);
-                        if (!loggedIn) $state.go('signin');
-                        else {
-                            return true;
+                        if (!loggedIn) {
+                            return $state.target('signin');
                         }
                     })
             },
@@ -95,11 +93,6 @@ $urlRouterProvider.otherwise('/signin');
             url: '/allComplete',
             component: 'allComplete',
         })
-
-        // .state('logout', {
-        //     url: '/logout',
-        //     component: 'logout',
-        // })
 
         .state('newTask', {
             url: '/newTask',

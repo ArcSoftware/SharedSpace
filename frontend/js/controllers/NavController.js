@@ -1,12 +1,14 @@
 module.exports = {
     name: "NavController",
-    func: function ($scope, LogoutService, $state, NavService) {
+    func: function ($scope, LogoutService, $state) {
         $scope.logout = function() {
            LogoutService.logout();
             $state.go('signin');
        },
-       $scope.toggleNav = function () {
-            NavService.toggleNav();
+        $scope.expanded = true;
+        $scope.toggle = function() {
+            $scope.expanded = !$scope.expanded;
+            console.log('clicked');
         }
     }
 }
