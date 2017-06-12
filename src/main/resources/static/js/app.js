@@ -73,9 +73,8 @@ $urlRouterProvider.otherwise('/signin');
                 return SignInService.isLoggedIn()
                     .then(loggedIn => {
                         console.log(`Logged in? ${loggedIn}`);
-                        if (!loggedIn) $state.go('signin');
-                        else {
-                            return true;
+                        if (!loggedIn) {
+                            return $state.target('signin');
                         }
                     })
             },
@@ -96,11 +95,6 @@ $urlRouterProvider.otherwise('/signin');
             component: 'allComplete',
         })
 
-        // .state('logout', {
-        //     url: '/logout',
-        //     component: 'logout',
-        // })
-
         .state('newTask', {
             url: '/newTask',
             component: 'newTask',
@@ -113,15 +107,6 @@ $urlRouterProvider.otherwise('/signin');
 
        
 })
-// .run(function($rootScope){ // runs at the beginning of the app
-//     console.log('run function');
-//     $rootScope.$on('$stateChangeStart', function (event) {
-//         console.log('route change');
-//     });
-
-// });
-
-
 },{"./components/about":2,"./components/allComplete":3,"./components/leaderboard":4,"./components/navbar":5,"./components/newTask":6,"./components/signin":7,"./components/task":8,"./components/users":9,"./controllers/AllCompleteController":10,"./controllers/LeaderBoardController":11,"./controllers/NavController":12,"./controllers/NewTaskController":13,"./controllers/SignInController":14,"./controllers/TaskController":15,"./controllers/UserController":16,"./services/LeaderBoardService":17,"./services/LogoutService":18,"./services/SignInService":19,"./services/TaskService":20,"./services/UserService":21}],2:[function(require,module,exports){
 module.exports = {
     name: "about",
@@ -224,7 +209,12 @@ module.exports = {
         $scope.logout = function() {
            LogoutService.logout();
             $state.go('signin');
-       }
+       },
+        $scope.expanded = true;
+        $scope.toggle = function() {
+            $scope.expanded = !$scope.expanded;
+            console.log('clicked');
+        }
     }
 }
 },{}],13:[function(require,module,exports){
@@ -248,8 +238,6 @@ module.exports = {
             SignInService.showUsers($scope.user_name);
             console.log('$scope.user_name');
         },
-
-        // not working as expected...
 
         $scope.loggedIn = function () {
             if (SignInService.isLoggedIn() === false) {

@@ -23,6 +23,7 @@ $dark-blue-accent: #366699;
 @import 'users';
 @import 'signin';
 @import 'leaderboard';
+@import 'about';
 @import 'media';
 
 $grid-row-width : 100em;
@@ -30,6 +31,6 @@ $grid-row-width : 100em;
 body {
   background-color: $background;
   .row {
-    max-width: 50rem;
+    max-width: 45rem;
   }
 }

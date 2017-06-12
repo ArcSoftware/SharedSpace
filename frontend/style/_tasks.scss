@@ -71,6 +71,9 @@ h2 {
       font-size: 1.2em;
       padding-left: 10px;
       line-height: 30px;
+      &:focus{
+        outline: 0;
+      }
    }
   } 
 
@@ -85,8 +88,6 @@ h2 {
     font-size: 1.2em;
   }
 
-  .grey-strikethrough
-
   .users {
     @include grid-row;
     background-color: $light-blue-accent;
@@ -96,4 +97,10 @@ h2 {
       }
   }
 
+.see-all {
+  color: $dark-blue-accent;
+  &:hover {
+    color: $light-blue-accent;
+  }
+}
 

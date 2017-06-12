@@ -7,8 +7,6 @@ module.exports = {
             console.log('$scope.user_name');
         },
 
-        // not working as expected...
-
         $scope.loggedIn = function () {
             if (SignInService.isLoggedIn() === false) {
                 console.log('not logged in');

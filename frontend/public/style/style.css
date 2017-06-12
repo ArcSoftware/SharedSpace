@@ -1269,13 +1269,22 @@ h1 {
   font-size: 3em; }
 
 .navbar {
-  text-align: center; }
+  text-align: center;
+  background-color: #64B6AC;
+  margin-bottom: 10px; }
+  .navbar a {
+    text-decoration: none; }
   .navbar button {
+    display: block;
     color: #366699;
-    border: 1px solid black;
-    padding: 20px 30px 20px 30px; }
-    .navbar button:hover {
-      color: black; }
+    border: 1px solid #366699;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: white; }
+
+.hamburger {
+  font-size: 1.5em; }
 
 h2 {
   text-align: center;
@@ -1347,6 +1356,8 @@ li {
     font-size: 1.2em;
     padding-left: 10px;
     line-height: 30px; }
+    .incomplete input:focus {
+      outline: 0; }
 
 .grey-strikethrough {
   text-decoration: line-through; }
@@ -1357,19 +1368,24 @@ li {
   line-height: 30px;
   font-size: 1.2em; }
 
-.grey-strikethrough .users {
+.users {
   max-width: 75rem;
   margin-right: auto;
   margin-left: auto;
   background-color: #64B6AC;
   color: #37393A; }
-  .grey-strikethrough .users::before, .grey-strikethrough .users::after {
+  .users::before, .users::after {
     display: table;
     content: ' '; }
-  .grey-strikethrough .users::after {
+  .users::after {
     clear: both; }
-  .grey-strikethrough .users li:nth-child(1) {
+  .users li:nth-child(1) {
     color: greenyellow; }
+
+.see-all {
+  color: #366699; }
+  .see-all:hover {
+    color: #64B6AC; }
 
 .new-task {
   margin-top: 50px; }
@@ -1456,6 +1472,11 @@ header {
 canvas {
   display: none; }
 
+.pics .headshot {
+  margin: auto;
+  display: block;
+  width: 240px; }
+
 @media (min-width: 768px) {
   canvas {
     display: block;
@@ -1491,9 +1512,26 @@ canvas {
       .new-task select::after {
         clear: both; }
     .new-task option {
-      max-width: 300px; } }
+      max-width: 300px; }
+  .navbar {
+    text-align: center;
+    background-color: #64B6AC; }
+    .navbar button {
+      color: #366699;
+      display: inline;
+      border: none;
+      padding: 20px 30px 20px 30px;
+      width: inherit;
+      color: white; }
+      .navbar button:hover {
+        color: #FAF0E6; }
+  .hamburger,
+  .dropdown-nav-button {
+    display: none; }
+  .nav-wrap {
+    display: block; } }
 
 body {
   background-color: #FAF0E6; }
   body .row {
-    max-width: 50rem; }
+    max-width: 45rem; }
