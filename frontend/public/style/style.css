@@ -1279,7 +1279,7 @@ ul {
   padding: 0; }
 
 li {
-  font-size: 1.2em;
+  font-size: 1.1em;
   padding-left: 10px;
   -webkit-animation: fadein 1.5s;
   /* Safari, Chrome and Opera > 12.1 */
@@ -1296,7 +1296,6 @@ li {
     opacity: 1; } }
 
 .grey-strikethrough {
-  color: grey;
   text-decoration: line-through; }
 
 .complete {
@@ -1308,6 +1307,16 @@ li {
     content: ' '; }
   .complete::after {
     clear: both; }
+  .complete ul li:nth-child(1) {
+    color: #37393a; }
+  .complete ul li:nth-child(2) {
+    color: rgba(55, 57, 58, 0.8); }
+  .complete ul li:nth-child(3) {
+    color: rgba(55, 57, 58, 0.6); }
+  .complete ul li:nth-child(4) {
+    color: rgba(55, 57, 58, 0.4); }
+  .complete ul li:nth-child(5) {
+    color: rgba(55, 57, 58, 0.2); }
 
 .incomplete {
   max-width: 75rem;
@@ -1324,11 +1333,10 @@ li {
   .incomplete ul li {
     line-height: 50px; }
   .incomplete ul li:nth-child(odd) {
-    background-color: #366699;
-    color: white; }
+    color: #37393A; }
   .incomplete ul li:nth-child(even) {
-    background-color: white;
-    color: #366699; }
+    background-color: #eee;
+    color: #37393A; }
   .incomplete input {
     font-size: 1.2em;
     padding-left: 10px;
@@ -1347,6 +1355,22 @@ li {
     clear: both; }
   .users li:nth-child(1) {
     color: greenyellow; }
+
+.new-task select {
+  color: red; }
+
+.new-task .submit-task {
+  background-color: #729B79;
+  color: white;
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1em;
+  display: block;
+  margin: 0 auto; }
+
+.users {
+  display: none; }
 
 header {
   overflow-x: hidden;
@@ -1403,6 +1427,38 @@ header {
   border-radius: 5px;
   text-decoration: none;
   font-size: 1em; }
+
+canvas {
+  display: none; }
+
+@media (min-width: 768px) {
+  canvas {
+    display: block; }
+  .user-wrapper {
+    display: none; }
+  li {
+    font-size: 1.3em; }
+  .u_signin {
+    max-width: 800px;
+    margin: 0 auto; }
+    .u_signin .go {
+      font-size: 1.3em;
+      max-width: 200px;
+      position: relative;
+      left: 42%;
+      bottom: 80px;
+      padding: 20px 40px 20px 40px; }
+      .u_signin .go:hover {
+        background-color: #81a888; }
+  .new-task select {
+    max-width: 75rem;
+    margin-right: auto;
+    margin-left: auto; }
+    .new-task select::before, .new-task select::after {
+      display: table;
+      content: ' '; }
+    .new-task select::after {
+      clear: both; } }
 
 body {
   background-color: #FAF0E6; }

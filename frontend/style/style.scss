@@ -19,9 +19,11 @@ $dark-blue-accent: #366699;
 @import 'header';
 @import 'search';
 @import 'tasks';
+@import 'newtask';
 @import 'users';
 @import 'signin';
 @import 'leaderboard';
+@import 'media';
 
 $grid-row-width : 100em;
 
