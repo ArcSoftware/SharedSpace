@@ -1,7 +1,7 @@
 <navbar></navbar>
 
 <form>
-  <section class="row align-center">
+  <section class="new-task">
     <!--<input type="text" placeholder="Enter task name" ng-model="taskName">-->
     <label>Task</label>
     <select name="Tasks" ng-model="taskName">
@@ -13,7 +13,7 @@
     </select>
     
     <!--<input type="number" placeholder="Enter points" ng-model="taskPoints">-->
-    <label>Points</label>
+    <br><label>Points</label>
     <select name="Points" ng-model="taskPoints">
       <option selected disabled hidden style='display: none' value=''></option>
       <optgroup label="Points">
@@ -23,6 +23,6 @@
       <option value="400">400</option>
       <option value="500">500</option>
     </select>
-    <button ng-click="submit()">Submit</button>
+    <button ng-click="submit()" class="submit-task">Submit</button>
   </section>
 </form>
