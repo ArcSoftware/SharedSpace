@@ -22,7 +22,7 @@ public class ImageService {
 
     public String getLink(String img) {
         img = img.equalsIgnoreCase("jake") ? "TvVstfB": img;
-        img = img.equalsIgnoreCase("sumon") ? "CGwecZo": img;
+        img = img.equalsIgnoreCase("suman") ? "CGwecZo": img;
         img = img.equalsIgnoreCase("nick") ? "LBWodCP": img;
         HttpHeaders headers = new HttpHeaders();
         List<String> authheaders = new ArrayList<>();
