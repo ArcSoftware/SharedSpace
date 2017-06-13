@@ -24,6 +24,6 @@
       <option value="400">400</option>
       <option value="500">500</option>
     </select>
-    <button ng-click="submit()" class="submit-task">Submit</button>
+    <button ng-click="submit()" class="submit-task" ng-disabled="!taskName">Submit</button>
   </section>
 </form>
