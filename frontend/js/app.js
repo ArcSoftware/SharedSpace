@@ -24,6 +24,8 @@ const controllers = [
     require('./controllers/NavController'),
     require('./controllers/LeaderBoardController'),
     require('./controllers/UserController'),
+    require('./controllers/AddUserController'),
+    require('./controllers/LoggedInUserController'),
 
 ];
 
@@ -42,6 +44,8 @@ const components = [
     require('./components/leaderboard'),
     require('./components/about'),
     require('./components/users'),
+    require('./components/adduser'),
+    require('./components/loggedinuser')
 ]
 
 // loop all components
@@ -55,7 +59,7 @@ app.config( function ($stateProvider, $urlRouterProvider) {
 // users cannot view tasks unless they are signed in
 
 $urlRouterProvider.otherwise('/signin');
-    
+ 
     $stateProvider
 
         .state('signin', {
@@ -101,6 +105,17 @@ $urlRouterProvider.otherwise('/signin');
         .state('users', {
             url: '/users',
             component: 'users',
+        })
+
+        .state('adduser',{
+            url: '/adduser',
+            component: 'adduser',
+        })
+//$urlRouterProvider.otherwise('/loggedinuser');  
+   // .stateProvider
+        .state('loggedinuser',{
+            url: '/loggedinuser',
+            component : 'loggedinuser',
         });
 
        

@@ -1,6 +1,7 @@
 module.exports= {
     name: 'LeaderBoardService',
     func: function($http){
+        
         let leadUsers=[];
         let userNames=[];
         let pointDatas=[];

@@ -1344,29 +1344,34 @@ li {
     color: rgba(255, 255, 255, 0.2); }
 
 .incomplete {
+  margin: 0; }
+
+.users {
   max-width: 75rem;
   margin-right: auto;
   margin-left: auto; }
-  .incomplete::before, .incomplete::after {
+  .users::before, .users::after {
     display: table;
     content: ' '; }
-  .incomplete::after {
+  .users::after {
     clear: both; }
-  .incomplete .search-tasks {
+  .users .search-tasks {
     width: 100%;
     margin: 0 auto; }
-  .incomplete ul li {
+  .users ul li {
     line-height: 50px; }
+
   .incomplete ul li:nth-child(odd) {
     color: white; }
   .incomplete ul li:nth-child(even) {
+
     background-color: #eee;
     color: #37393A; }
-  .incomplete input {
+  .users input {
     font-size: 1.2em;
     padding-left: 10px;
     line-height: 30px; }
-    .incomplete input:focus {
+    .users input:focus {
       outline: 0; }
 
 .grey-strikethrough {
@@ -1510,8 +1515,18 @@ header {
   text-decoration: none;
   font-size: 1em; }
 
+.leaderboard {
+  background-color: #FAF0E6;
+  border: 0; }
+
+.header {
+  text-align: center;
+  font-family: 'Cambay', sans-serif;
+  color: #729B79; }
+
 canvas {
   display: none; }
+
 
 .bios .headshot {
   margin: auto;
@@ -1543,7 +1558,7 @@ canvas {
     .new-task label {
       text-align: right; }
     .new-task select {
-      max-width: 75rem;
+      max-width: 100em;
       margin-right: auto;
       margin-left: auto;
       max-width: 300px; }
