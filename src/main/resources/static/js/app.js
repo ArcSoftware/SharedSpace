@@ -69,7 +69,6 @@ $urlRouterProvider.otherwise('/signin');
             component: 'allTasks',
             onEnter($state, SignInService) {
                 console.log('checking for login');
-                // return false;
                 return SignInService.isLoggedIn()
                     .then(loggedIn => {
                         console.log(`Logged in? ${loggedIn}`);
