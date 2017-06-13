@@ -55,8 +55,9 @@ h2 {
     @include grid-row;
 
     .search-tasks {
-      width: 100%;
-      margin: 0 auto;
+      width: 150px;
+      // margin: 0 auto;
+      display: inline-block;
     }
 
     ul {
@@ -66,6 +67,7 @@ h2 {
 
       li:nth-child(odd) {
         // background-color: #EEE;
+        background-color: #325b87;
         color: white;
       }
 
@@ -105,9 +107,14 @@ h2 {
   }
 
 .see-all {
-  color: $dark-blue-accent;
+  color: white;
+  text-decoration: underline;
   &:hover {
     color: $light-blue-accent;
+  }
+
+  .prompt {
+    display: inline;
   }
 }
 

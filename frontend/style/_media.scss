@@ -20,8 +20,8 @@
       font-size: 1.3em;
       max-width: 200px;
       position: relative;
-      left: 42%;
-      bottom: 80px;
+      left: 41.5%;
+      bottom: 95px;
       padding: 20px 40px 20px 40px;
       &:hover {
         background-color: #71bcb3;
@@ -46,8 +46,10 @@
   }
 
   .navbar {
+    margin-bottom: 50px;
     text-align: center;
-    background-color: $light-blue-accent;
+    // background-color: $light-blue-accent;
+    background-color: rgba(100, 182, 172, 0.5);
 
     button {
       color: $dark-blue-accent;

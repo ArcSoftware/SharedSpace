@@ -1271,7 +1271,7 @@ h1 {
 .navbar {
   font-size: 1.2em;
   text-align: center;
-  background-color: #64B6AC;
+  background-color: rgba(100, 182, 172, 0.5);
   margin-bottom: 10px;
   box-shadow: 2px 2px 2px #37393A; }
   .navbar a {
@@ -1353,11 +1353,12 @@ li {
   .incomplete::after {
     clear: both; }
   .incomplete .search-tasks {
-    width: 100%;
-    margin: 0 auto; }
+    width: 150px;
+    display: inline-block; }
   .incomplete ul li {
     line-height: 50px; }
   .incomplete ul li:nth-child(odd) {
+    background-color: #325b87;
     color: white; }
   .incomplete ul li:nth-child(even) {
     background-color: #eee;
@@ -1393,9 +1394,12 @@ li {
     color: greenyellow; }
 
 .see-all {
-  color: #366699; }
+  color: white;
+  text-decoration: underline; }
   .see-all:hover {
     color: #64B6AC; }
+  .see-all .prompt {
+    display: inline; }
 
 .new-task {
   margin-top: 50px; }
@@ -1533,8 +1537,8 @@ canvas {
       font-size: 1.3em;
       max-width: 200px;
       position: relative;
-      left: 42%;
-      bottom: 80px;
+      left: 41.5%;
+      bottom: 95px;
       padding: 20px 40px 20px 40px; }
       .u_signin .go:hover {
         background-color: #71bcb3; }
@@ -1555,8 +1559,9 @@ canvas {
     .new-task option {
       max-width: 300px; }
   .navbar {
+    margin-bottom: 50px;
     text-align: center;
-    background-color: #64B6AC; }
+    background-color: rgba(100, 182, 172, 0.5); }
     .navbar button {
       color: #366699;
       display: inline;

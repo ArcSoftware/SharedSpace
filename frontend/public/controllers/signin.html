@@ -4,7 +4,7 @@
      <!--row align-center-->
     <section class="u_signin">
         <input text="txtuser" placeholder="username" ng-model="user_name">
-        <a ui-sref="tasks" <button class="go" ng-click="go()">Signin</button></a>
+        <a ui-sref="tasks"><button type="submit" ng-disabled="!user_name" class="go" ng-click="go()">Signin</button></a>
     </section>
 </form>
 </header>
