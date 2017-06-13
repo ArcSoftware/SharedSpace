@@ -1,4 +1,5 @@
 @media (min-width: 768px) {
+
   canvas {
     display: block;
     width: 90%;
@@ -23,7 +24,7 @@
       bottom: 80px;
       padding: 20px 40px 20px 40px;
       &:hover {
-        background-color: #81a888;
+        background-color: #71bcb3;
       }
     }
   }
@@ -55,6 +56,10 @@
       padding: 20px 30px 20px 30px;
       width: inherit;
       color: white;
+        -ms-transition:.5s;
+        -moz-transition:.5s;
+        -webkit-transition:.5s;
+        transition:.5s;
       &:hover {
         color: $background;
       }
@@ -73,5 +78,77 @@
 
 
 
+.bios {
+
+  .headshot {
+    // display: inline-block;
+    width: 240px;
+  }
+
+  .jake { 
+    height: 400px;
+    position: relative;
+    text-align: right;
+    h2 {
+      text-align: left;
+    }
+    .headshot {
+      position: absolute;
+      left: 0;
+    }
+  }
+
+  .nick {
+    height: 400px;
+    position: relative;
+    text-align: left;
+    h2 {
+      text-align: right;
+    }
+    .headshot {
+      position: absolute;
+      right: 0;
+    }
+    
+  }
+
+  .suman {
+    height: 400px;
+    position: relative;
+    text-align: right;
+    h2 {
+      text-align: left;
+    }
+    .headshot {
+      position: absolute;
+      left: 0;
+    }
+  }
+
+}
+
+.bios:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.signin {
+  width: 350px;
+  margin: auto;
+  display: block;
+}
+
+.logo {
+  // width: 300px;
+  // margin: auto;
+  // display: block;
+  display: none;
+}
+
+.logo-nav {
+  display: inline-block;
+  width: 100px;
+}
 
 } // close media
