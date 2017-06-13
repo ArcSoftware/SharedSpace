@@ -1344,30 +1344,33 @@ li {
     color: rgba(255, 255, 255, 0.2); }
 
 .incomplete {
+  margin: 0; }
+
+.users {
   max-width: 75rem;
   margin-right: auto;
   margin-left: auto; }
-  .incomplete::before, .incomplete::after {
+  .users::before, .users::after {
     display: table;
     content: ' '; }
-  .incomplete::after {
+  .users::after {
     clear: both; }
-  .incomplete .search-tasks {
+  .users .search-tasks {
     width: 150px;
     display: inline-block; }
-  .incomplete ul li {
+  .users ul li {
     line-height: 50px; }
-  .incomplete ul li:nth-child(odd) {
+  .users ul li:nth-child(odd) {
     background-color: #325b87;
     color: white; }
-  .incomplete ul li:nth-child(even) {
+  .users ul li:nth-child(even) {
     background-color: #eee;
     color: #37393A; }
-  .incomplete input {
+  .users input {
     font-size: 1.2em;
     padding-left: 10px;
     line-height: 30px; }
-    .incomplete input:focus {
+    .users input:focus {
       outline: 0; }
 
 .grey-strikethrough {
@@ -1514,8 +1517,39 @@ header {
   text-decoration: none;
   font-size: 1em; }
 
+.leaderboard {
+  background-color: #366699;
+  border: 0; }
+
+.header {
+  text-align: center;
+  font-family: 'Cambay', sans-serif;
+  color: #729B79; }
+
 canvas {
   display: none; }
+
+.s_user {
+  text-align: right;
+  margin-right: 30px; }
+
+@media (max-width: 768px) {
+  .leaderboard {
+    width: 100%;
+    float: left;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+    background-color: #366699;
+    text-align: center;
+    border: 0; } }
+  @media print and (max-width: 768px), screen and (max-width: 768px) and (min-width: 40em) {
+    .leaderboard {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem; } }
+
+@media (max-width: 768px) {
+    .leaderboard:last-child:not(:first-child) {
+      float: right; } }
 
 .bios .headshot {
   margin: auto;
@@ -1547,7 +1581,7 @@ canvas {
     .new-task label {
       text-align: right; }
     .new-task select {
-      max-width: 75rem;
+      max-width: 100em;
       margin-right: auto;
       margin-left: auto;
       max-width: 300px; }

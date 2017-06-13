@@ -24,7 +24,7 @@ public class ImageService {
         img = img.equalsIgnoreCase("jake") ? "TvVstfB": img;
         img = img.equalsIgnoreCase("suman") ? "CGwecZo": img;
         img = img.equalsIgnoreCase("nick") ? "LBWodCP": img;
-        img = img.equalsIgnoreCase("logo") ? "UIsOTlZ": img;
+        img = img.equalsIgnoreCase("logo") ? "sQimHF5": img;
 
         HttpHeaders headers = new HttpHeaders();
         List<String> authheaders = new ArrayList<>();

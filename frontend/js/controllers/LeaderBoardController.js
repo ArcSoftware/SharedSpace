@@ -1,7 +1,7 @@
 module.exports={
     name: "LeaderBoardController",
     func: function($scope, LeaderBoardService){
-       $scope.leadUsers= LeaderBoardService.getLeadUsers();
+      // $scope.leadUsers= LeaderBoardService.getLeadUsers();
         
         //console.log(labels.push);
         $scope.labels = LeaderBoardService.getUserName();

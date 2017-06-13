@@ -52,6 +52,14 @@ h2 {
   }
 
   .incomplete {
+
+       margin: 0; 
+  } 
+
+  .users {
+    //background-color:$background;
+    //  text-align: center;
+
     @include grid-row;
 
     .search-tasks {
@@ -111,6 +119,7 @@ h2 {
   text-decoration: underline;
   &:hover {
     color: $light-blue-accent;
+
   }
 
   .prompt {

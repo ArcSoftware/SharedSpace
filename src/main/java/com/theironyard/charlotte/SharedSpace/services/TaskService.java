@@ -26,12 +26,10 @@ public class TaskService {
         this.tasks = tasks;
     }
 
-    public void createTestTask() {
-        User testUser = new User("test", 100);
-        Task newTask = new Task("test this crap", false, 100, testUser);
-        System.out.format("New test task: %s \n Task points: %d \n Task user: %s \n", newTask.getTaskName(),
-                newTask.getPoints(), newTask.getUser().getUserName());
-        users.save(testUser);
+    public void createCoffeeTask() {
+        Task newTask = new Task("Brew more coffee", false, 100, null);
+        System.out.format("New Coffee task: %s \n Task points: %d \n", newTask.getTaskName(),
+                newTask.getPoints());
         tasks.save(newTask);
     }
 

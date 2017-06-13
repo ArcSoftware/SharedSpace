@@ -31,7 +31,15 @@ $dark-blue-accent: #366699;
 @import 'newtask';
 @import 'users';
 @import 'signin';
+@import 'adduser';
 @import 'leaderboard';
+
+@import 'userlogged';
+@import 'device';
+
+$grid-row-width : 100em;
+
+
 @import 'about';
 @import 'media';
 
@@ -44,3 +52,4 @@ body {
     max-width: 45rem;
   }
 }
+
