@@ -351,7 +351,7 @@ module.exports = {
     }   
 }
 },{}],20:[function(require,module,exports){
-module.exports = {
+ module.exports = {
     name: 'TaskService',
     func: function ($http) {
 
