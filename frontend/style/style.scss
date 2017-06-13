@@ -22,11 +22,12 @@ $dark-blue-accent: #366699;
 @import 'tasks';
 @import 'users';
 @import 'signin';
-<<<<<<< HEAD
 @import 'adduser';
 @import 'leaderboard';
-=======
-@import 'leaderboard';
+@import 'userlogged';
+@import 'device';
+
+//@import 'leaderboard';
 
 $grid-row-width : 100em;
->>>>>>> 8fb1fa4ec13d21d122dfb65be2721a0b11719004
+

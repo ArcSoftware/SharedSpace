@@ -1,0 +1,9 @@
+@media (max-width:600px){
+.leaderboard {
+  @include grid-column(12); 
+  background-color: $background;
+  text-align:center;
+  border: 0;
+
+ }
+}

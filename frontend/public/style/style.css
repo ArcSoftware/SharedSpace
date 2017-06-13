@@ -1133,3 +1133,36 @@ body .logo {
 .row .complete .grey-strikethrough {
   color: grey;
   text-decoration: line-through; }
+
+.row .incomplete {
+  margin: 0; }
+
+.leaderboard {
+  background-color: #FAF0E6;
+  border: 0; }
+
+.header {
+  text-align: center;
+  font-family: 'Cambay', sans-serif;
+  color: #729B79; }
+
+.s_user {
+  text-align: right; }
+
+@media (max-width: 600px) {
+  .leaderboard {
+    width: 100%;
+    float: left;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+    background-color: #FAF0E6;
+    text-align: center;
+    border: 0; } }
+  @media print and (max-width: 600px), screen and (max-width: 600px) and (min-width: 40em) {
+    .leaderboard {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem; } }
+
+@media (max-width: 600px) {
+    .leaderboard:last-child:not(:first-child) {
+      float: right; } }

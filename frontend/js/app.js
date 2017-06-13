@@ -59,7 +59,7 @@ app.config( function ($stateProvider, $urlRouterProvider) {
 // users cannot view tasks unless they are signed in
 
 $urlRouterProvider.otherwise('/signin');
-    
+ 
     $stateProvider
 
         .state('signin', {
@@ -118,7 +118,8 @@ $urlRouterProvider.otherwise('/signin');
             url: '/adduser',
             component: 'adduser',
         })
-
+//$urlRouterProvider.otherwise('/loggedinuser');  
+   // .stateProvider
         .state('loggedinuser',{
             url: '/loggedinuser',
             component : 'loggedinuser',

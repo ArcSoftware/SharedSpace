@@ -1,7 +1,8 @@
 module.exports={
     name: "LoggedInUserController",
     func: function ($scope, SignInService){
-        console.log('hello');
+        console.log('hi');
         $scope.user=SignInService.getLoggedInUser();
+       // $scope.userName='';
     }
 }
