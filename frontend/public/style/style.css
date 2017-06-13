@@ -1295,17 +1295,18 @@ h2 {
   text-align: center;
   font-family: 'Cambay', sans-serif;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  color: white; }
 
 ul {
   list-style-type: none;
   padding: 0; }
 
 li {
-  box-shadow: 3px 3px 3px #37393A;
+  box-shadow: 4px 4px 4px #37393A;
   font-size: 1.1em;
   padding-left: 10px;
-  margin-top: 7px;
+  margin-top: 15px;
   -webkit-animation: fadein 1.5s;
   /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 1.5s;

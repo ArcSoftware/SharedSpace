@@ -3,8 +3,8 @@
 
 <section class="row">
 <section class="incomplete">
-    <h2>Incomplete Tasks</h2>
-    <input type="text" placeholder="search by tasks or points" ng-model="searchIncomplete" class="search-tasks">
+    <h2>Hi {username}, here's how you can help!</h2>
+    <input type="text" placeholder="search tasks..." ng-model="searchIncomplete" class="search-tasks">
     
     <ul>
         <li ng-repeat="task in tasks | filter:{complete:false} | filter:searchIncomplete | orderBy: 'time' : true">
