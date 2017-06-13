@@ -69,7 +69,6 @@ $urlRouterProvider.otherwise('/signin');
             component: 'allTasks',
             onEnter($state, SignInService) {
                 console.log('checking for login');
-                // return false;
                 return SignInService.isLoggedIn()
                     .then(loggedIn => {
                         console.log(`Logged in? ${loggedIn}`);
@@ -352,7 +351,7 @@ module.exports = {
     }   
 }
 },{}],20:[function(require,module,exports){
-module.exports = {
+ module.exports = {
     name: 'TaskService',
     func: function ($http) {
 
