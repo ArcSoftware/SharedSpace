@@ -1,4 +1,5 @@
 @media (min-width: 768px) {
+
   canvas {
     display: block;
     width: 90%;
@@ -130,6 +131,24 @@
   content: "";
   display: table;
   clear: both;
+}
+
+.signin {
+  width: 350px;
+  margin: auto;
+  display: block;
+}
+
+.logo {
+  // width: 300px;
+  // margin: auto;
+  // display: block;
+  display: none;
+}
+
+.logo-nav {
+  display: inline-block;
+  width: 100px;
 }
 
 } // close media

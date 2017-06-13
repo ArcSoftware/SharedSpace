@@ -1288,6 +1288,9 @@ h1 {
 .hamburger {
   font-size: 1.5em; }
 
+.logo-nav {
+  display: none; }
+
 h2 {
   text-align: center;
   font-family: 'Cambay', sans-serif;
@@ -1418,6 +1421,16 @@ li {
 
 .user-wrapper ul li:nth-child(1) {
   color: green; }
+
+.signin {
+  width: 250px;
+  margin: auto;
+  display: block; }
+
+.logo {
+  width: 300px;
+  margin: auto;
+  display: block; }
 
 header {
   overflow-x: hidden;
@@ -1593,7 +1606,16 @@ canvas {
   .bios:after {
     content: "";
     display: table;
-    clear: both; } }
+    clear: both; }
+  .signin {
+    width: 350px;
+    margin: auto;
+    display: block; }
+  .logo {
+    display: none; }
+  .logo-nav {
+    display: inline-block;
+    width: 100px; } }
 
 body {
   background-color: #366699; }

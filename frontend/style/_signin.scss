@@ -1,6 +1,20 @@
+.signin {
+  width: 250px;
+  margin: auto;
+  display: block;
+}
+
+.logo {
+  width: 300px;
+  margin: auto;
+  display: block;
+}
+
+
 header {
     overflow-x: hidden;
     @include grid-row;
+
 
     form {
       @include grid-column(12);
