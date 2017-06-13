@@ -1,3 +1,4 @@
+
 .leaderboard {
   background-color: $background;
   border: 0;
@@ -7,4 +8,8 @@
   text-align: center;
   font-family: 'Cambay', sans-serif;
   color:  $green-accent;
+}
+canvas {
+  display: none;
+
 }

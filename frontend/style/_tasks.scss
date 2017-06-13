@@ -1,14 +1,46 @@
-.row {
-
+h2 {
+  text-align: center;
+  font-family: 'Cambay', sans-serif;
+  margin: 0;
+  padding: 0;
+}
   ul {
     list-style-type: none;
     padding: 0;
   }
 
+  li {
+    font-size: 1.1em;
+    padding-left: 10px;
+    -webkit-animation: fadein 1.5s; /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 1.5s; /* Firefox < 16 */
+        -ms-animation: fadein 1.5s; /* Internet Explorer */
+            animation: fadein 1.5s;
+
+      @keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+  }
+
   .complete {
-    .grey-strikethrough {
-      color: grey;
-      text-decoration: line-through;
+    @include grid-row;
+    ul {
+      li:nth-child(1) {
+        color: rgba(55, 57, 58, 1.0);
+      }
+      li:nth-child(2) {
+        color: rgba(55, 57, 58, 0.8);
+      }
+      li:nth-child(3) {
+        color: rgba(55, 57, 58, 0.6);
+      }
+      li:nth-child(4) {
+        color: rgba(55, 57, 58, 0.4);
+      }
+      li:nth-child(5) {
+        color: rgba(55, 57, 58, 0.2);
+      }
     }
   }
 
@@ -20,5 +52,64 @@
   .users {
     //background-color:$background;
     //  text-align: center;
+
+    @include grid-row;
+
+    .search-tasks {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    ul {
+      li {
+        line-height: 50px;
+      }
+
+      li:nth-child(odd) {
+        // background-color: #EEE;
+        color: $dark-grey;
+      }
+
+      li:nth-child(even) {
+        background-color: #eee;
+        color: $dark-grey;
+      }
+    }
+   input {
+      font-size: 1.2em;
+      padding-left: 10px;
+      line-height: 30px;
+      &:focus{
+        outline: 0;
+      }
+   }
+  } 
+
+  .grey-strikethrough {
+      text-decoration: line-through;
+    }
+
+  .search-complete {
+    width: 100%;
+    margin: 0 auto;
+    line-height: 30px;
+    font-size: 1.2em;
+  }
+
+  .users {
+    @include grid-row;
+    background-color: $light-blue-accent;
+    color: $dark-grey;
+    li:nth-child(1) {
+        color: greenyellow;
+      }
+  }
+
+.see-all {
+  color: $dark-blue-accent;
+  &:hover {
+    color: $light-blue-accent;
+
   }
 }
+

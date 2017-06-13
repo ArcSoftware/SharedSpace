@@ -1,4 +1,4 @@
-@media (max-width:600px){
+@media (max-width: 768px){
 .leaderboard {
   @include grid-column(12); 
   background-color: $background;
