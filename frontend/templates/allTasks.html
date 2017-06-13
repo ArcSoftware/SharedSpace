@@ -1,12 +1,12 @@
 <img class="logo" src="https://sharedspace.herokuapp.com/image?img=logo">
 
 <navbar></navbar>
-<loggedinuser></loggedinuser>
+
 
 
 <section class="row">
 <section class="incomplete">
-    <h2 class="prompt">Hi {{user.name}}, what would you like to help with?</h2>
+    <h2 class="prompt">Hi <loggedinuser></loggedinuser>, what would you like to help with?</h2>
     <input type="text" placeholder="search tasks..." ng-model="searchIncomplete" class="search-tasks">
     
     <ul>

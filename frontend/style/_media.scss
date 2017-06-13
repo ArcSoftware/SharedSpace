@@ -1,5 +1,9 @@
 @media (min-width: 768px) {
 
+  h2 {
+    font-size: 1.5em;
+  }
+
   canvas {
     display: block;
     width: 90%;
@@ -47,7 +51,7 @@
 
   .navbar {
     margin-bottom: 50px;
-    text-align: center;
+    text-align: cfenter;
     // background-color: $light-blue-accent;
     background-color: rgba(100, 182, 172, 0.5);
 

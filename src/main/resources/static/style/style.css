@@ -1258,6 +1258,11 @@ pre {
       .column-block > :last-child {
         margin-bottom: 0; } }
 
+body {
+  background-color: #366699; }
+  body .row {
+    max-width: 45rem; }
+
 h1 {
   padding: 0;
   margin: 0; }
@@ -1293,6 +1298,7 @@ h1 {
 
 h2 {
   text-align: center;
+  font-size: 1em;
   font-family: 'Cambay', sans-serif;
   margin: 0;
   padding: 0;
@@ -1322,7 +1328,7 @@ li {
     opacity: 1; } }
 
 .complete {
-  max-width: 75rem;
+  max-width: 100em;
   margin-right: auto;
   margin-left: auto; }
   .complete::before, .complete::after {
@@ -1344,33 +1350,31 @@ li {
     color: rgba(255, 255, 255, 0.2); }
 
 .incomplete {
-  margin: 0; }
-
-.users {
-  max-width: 75rem;
+  margin: 0;
+  max-width: 100em;
   margin-right: auto;
   margin-left: auto; }
-  .users::before, .users::after {
+  .incomplete::before, .incomplete::after {
     display: table;
     content: ' '; }
-  .users::after {
+  .incomplete::after {
     clear: both; }
-  .users .search-tasks {
+  .incomplete .search-tasks {
     width: 150px;
     display: inline-block; }
-  .users ul li {
+  .incomplete ul li {
     line-height: 50px; }
-  .users ul li:nth-child(odd) {
+  .incomplete ul li:nth-child(odd) {
     background-color: #325b87;
     color: white; }
-  .users ul li:nth-child(even) {
+  .incomplete ul li:nth-child(even) {
     background-color: #eee;
     color: #37393A; }
-  .users input {
+  .incomplete input {
     font-size: 1.2em;
     padding-left: 10px;
     line-height: 30px; }
-    .users input:focus {
+    .incomplete input:focus {
       outline: 0; }
 
 .grey-strikethrough {
@@ -1383,7 +1387,7 @@ li {
   font-size: 1.2em; }
 
 .users {
-  max-width: 75rem;
+  max-width: 100em;
   margin-right: auto;
   margin-left: auto;
   background-color: #64B6AC;
@@ -1442,7 +1446,7 @@ li {
 
 header {
   overflow-x: hidden;
-  max-width: 75rem;
+  max-width: 100em;
   margin-right: auto;
   margin-left: auto; }
   header::before, header::after {
@@ -1524,14 +1528,16 @@ header {
 .header {
   text-align: center;
   font-family: 'Cambay', sans-serif;
-  color: #729B79; }
+  color: white; }
 
 canvas {
   display: none; }
 
 .s_user {
-  text-align: right;
-  margin-right: 30px; }
+  display: inline-block;
+  text-align: left;
+  margin: 0;
+  padding: 0; }
 
 @media (max-width: 768px) {
   .leaderboard {
@@ -1557,6 +1563,8 @@ canvas {
   width: 240px; }
 
 @media (min-width: 768px) {
+  h2 {
+    font-size: 1.5em; }
   canvas {
     display: block;
     width: 90%; }
@@ -1594,7 +1602,7 @@ canvas {
       max-width: 300px; }
   .navbar {
     margin-bottom: 50px;
-    text-align: center;
+    text-align: cfenter;
     background-color: rgba(100, 182, 172, 0.5); }
     .navbar button {
       color: #366699;
@@ -1656,8 +1664,3 @@ canvas {
   .logo-nav {
     display: inline-block;
     width: 100px; } }
-
-body {
-  background-color: #366699; }
-  body .row {
-    max-width: 45rem; }
