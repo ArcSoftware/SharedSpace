@@ -1,4 +1,7 @@
+
+Chart.defaults.global.defaultFontColor = '#fff';
 module.exports={
+    
     name: "LeaderBoardController",
     func: function($scope, LeaderBoardService){
       // $scope.leadUsers= LeaderBoardService.getLeadUsers();
@@ -8,5 +11,6 @@ module.exports={
         $scope.series = ['Series A'];
         $scope.data = LeaderBoardService.getPointData();
         console.log($scope.labels);
-    }
-}
+    
+},
+    };
