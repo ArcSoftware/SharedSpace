@@ -1355,16 +1355,6 @@ li {
     content: ' '; }
   .incomplete::after {
     clear: both; }
-<<<<<<< HEAD
-  .users .search-tasks {
-    width: 100%;
-    margin: 0 auto; }
-  .users ul li {
-    line-height: 50px; }
-  .users ul li:nth-child(odd) {
-    color: white; }
-  .users ul li:nth-child(even) {
-=======
   .incomplete ul li {
     line-height: 50px;
     text-align: left;
@@ -1373,7 +1363,6 @@ li {
     background-color: #325b87;
     color: white; }
   .incomplete ul li:nth-child(even) {
->>>>>>> 04bfd4edac4f564529c53f5dd772f5727f8bbe3b
     background-color: #eee;
     color: #37393A; }
   .incomplete input {
@@ -1574,12 +1563,6 @@ canvas {
     .leaderboard:last-child:not(:first-child) {
       float: right; } }
 
-<<<<<<< HEAD
-.bios .headshot {
-  margin: auto;
-  display: block;
-  width: 240px; }
-=======
 h1, p, li {
   color: white;
   text-align: center; }
@@ -1606,7 +1589,6 @@ h1, p, li {
     margin: auto;
     display: block;
     width: 240px; }
->>>>>>> 04bfd4edac4f564529c53f5dd772f5727f8bbe3b
 
 @media only screen and (min-width: 768px) {
   h2 {
@@ -1707,11 +1689,3 @@ h1, p, li {
   .logo-nav {
     display: inline-block;
     width: 100px; } }
-<<<<<<< HEAD
-
-body {
-  background-color: #366699; }
-  body .row {
-    max-width: 45rem; }
-=======
->>>>>>> 04bfd4edac4f564529c53f5dd772f5727f8bbe3b
