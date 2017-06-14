@@ -3,9 +3,18 @@
 @include foundation-global-styles;
 @include foundation-grid;
 
-// color scheme
-$background : #FAF0E6; // too yellow-ish?
-$dark-grey : #37393A;
+// new color scheme
+// $background : #020300;
+// $dark-grey : #444243;
+// $green-accent: #729B79;
+// $light-blue-accent: #8ec4ca;
+// $dark-blue-accent: #00233c;
+
+// $white: #fefeff;
+
+// old color scheme
+$background: #366699;
+$dark-grey: #37393A;
 $green-accent: #729B79;
 $light-blue-accent: #64B6AC;
 $dark-blue-accent: #366699;
@@ -37,6 +46,7 @@ $grid-row-width : 100em;
 $grid-row-width : 100em;
 
 body {
+  // color: white;
   background-color: $background;
   .row {
     max-width: 45rem;

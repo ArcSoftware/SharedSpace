@@ -73,7 +73,6 @@ $urlRouterProvider.otherwise('/signin');
             component: 'allTasks',
             onEnter($state, SignInService) {
                 console.log('checking for login');
-                // return false;
                 return SignInService.isLoggedIn()
                     .then(loggedIn => {
                         console.log(`Logged in? ${loggedIn}`);
@@ -228,7 +227,10 @@ module.exports = {
     }
 } 
 },{}],14:[function(require,module,exports){
+
+Chart.defaults.global.defaultFontColor = '#fff';
 module.exports={
+    
     name: "LeaderBoardController",
     func: function($scope, LeaderBoardService){
       // $scope.leadUsers= LeaderBoardService.getLeadUsers();
@@ -238,8 +240,10 @@ module.exports={
         $scope.series = ['Series A'];
         $scope.data = LeaderBoardService.getPointData();
         console.log($scope.labels);
-    }
-}
+    
+},
+    };
+
 },{}],15:[function(require,module,exports){
 module.exports={
     name: "LoggedInUserController",
