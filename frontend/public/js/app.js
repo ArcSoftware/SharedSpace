@@ -260,14 +260,19 @@
         module.exports = {
             name: "TaskController",
             func: function func($scope, TaskService, SignInService, $interval) {
-                $scope.tasks = TaskService.getTasks();
+                // $scope.tasks = TaskService.getTasks();
+                TaskService.getTasks().then(function (tasks) {
+                    $scope.tasks = tasks; // update later
+                });
+
                 $scope.markComplete = function (task) {
                     TaskService.completeTask(task);
                 };
 
                 $interval(function () {
-                    $scope.tasks = TaskService.getTasks();
-                    // $scope.intervalFunction();
+                    TaskService.getTasks().then(function (tasks) {
+                        $scope.tasks = tasks; // update later
+                    });
                 }, 10000
 
                 // $scope.intervalFunction();        
@@ -396,9 +401,11 @@
 
                 return {
                     getTasks: function getTasks() {
-                        var tasks = [];
+                        // let tasks = [];
 
-                        $http.get('https://sharedspace.herokuapp.com/getTasks').then(function (response) {
+                        var get_incomplete = $http.get('https://sharedspace.herokuapp.com/getTasks').then(function (response) {
+                            var tasks = [];
+
                             for (var i = 0; i < response.data.length; i++) {
 
                                 tasks.push({
@@ -409,13 +416,17 @@
                                     time: response.data[i].time
                                 });
                             }
+
+                            return tasks;
                         });
 
                         // retrieve tasks that have been completed (complete === true)
-                        $http.get('https://sharedspace.herokuapp.com/getTasks?complete=true', { withCredentials: true }).then(function (response) {
-                            for (var i = 0; i < response.data.length; i++) {
+                        var get_complete = $http.get('https://sharedspace.herokuapp.com/getTasks?complete=true', { withCredentials: true }).then(function (response) {
+                            var tasks = [];
 
+                            for (var i = 0; i < response.data.length; i++) {
                                 var name = void 0;
+
                                 if (response.data[i].user === null || response.data[i].user === undefined || response.data[i].user === '') {
                                     name = 'You';
                                 } else {
@@ -431,9 +442,31 @@
                                     user: name
                                 });
                             }
+
+                            return tasks;
                         });
 
-                        return tasks;
+                        /**
+                         * Promise.all is a built-in function that returns a promise. This promise
+                         * completes when all of the promises we pass in complete.
+                         */
+                        return Promise.all([get_incomplete, get_complete]).then(function (tasks) {
+                            var full = [];
+
+                            // push all incomplete tasks
+                            for (var i = 0; i < tasks[0].length; i++) {
+                                full.push(tasks[0][i]);
+                            }
+
+                            // push all complete tasks
+                            for (var _i3 = 0; _i3 < tasks[1].length; _i3++) {
+                                full.push(tasks[1][_i3]);
+                            }
+
+                            return full;
+                        });
+                        // return an array
+                        // return tasks;
                     },
 
                     completeTask: function completeTask(task) {
