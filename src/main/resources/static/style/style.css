@@ -1602,7 +1602,7 @@ h1, p, li {
     display: block;
     width: 240px; }
 
-@media (min-width: 768px) {
+@media only screen and (min-width: 768px) {
   h2 {
     font-size: 1.5em; }
   canvas {

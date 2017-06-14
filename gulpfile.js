@@ -1,4 +1,5 @@
 let gulp = require('gulp');
+let babel = require('gulp-babel');
 let sass = require('gulp-sass');
 let browser = require('gulp-browser');
 
@@ -14,6 +15,9 @@ gulp.task('css', function() {
 gulp.task('js', function() {
   return gulp.src('frontend/js/app.js')
              .pipe(browser.browserify())
+             .pipe(babel({
+               presets: ['es2015']
+              }))
              .pipe(gulp.dest('src/main/resources/static/js'))
              .pipe(gulp.dest('frontend/public/js'));
 });
