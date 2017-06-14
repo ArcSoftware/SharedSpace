@@ -1296,7 +1296,7 @@ h1 {
 .logo-nav {
   display: none; }
 
-h2 {
+h2, h3 {
   text-align: center;
   font-size: 1em;
   font-family: 'Cambay', sans-serif;
@@ -1307,6 +1307,9 @@ h2 {
 ul {
   list-style-type: none;
   padding: 0; }
+
+.name {
+  text-transform: capitalize; }
 
 li {
   box-shadow: 4px 4px 4px #37393A;
@@ -1337,7 +1340,9 @@ li {
   .complete::after {
     clear: both; }
   .complete ul li {
-    box-shadow: none; }
+    box-shadow: none;
+    text-align: left;
+    padding-left: 20px; }
   .complete ul li:nth-child(1) {
     color: white; }
   .complete ul li:nth-child(2) {
@@ -1349,6 +1354,10 @@ li {
   .complete ul li:nth-child(5) {
     color: rgba(255, 255, 255, 0.2); }
 
+.search-tasks {
+  width: 30%;
+  display: inline-block; }
+
 .incomplete {
   margin: 0;
   max-width: 100em;
@@ -1359,11 +1368,10 @@ li {
     content: ' '; }
   .incomplete::after {
     clear: both; }
-  .incomplete .search-tasks {
-    width: 150px;
-    display: inline-block; }
   .incomplete ul li {
-    line-height: 50px; }
+    line-height: 50px;
+    text-align: left;
+    padding-left: 20px; }
   .incomplete ul li:nth-child(odd) {
     background-color: #325b87;
     color: white; }
@@ -1381,7 +1389,7 @@ li {
   text-decoration: line-through; }
 
 .search-complete {
-  width: 100%;
+  width: 30%;
   margin: 0 auto;
   line-height: 30px;
   font-size: 1.2em; }
@@ -1410,6 +1418,16 @@ li {
 
 .new-task {
   margin-top: 50px; }
+  .new-task .task {
+    padding-right: 22px; }
+  .new-task select {
+    height: 50px;
+    font-size: 1.2em; }
+  .new-task label {
+    font-size: 1.5em;
+    margin: 0 auto;
+    color: white;
+    padding-left: 10px; }
   .new-task .submit-task {
     background-color: #729B79;
     color: white;
@@ -1557,10 +1575,32 @@ canvas {
     .leaderboard:last-child:not(:first-child) {
       float: right; } }
 
-.bios .headshot {
-  margin: auto;
-  display: block;
-  width: 240px; }
+h1, p, li {
+  color: white;
+  text-align: center; }
+
+.bios {
+  color: white;
+  text-align: center; }
+  .bios li {
+    border: none;
+    box-shadow: none;
+    list-style-type: square; }
+  .bios .nick {
+    padding-bottom: 20px; }
+    .bios .nick img {
+      box-shadow: -4px 4px 10px #37393A;
+      border-radius: 15px; }
+  .bios .jake, .bios .suman {
+    padding-bottom: 20px;
+    direction: rtl; }
+    .bios .jake img, .bios .suman img {
+      box-shadow: 4px 4px 4px #37393A;
+      border-radius: 15px; }
+  .bios .headshot {
+    margin: auto;
+    display: block;
+    width: 240px; }
 
 @media (min-width: 768px) {
   h2 {
@@ -1626,28 +1666,25 @@ canvas {
     width: 240px; }
   .bios .jake {
     height: 400px;
-    position: relative;
-    text-align: right; }
-    .bios .jake h2 {
-      text-align: left; }
+    position: relative; }
+    .bios .jake p, .bios .jake li, .bios .jake h2 {
+      text-align: right; }
     .bios .jake .headshot {
       position: absolute;
       left: 0; }
   .bios .nick {
     height: 400px;
-    position: relative;
-    text-align: left; }
-    .bios .nick h2 {
-      text-align: right; }
+    position: relative; }
+    .bios .nick p, .bios .nick li, .bios .nick h2 {
+      text-align: left; }
     .bios .nick .headshot {
       position: absolute;
       right: 0; }
   .bios .suman {
     height: 400px;
-    position: relative;
-    text-align: right; }
-    .bios .suman h2 {
-      text-align: left; }
+    position: relative; }
+    .bios .suman p, .bios .suman li, .bios .suman h2 {
+      text-align: right; }
     .bios .suman .headshot {
       position: absolute;
       left: 0; }

@@ -1,16 +1,20 @@
-<img class="logo" src="https://sharedspace.herokuapp.com/image?img=logo">
+<a ui-sref="tasks"><img class="logo" src="https://sharedspace.herokuapp.com/image?img=logo"></a>
 
 <navbar></navbar>
+
+<h2>Add a task</h2>
+<h3>Completing tasks will earn you points!</h3>
 
 <form>
   <section class="new-task">
     <!--<input type="text" placeholder="Enter task name" ng-model="taskName">-->
-    <label>Task</label>
+    <label class="task">Task</label>
     <select name="Tasks" ng-model="taskName">
       <option selected disabled hidden style='display: none' value=''></option>
       <optgroup label="Tasks">
       <option value="take out garbage">Take out Garbage</option>
-      <option value="refill coffee">Refill Coffee</option>
+      <option value="Brew more coffee">Brew more coffee</option>
+      <!--Brew more coffee-->
       <option value="turn off lights">Turn off Lights</option>
     </select>
     
@@ -25,6 +29,6 @@
       <option value="400">400</option>
       <option value="500">500</option>
     </select>
-    <button ng-click="submit()" class="submit-task" ng-disabled="!taskName">Submit</button>
+    <button ng-click="submit()" class="submit-task" ng-disabled="!taskName">Add</button>
   </section>
 </form>

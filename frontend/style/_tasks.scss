@@ -1,4 +1,4 @@
-h2 {
+h2, h3 {
   text-align: center;
   font-size: 1em;
   font-family: 'Cambay', sans-serif;
@@ -10,6 +10,10 @@ h2 {
     list-style-type: none;
     padding: 0;
   }
+
+.name {
+  text-transform: capitalize;
+}
 
   li {
     box-shadow: 4px 4px 4px $dark-grey;
@@ -32,6 +36,8 @@ h2 {
     ul {
       li {
         box-shadow: none;
+        text-align: left;
+        padding-left: 20px;
       }
 
       li:nth-child(1) {
@@ -52,24 +58,21 @@ h2 {
     }
   }
 
-  .incomplete {
-
-       margin: 0; 
- 
-    //background-color:$background;
-    //  text-align: center;
-
-    @include grid-row;
-
-    .search-tasks {
-      width: 150px;
-      // margin: 0 auto;
+  .search-tasks {
+      width: 30%;
       display: inline-block;
     }
+
+  .incomplete {
+       margin: 0; 
+
+    @include grid-row;
 
     ul {
       li {
         line-height: 50px;
+        text-align: left;
+        padding-left: 20px;
       }
 
       li:nth-child(odd) {
@@ -98,7 +101,7 @@ h2 {
     }
 
   .search-complete {
-    width: 100%;
+    width: 30%;
     margin: 0 auto;
     line-height: 30px;
     font-size: 1.2em;

@@ -94,10 +94,10 @@
   .jake { 
     height: 400px;
     position: relative;
-    text-align: right;
-    h2 {
-      text-align: left;
+    p, li, h2 {
+      text-align: right;
     }
+    
     .headshot {
       position: absolute;
       left: 0;
@@ -107,10 +107,10 @@
   .nick {
     height: 400px;
     position: relative;
-    text-align: left;
-    h2 {
-      text-align: right;
+    p, li, h2 {
+      text-align: left;
     }
+
     .headshot {
       position: absolute;
       right: 0;
@@ -121,10 +121,10 @@
   .suman {
     height: 400px;
     position: relative;
-    text-align: right;
-    h2 {
-      text-align: left;
+    p, li, h2 {
+      text-align: right;
     }
+    
     .headshot {
       position: absolute;
       left: 0;
