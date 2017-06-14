@@ -4,9 +4,11 @@
 
         return {
             getTasks: function () {
-                let tasks = [];
+                // let tasks = [];
 
-            $http.get('https://sharedspace.herokuapp.com/getTasks').then(function (response) {
+            const get_incomplete = $http.get('https://sharedspace.herokuapp.com/getTasks').then(function (response) {
+                const tasks = [];
+
                 for (let i = 0; i < response.data.length; i++) {
 
                     tasks.push({
@@ -17,13 +19,17 @@
                         time: response.data[i].time,
                     })
                 }
+
+                return tasks;
             });
 
         // retrieve tasks that have been completed (complete === true)
-        $http.get('https://sharedspace.herokuapp.com/getTasks?complete=true', { withCredentials: true }).then(function (response) {
-            for (let i = 0; i < response.data.length; i++) {
+        const get_complete = $http.get('https://sharedspace.herokuapp.com/getTasks?complete=true', { withCredentials: true }).then(function (response) {
+            const tasks = [];
 
+            for (let i = 0; i < response.data.length; i++) {
                 let name;
+
                 if (response.data[i].user === null ||
                     response.data[i].user === undefined ||
                     response.data[i].user === '') {
@@ -41,9 +47,31 @@
                     user: name,
                 })
             }
+
+            return tasks;
         });
                 
-                return tasks;
+                /**
+                 * Promise.all is a built-in function that returns a promise. This promise
+                 * completes when all of the promises we pass in complete.
+                 */
+                return Promise.all([get_incomplete, get_complete]).then(function (tasks) {
+                    const full = [];
+
+                    // push all incomplete tasks
+                    for (let i = 0; i < tasks[0].length; i++) {
+                        full.push(tasks[0][i]);
+                    }
+
+                    // push all complete tasks
+                    for (let i = 0; i < tasks[1].length; i++) {
+                        full.push(tasks[1][i]);
+                    }
+
+                    return full;
+                });
+                // return an array
+                // return tasks;
         },
 
 

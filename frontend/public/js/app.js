@@ -262,7 +262,7 @@
             func: function func($scope, TaskService, SignInService, $interval) {
                 // $scope.tasks = TaskService.getTasks();
                 TaskService.getTasks().then(function (tasks) {
-                    $scope.tasks = tasks; // update later
+                    $scope.tasks = tasks;
                 });
 
                 $scope.markComplete = function (task) {
@@ -271,9 +271,9 @@
 
                 $interval(function () {
                     TaskService.getTasks().then(function (tasks) {
-                        $scope.tasks = tasks; // update later
+                        $scope.tasks = tasks;
                     });
-                }, 10000
+                }, 1000
 
                 // $scope.intervalFunction();        
                 );
