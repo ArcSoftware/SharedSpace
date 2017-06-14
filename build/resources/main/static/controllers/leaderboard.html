@@ -1,9 +1,30 @@
-<img class="logo" src="https://sharedspace.herokuapp.com/image?img=logo">
+<a ui-sref="tasks"><img class="logo" src="https://sharedspace.herokuapp.com/image?img=logo"></a>
 <section>
     <navbar></navbar>
+    
+    <!--<canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series">
+    </canvas>-->
 
-    <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series">
+
+    <section class="leaderboard">
+        <h1 class="header">SharedSpace Leaderboard</h1>
+
+    <section>
+
+        <ul>
+            <li ng-repeat="leaduser in leadUsers">
+                <P>Id: {{leaduser.id}}</P>
+                <p>UserName: {{leaduser.userName}}</p>
+                <p>Points: {{leaduser.points | number}}</p>
+            </li>
+        </ul>
+
+    </section>
+      <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series">
     </canvas>
 
+    </section>
+
     <users></users>
+
 </section>
