@@ -1,10 +1,17 @@
-<img class="signin" src="https://sharedspace.herokuapp.com/image?img=logo">
+<a ui-sref="tasks"><img class="signin" src="https://sharedspace.herokuapp.com/image?img=logo"></a>
 <header>
-    <form>
-        <!--row align-center-->
-        <section class="u_signin">
-            <input text="txtuser" placeholder="username" ng-model="user_name">
-            <a ui-sref="tasks" <button class="go" ng-click="go()">Signin</button></a>
-        </section>
-    </form>
+<form name="sign-in">
+
+     <!--row align-center-->
+    <section class="u_signin">
+        <input text="txtuser" name="txtuser" placeholder="username" ng-model="user_name" ng-minlength="1" required>
+        <a ui-sref="tasks"><button type="submit" ng-disabled="!user_name" class="go" ng-click="go()">Signin</button></a>
+    </section>
+</form>
+
+<!--<div ng-messages="signin.txtuser.$error" role="alert">
+    <div ng-message="minlength">Your field is too short</div>
+    <div ng-message="required">You did not enter a field</div>
+  </div>-->
+
 </header>
