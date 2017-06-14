@@ -80,6 +80,9 @@
 
 .nav-wrap {
   display: block;
+  .active a button {
+    border-top: none;
+  }
 }
 
 

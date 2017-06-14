@@ -1267,6 +1267,10 @@ h1 {
   padding: 0;
   margin: 0; }
 
+.active a button {
+  border-bottom: 4px solid white;
+  border-top: 4px solid white; }
+
 .logo {
   color: #37393A;
   font-family: 'Alegreya Sans', sans-serif;
@@ -1289,6 +1293,8 @@ h1 {
     padding-top: 20px;
     padding-bottom: 20px;
     color: white; }
+    .navbar button:hover {
+      border-bottom: 4px solid white; }
 
 .hamburger {
   font-size: 1.5em; }
@@ -1650,6 +1656,8 @@ h1, p, li {
     display: none; }
   .nav-wrap {
     display: block; }
+    .nav-wrap .active a button {
+      border-top: none; }
   .bios .headshot {
     width: 240px; }
   .bios .jake {
