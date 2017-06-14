@@ -1442,15 +1442,16 @@ li {
 .users {
   display: none; }
 
-.user-wrapper ul li:nth-child(odd) {
-  color: #37393A; }
-
-.user-wrapper ul li:nth-child(even) {
-  background-color: #eee;
-  color: #37393A; }
-
-.user-wrapper ul li:nth-child(1) {
-  color: green; }
+.user-wrapper ul {
+  padding: 0;
+  margin: 0; }
+  .user-wrapper ul li {
+    padding: 0;
+    text-align: left;
+    box-shadow: none;
+    width: 200px;
+    color: white;
+    background-color: #366699; }
 
 .signin {
   width: 250px;

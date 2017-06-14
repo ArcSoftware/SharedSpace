@@ -259,11 +259,19 @@
     }, {}], 19: [function (require, module, exports) {
         module.exports = {
             name: "TaskController",
-            func: function func($scope, TaskService, SignInService) {
+            func: function func($scope, TaskService, SignInService, $interval) {
                 $scope.tasks = TaskService.getTasks();
                 $scope.markComplete = function (task) {
                     TaskService.completeTask(task);
                 };
+
+                $interval(function () {
+                    $scope.tasks = TaskService.getTasks();
+                    // $scope.intervalFunction();
+                }, 10000
+
+                // $scope.intervalFunction();        
+                );
             }
         };
     }, {}], 20: [function (require, module, exports) {
