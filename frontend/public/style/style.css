@@ -1258,6 +1258,11 @@ pre {
       .column-block > :last-child {
         margin-bottom: 0; } }
 
+body {
+  background-color: #366699; }
+  body .row {
+    max-width: 45rem; }
+
 h1 {
   padding: 0;
   margin: 0; }
@@ -1271,7 +1276,7 @@ h1 {
 .navbar {
   font-size: 1.2em;
   text-align: center;
-  background-color: #64B6AC;
+  background-color: rgba(100, 182, 172, 0.5);
   margin-bottom: 10px;
   box-shadow: 2px 2px 2px #37393A; }
   .navbar a {
@@ -1291,8 +1296,9 @@ h1 {
 .logo-nav {
   display: none; }
 
-h2 {
+h2, h3 {
   text-align: center;
+  font-size: 1em;
   font-family: 'Cambay', sans-serif;
   margin: 0;
   padding: 0;
@@ -1301,6 +1307,9 @@ h2 {
 ul {
   list-style-type: none;
   padding: 0; }
+
+.name {
+  text-transform: capitalize; }
 
 li {
   box-shadow: 4px 4px 4px #37393A;
@@ -1322,7 +1331,7 @@ li {
     opacity: 1; } }
 
 .complete {
-  max-width: 75rem;
+  max-width: 100em;
   margin-right: auto;
   margin-left: auto; }
   .complete::before, .complete::after {
@@ -1331,7 +1340,9 @@ li {
   .complete::after {
     clear: both; }
   .complete ul li {
-    box-shadow: none; }
+    box-shadow: none;
+    text-align: left;
+    padding-left: 20px; }
   .complete ul li:nth-child(1) {
     color: white; }
   .complete ul li:nth-child(2) {
@@ -1343,18 +1354,21 @@ li {
   .complete ul li:nth-child(5) {
     color: rgba(255, 255, 255, 0.2); }
 
-.incomplete {
-  margin: 0; }
+.search-tasks {
+  width: 30%;
+  display: inline-block; }
 
-.users {
-  max-width: 75rem;
+.incomplete {
+  margin: 0;
+  max-width: 100em;
   margin-right: auto;
   margin-left: auto; }
-  .users::before, .users::after {
+  .incomplete::before, .incomplete::after {
     display: table;
     content: ' '; }
-  .users::after {
+  .incomplete::after {
     clear: both; }
+<<<<<<< HEAD
   .users .search-tasks {
     width: 100%;
     margin: 0 auto; }
@@ -1363,26 +1377,36 @@ li {
   .users ul li:nth-child(odd) {
     color: white; }
   .users ul li:nth-child(even) {
+=======
+  .incomplete ul li {
+    line-height: 50px;
+    text-align: left;
+    padding-left: 20px; }
+  .incomplete ul li:nth-child(odd) {
+    background-color: #325b87;
+    color: white; }
+  .incomplete ul li:nth-child(even) {
+>>>>>>> 04bfd4edac4f564529c53f5dd772f5727f8bbe3b
     background-color: #eee;
     color: #37393A; }
-  .users input {
+  .incomplete input {
     font-size: 1.2em;
     padding-left: 10px;
     line-height: 30px; }
-    .users input:focus {
+    .incomplete input:focus {
       outline: 0; }
 
 .grey-strikethrough {
   text-decoration: line-through; }
 
 .search-complete {
-  width: 100%;
+  width: 30%;
   margin: 0 auto;
   line-height: 30px;
   font-size: 1.2em; }
 
 .users {
-  max-width: 75rem;
+  max-width: 100em;
   margin-right: auto;
   margin-left: auto;
   background-color: #64B6AC;
@@ -1396,12 +1420,25 @@ li {
     color: greenyellow; }
 
 .see-all {
-  color: #366699; }
+  color: white;
+  text-decoration: underline; }
   .see-all:hover {
     color: #64B6AC; }
+  .see-all .prompt {
+    display: inline; }
 
 .new-task {
   margin-top: 50px; }
+  .new-task .task {
+    padding-right: 22px; }
+  .new-task select {
+    height: 50px;
+    font-size: 1.2em; }
+  .new-task label {
+    font-size: 1.5em;
+    margin: 0 auto;
+    color: white;
+    padding-left: 10px; }
   .new-task .submit-task {
     background-color: #729B79;
     color: white;
@@ -1438,7 +1475,7 @@ li {
 
 header {
   overflow-x: hidden;
-  max-width: 75rem;
+  max-width: 100em;
   margin-right: auto;
   margin-left: auto; }
   header::before, header::after {
@@ -1520,14 +1557,16 @@ header {
 .header {
   text-align: center;
   font-family: 'Cambay', sans-serif;
-  color: #729B79; }
+  color: white; }
 
 canvas {
   display: none; }
 
 .s_user {
-  text-align: right;
-  margin-right: 30px; }
+  display: inline-block;
+  text-align: left;
+  margin: 0;
+  padding: 0; }
 
 @media (max-width: 768px) {
   .leaderboard {
@@ -1547,12 +1586,43 @@ canvas {
     .leaderboard:last-child:not(:first-child) {
       float: right; } }
 
+<<<<<<< HEAD
 .bios .headshot {
   margin: auto;
   display: block;
   width: 240px; }
+=======
+h1, p, li {
+  color: white;
+  text-align: center; }
 
-@media (min-width: 768px) {
+.bios {
+  color: white;
+  text-align: center; }
+  .bios li {
+    border: none;
+    box-shadow: none;
+    list-style-type: square; }
+  .bios .nick {
+    padding-bottom: 20px; }
+    .bios .nick img {
+      box-shadow: -4px 4px 10px #37393A;
+      border-radius: 15px; }
+  .bios .jake, .bios .suman {
+    padding-bottom: 20px;
+    direction: rtl; }
+    .bios .jake img, .bios .suman img {
+      box-shadow: 4px 4px 4px #37393A;
+      border-radius: 15px; }
+  .bios .headshot {
+    margin: auto;
+    display: block;
+    width: 240px; }
+>>>>>>> 04bfd4edac4f564529c53f5dd772f5727f8bbe3b
+
+@media only screen and (min-width: 768px) {
+  h2 {
+    font-size: 1.5em; }
   canvas {
     display: block;
     width: 90%; }
@@ -1567,8 +1637,8 @@ canvas {
       font-size: 1.3em;
       max-width: 200px;
       position: relative;
-      left: 42%;
-      bottom: 80px;
+      left: 41.5%;
+      bottom: 95px;
       padding: 20px 40px 20px 40px; }
       .u_signin .go:hover {
         background-color: #71bcb3; }
@@ -1589,8 +1659,9 @@ canvas {
     .new-task option {
       max-width: 300px; }
   .navbar {
-    text-align: center;
-    background-color: #64B6AC; }
+    margin-bottom: 50px;
+    text-align: cfenter;
+    background-color: rgba(100, 182, 172, 0.5); }
     .navbar button {
       color: #366699;
       display: inline;
@@ -1613,28 +1684,25 @@ canvas {
     width: 240px; }
   .bios .jake {
     height: 400px;
-    position: relative;
-    text-align: right; }
-    .bios .jake h2 {
-      text-align: left; }
+    position: relative; }
+    .bios .jake p, .bios .jake li, .bios .jake h2 {
+      text-align: right; }
     .bios .jake .headshot {
       position: absolute;
       left: 0; }
   .bios .nick {
     height: 400px;
-    position: relative;
-    text-align: left; }
-    .bios .nick h2 {
-      text-align: right; }
+    position: relative; }
+    .bios .nick p, .bios .nick li, .bios .nick h2 {
+      text-align: left; }
     .bios .nick .headshot {
       position: absolute;
       right: 0; }
   .bios .suman {
     height: 400px;
-    position: relative;
-    text-align: right; }
-    .bios .suman h2 {
-      text-align: left; }
+    position: relative; }
+    .bios .suman p, .bios .suman li, .bios .suman h2 {
+      text-align: right; }
     .bios .suman .headshot {
       position: absolute;
       left: 0; }
@@ -1651,8 +1719,3 @@ canvas {
   .logo-nav {
     display: inline-block;
     width: 100px; } }
-
-body {
-  background-color: #366699; }
-  body .row {
-    max-width: 45rem; }

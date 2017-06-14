@@ -1,7 +1,42 @@
+h1, p, li {
+    color: white;
+    text-align: center;
+  }
+
+
 .bios {
+  color: white;
+
+  text-align: center;
+  
+  li {
+    border: none;
+    box-shadow: none;
+    list-style-type: square;
+  }
+
+  .nick {
+    padding-bottom: 20px;
+    img {
+      box-shadow: -4px 4px 10px $dark-grey;
+      border-radius: 15px;
+    }
+  }
+
+  .jake, .suman {
+    padding-bottom: 20px;
+    direction: rtl;
+    img {
+      box-shadow: 4px 4px 4px $dark-grey;
+      border-radius: 15px;
+    }
+  }
+
   .headshot {
     margin: auto;
     display: block;
     width: 240px;
   }
+
+
 }

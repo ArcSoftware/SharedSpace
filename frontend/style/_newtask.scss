@@ -1,6 +1,22 @@
 .new-task {
   
+  .task {
+    padding-right: 22px;
+  }
+
   margin-top: 50px;
+
+  select {
+    height: 50px;
+    font-size: 1.2em;
+  }
+
+  label {
+    font-size: 1.5em;
+    margin: 0 auto;
+    color: white;
+    padding-left: 10px;
+  }
 
   .submit-task {
     background-color: $green-accent;

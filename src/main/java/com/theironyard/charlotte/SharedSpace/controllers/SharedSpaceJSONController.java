@@ -45,9 +45,9 @@ public class SharedSpaceJSONController {
     }
 
     @CrossOrigin
-    @RequestMapping(path = "/addTestTask", method = RequestMethod.POST)
-    public void addTestTask() {
-        taskService.createTestTask();
+    @RequestMapping(path = "/addCoffee", method = RequestMethod.POST)
+    public void addCoffeeTask() {
+        taskService.createCoffeeTask();
     }
 
     @CrossOrigin
