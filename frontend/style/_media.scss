@@ -59,7 +59,7 @@
       color: $dark-blue-accent;
       display: inline;
       border: none;
-      padding: 20px 30px 20px 30px;
+      padding: 20px 20px 20px 20px;
       width: inherit;
       color: white;
         -ms-transition:.5s;
@@ -80,6 +80,9 @@
 
 .nav-wrap {
   display: block;
+  .active a button {
+    border-top: none;
+  }
 }
 
 

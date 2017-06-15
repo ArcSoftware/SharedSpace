@@ -7,7 +7,7 @@ const services = [
     require('./services/LogoutService'),
     require('./services/LeaderBoardService'),
     require('./services/UserService'),
-
+    require('./services/DeviceService')
 ];
 
 // loop all services
