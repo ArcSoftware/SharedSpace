@@ -1577,6 +1577,9 @@ h1, p, li {
 .bios {
   color: white;
   text-align: center; }
+  .bios a {
+    text-decoration: underline;
+    color: white; }
   .bios li {
     border: none;
     box-shadow: none;
