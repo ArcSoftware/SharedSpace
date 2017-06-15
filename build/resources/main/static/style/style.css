@@ -1267,6 +1267,10 @@ h1 {
   padding: 0;
   margin: 0; }
 
+.active a button {
+  border-bottom: 4px solid white;
+  border-top: 4px solid white; }
+
 .logo {
   color: #37393A;
   font-family: 'Alegreya Sans', sans-serif;
@@ -1289,6 +1293,8 @@ h1 {
     padding-top: 20px;
     padding-bottom: 20px;
     color: white; }
+    .navbar button:hover {
+      border-bottom: 4px solid white; }
 
 .hamburger {
   font-size: 1.5em; }
@@ -1315,20 +1321,7 @@ li {
   box-shadow: 4px 4px 4px #37393A;
   font-size: 1.1em;
   padding-left: 10px;
-  margin-top: 15px;
-  -webkit-animation: fadein 1.5s;
-  /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 1.5s;
-  /* Firefox < 16 */
-  -ms-animation: fadein 1.5s;
-  /* Internet Explorer */
-  animation: fadein 1.5s; }
-
-@keyframes fadein {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
+  margin-top: 15px; }
 
 .complete {
   max-width: 100em;
@@ -1442,15 +1435,16 @@ li {
 .users {
   display: none; }
 
-.user-wrapper ul li:nth-child(odd) {
-  color: #37393A; }
-
-.user-wrapper ul li:nth-child(even) {
-  background-color: #eee;
-  color: #37393A; }
-
-.user-wrapper ul li:nth-child(1) {
-  color: green; }
+.user-wrapper ul {
+  padding: 0;
+  margin: 0; }
+  .user-wrapper ul li {
+    padding: 0;
+    text-align: left;
+    box-shadow: none;
+    width: 200px;
+    color: white;
+    background-color: #366699; }
 
 .signin {
   width: 250px;
@@ -1555,7 +1549,8 @@ canvas {
   display: inline-block;
   text-align: left;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  text-transform: capitalize; }
 
 @media (max-width: 768px) {
   .leaderboard {
@@ -1585,7 +1580,7 @@ h1, p, li {
   .bios li {
     border: none;
     box-shadow: none;
-    list-style-type: square; }
+    list-style-type: none; }
   .bios .nick {
     padding-bottom: 20px; }
     .bios .nick img {
@@ -1648,7 +1643,7 @@ h1, p, li {
       color: #366699;
       display: inline;
       border: none;
-      padding: 20px 30px 20px 30px;
+      padding: 20px 20px 20px 20px;
       width: inherit;
       color: white;
       -ms-transition: .5s;
@@ -1662,6 +1657,8 @@ h1, p, li {
     display: none; }
   .nav-wrap {
     display: block; }
+    .nav-wrap .active a button {
+      border-top: none; }
   .bios .headshot {
     width: 240px; }
   .bios .jake {
