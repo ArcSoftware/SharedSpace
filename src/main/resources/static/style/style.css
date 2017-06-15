@@ -1549,7 +1549,8 @@ canvas {
   display: inline-block;
   text-align: left;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  text-transform: capitalize; }
 
 @media (max-width: 768px) {
   .leaderboard {
@@ -1642,7 +1643,7 @@ h1, p, li {
       color: #366699;
       display: inline;
       border: none;
-      padding: 20px 30px 20px 30px;
+      padding: 20px 20px 20px 20px;
       width: inherit;
       color: white;
       -ms-transition: .5s;

@@ -16,7 +16,7 @@
         var app = angular.module('SharedSpace', ['ui.router', 'angularMoment', 'chart.js']);
 
         // require service
-        var services = [require('./services/TaskService'), require('./services/SignInService'), require('./services/LogoutService'), require('./services/LeaderBoardService'), require('./services/UserService')];
+        var services = [require('./services/TaskService'), require('./services/SignInService'), require('./services/LogoutService'), require('./services/LeaderBoardService'), require('./services/UserService'), require('./services/DeviceService')];
 
         // loop all services
         for (var i = 0; i < services.length; i++) {
@@ -87,7 +87,7 @@
                 component: 'loggedinuser'
             });
         });
-    }, { "./components/about": 2, "./components/adduser": 3, "./components/allComplete": 4, "./components/leaderboard": 5, "./components/loggedinuser": 6, "./components/navbar": 7, "./components/newTask": 8, "./components/signin": 9, "./components/task": 10, "./components/users": 11, "./controllers/AddUserController": 12, "./controllers/AllCompleteController": 13, "./controllers/LeaderBoardController": 14, "./controllers/LoggedInUserController": 15, "./controllers/NavController": 16, "./controllers/NewTaskController": 17, "./controllers/SignInController": 18, "./controllers/TaskController": 19, "./controllers/UserController": 20, "./services/LeaderBoardService": 21, "./services/LogoutService": 22, "./services/SignInService": 23, "./services/TaskService": 24, "./services/UserService": 25 }], 2: [function (require, module, exports) {
+    }, { "./components/about": 2, "./components/adduser": 3, "./components/allComplete": 4, "./components/leaderboard": 5, "./components/loggedinuser": 6, "./components/navbar": 7, "./components/newTask": 8, "./components/signin": 9, "./components/task": 10, "./components/users": 11, "./controllers/AddUserController": 12, "./controllers/AllCompleteController": 13, "./controllers/LeaderBoardController": 14, "./controllers/LoggedInUserController": 15, "./controllers/NavController": 16, "./controllers/NewTaskController": 17, "./controllers/SignInController": 18, "./controllers/TaskController": 19, "./controllers/UserController": 20, "./services/DeviceService": 21, "./services/LeaderBoardService": 22, "./services/LogoutService": 23, "./services/SignInService": 24, "./services/TaskService": 25, "./services/UserService": 26 }], 2: [function (require, module, exports) {
         module.exports = {
             name: "about",
             array: {
@@ -218,15 +218,23 @@
     }, {}], 16: [function (require, module, exports) {
         module.exports = {
             name: "NavController",
-            func: function func($scope, LogoutService, $state) {
+            func: function func($scope, LogoutService, DeviceService, $state) {
                 $scope.logout = function () {
                     LogoutService.logout();
                     $state.go('signin');
-                }, $scope.expanded = true;
+                };
+                if (DeviceService.getDevice() === 'mobile') {
+                    $scope.expanded = false;
+                } else {
+                    $scope.expanded = true;
+                }
+                // $scope.expanded = true;
                 $scope.toggle = function () {
                     $scope.expanded = !$scope.expanded;
-                    console.log('clicked');
+                    // console.log('clicked');
+                    console.log($scope.expanded);
                 };
+                console.log(DeviceService.getDevice());
             }
         };
     }, {}], 17: [function (require, module, exports) {
@@ -292,6 +300,22 @@
         };
     }, {}], 21: [function (require, module, exports) {
         module.exports = {
+            name: "DeviceService",
+            func: function func() {
+
+                return {
+                    getDevice: function getDevice() {
+                        if (window.innerWidth > 500) {
+                            return 'desktop';
+                        } else {
+                            return 'mobile';
+                        }
+                    }
+                };
+            }
+        };
+    }, {}], 22: [function (require, module, exports) {
+        module.exports = {
             name: 'LeaderBoardService',
             func: function func($http) {
 
@@ -325,7 +349,7 @@
                 };
             }
         };
-    }, {}], 22: [function (require, module, exports) {
+    }, {}], 23: [function (require, module, exports) {
         module.exports = {
             name: 'LogoutService',
             func: function func($http) {
@@ -338,7 +362,7 @@
                 };
             }
         };
-    }, {}], 23: [function (require, module, exports) {
+    }, {}], 24: [function (require, module, exports) {
         module.exports = {
             name: 'SignInService',
             func: function func($http) {
@@ -397,7 +421,7 @@
                 };
             }
         };
-    }, {}], 24: [function (require, module, exports) {
+    }, {}], 25: [function (require, module, exports) {
         module.exports = {
             name: 'TaskService',
             func: function func($http) {
@@ -497,7 +521,7 @@
             }
 
         };
-    }, {}], 25: [function (require, module, exports) {
+    }, {}], 26: [function (require, module, exports) {
         module.exports = {
             name: 'UserService',
             func: function func($http) {
